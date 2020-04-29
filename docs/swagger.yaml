@@ -1,0 +1,75 @@
+definitions:
+  models.User:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      pass_word:
+        type: string
+      phone:
+        type: string
+      status:
+        type: boolean
+      updated_at:
+        type: string
+      user_groups:
+        items:
+          $ref: '#/definitions/models.UserGroup'
+        type: array
+      user_name:
+        type: string
+    required:
+    - name
+    - pass_word
+    - user_name
+    type: object
+  models.UserGroup:
+    properties:
+      created_at:
+        type: string
+      groupName:
+        type: string
+      id:
+        type: integer
+      remark:
+        type: string
+      updated_at:
+        type: string
+      users:
+        items:
+          $ref: '#/definitions/models.User'
+        type: array
+    type: object
+host: 127.0.0.1:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server Petstore server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: v1.6.5
+paths:
+  /api/v1/user:
+    get:
+      consumes:
+      - application/json
+      description: get data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: 测试接口
+swagger: "2.0"

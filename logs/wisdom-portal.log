@@ -1,0 +1,4 @@
+{"level":"DEBUG","time":"2020-04-29T17:06:15.932+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-04-29T17:06:15.932+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-04-29T17:06:15.949+0800","caller":"models/otp_models.go:98","msg":"657514 240896 <nil>"}
+{"level":"INFO","time":"2020-04-29T17:06:15.949+0800","caller":"gin@v1.6.2/context.go:156","msg":"/api/v1/login","status":200,"method":"POST","path":"/api/v1/login","query":"","ip":"127.0.0.1","errors":"","cost":0.01724118,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36"}
