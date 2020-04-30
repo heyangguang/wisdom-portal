@@ -17,5 +17,18 @@ func main() {
 	db.SingularTable(true)
 
 	//初始化数据库
-	db.AutoMigrate(&models.User{}, &models.UserGroup{})
+	db.AutoMigrate(&models.User{}, &models.UserGroup{}, &models.Role{}, &models.ObjAct{}, &models.CasbinRule{})
+
+	//objActSlice := make([]map[string]string, 0)
+	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/perm", "actName": "GET", "tag": "perm"})
+	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/perm", "actName": "POST", "tag": "perm"})
+	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/user", "actName": "GET", "tag": "user"})
+	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/*", "actName": "*", "tag": "admin"})
+	//for _, value := range objActSlice {
+	//	var objAct models.ObjAct
+	//	objAct.ObjName = value["objName"]
+	//	objAct.ActName = value["actName"]
+	//	objAct.Tag = value["tag"]
+	//	db.Debug().Create(&objAct)
+	//}
 }
