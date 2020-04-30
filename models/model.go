@@ -1,7 +1,7 @@
 package models
 
 import (
-	gormAdapter "github.com/casbin/gorm-adapter"
+	gormadapter "github.com/casbin/gorm-adapter"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"log"
@@ -10,11 +10,11 @@ import (
 
 var (
 	DB          *gorm.DB
-	GormAdapter *gormAdapter.Adapter
+	GormAdapter *gormadapter.Adapter
 )
 
 type BaseModel struct {
-	ID        uint      `gorm:"primary_key" json:"id"`
+	ID        uint      `gorm:"primary_key;" json:"id"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -51,7 +51,8 @@ func SqlxAdapterInit() {
 	//}
 	// 这里真正做了数据库的连接
 	//SqlxAdapter = sqlxadapter.NewAdapterFromOptions(opts)
-	//GormAdapter = gormAdapter.NewAdapter("mysql", "root:123456@tcp(127.0.0.1:3306)/test", true)
-	GormAdapter = gormAdapter.NewAdapterByDB(DB)
+	//GormAdapter = gormadapter.NewAdapter("mysql", "root:123456@tcp(127.0.0.1:3306)/test", true)
+	//GormAdapterPool = gormAdapter.NewAdapter("mysql", "root:123456@(127.0.0.1:3306)/test", true)
+	GormAdapter = gormadapter.NewAdapterByDB(DB)
 	return
 }

@@ -1,7 +1,8 @@
 package middlewares
 
 import (
-	"github.com/casbin/casbin/v2/util"
+	"fmt"
+	"github.com/casbin/casbin/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"wisdom-portal/models"
@@ -22,19 +23,12 @@ func PermAuthCheckRole(skipper ...SkipperFunc) gin.HandlerFunc {
 			//name := c.Query("name")
 			e := models.LoadPolicyPerm()
 			// 获取用户和用户组的全部权限
-			userRoles, _ := e.GetImplicitPermissionsForUser(username.(string))
+			userRoles := e.GetImplicitPermissionsForUser(username.(string))
+			fmt.Println(userRoles)
 			// 检查权限
 			for _, value := range userRoles {
 				if util.KeyMatch(c.Request.URL.Path, value[1]) && (value[2] == c.Request.Method || value[2] == "*") {
-					isOk, err := e.Enforce(value[0], value[1], value[2])
-					if err != nil {
-						c.JSON(http.StatusInternalServerError, gin.H{
-							"status": -1,
-							"msg":    err.Error(),
-						})
-						c.Abort()
-						return
-					}
+					isOk := e.Enforce(value[0], value[1], value[2])
 					if isOk {
 						c.Next()
 						return
