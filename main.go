@@ -6,6 +6,7 @@ import (
 	"wisdom-portal/apps/common/otp"
 	"wisdom-portal/apps/common/permission"
 	"wisdom-portal/apps/common/user"
+	"wisdom-portal/apps/common/usergroup"
 	"wisdom-portal/models"
 	"wisdom-portal/wisdom-portal"
 	"wisdom-portal/wisdom-portal/logger"
@@ -37,7 +38,7 @@ func main() {
 	models.DBConnectInit()
 
 	// 加载多个APP的路由配置
-	v1.Include(permission.Routers, user.Routers, jwt.Routers, otp.Routers)
+	v1.Include(permission.Routers, user.Routers, jwt.Routers, otp.Routers, usergroup.Routers)
 
 	// 初始化路由
 	r := v1.InitV1()
