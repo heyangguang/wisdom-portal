@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
@@ -61,13 +62,16 @@ func main() {
 	//db.Model(&User{Model: gorm.Model{ID: 1}}).Association("Languages").Clear()
 	// 多对多插入
 	//db.Model(&user).Association("Languages").Append(language)
-	//err := db.Model(&User{Model: gorm.Model{ID: 1}}).Association("Languages").Append(&[]Language{
-	//	{Model: gorm.Model{ID: 1}},
-	//	{Model: gorm.Model{ID: 2}},
-	//	{Model: gorm.Model{ID: 3}},
-	//	{Model: gorm.Model{ID: 4}},
-	//},)
-	//fmt.Println(err.Error)
+	u := &User{Model: gorm.Model{ID: 1}}
+	err := db.Model(u).Association("Languages").Append(&[]Language{
+		{Model: gorm.Model{ID: 1}},
+		{Model: gorm.Model{ID: 2}},
+		{Model: gorm.Model{ID: 3}},
+		{Model: gorm.Model{ID: 4}},
+	})
+	fmt.Println(u.ID)
+	fmt.Println(u.Model.ID)
+	fmt.Println(err.Error)
 	// 多对多查询
 	//var user1 User
 	//if db.Preload("Languages").First(&user1, "id = ?", 2).RecordNotFound() {

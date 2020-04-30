@@ -19,7 +19,7 @@ type User struct {
 type UserLogin struct {
 	UserName string `json:"user_name" binding:"required"`
 	PassWord string `json:"pass_word" binding:"required"`
-	OtpCode string `json:"otp_code" binding:"required"`
+	OtpCode  string `json:"otp_code" binding:"required"`
 }
 
 // 检测用户名密码
@@ -46,4 +46,12 @@ func (u *UserLogin) CheckUserOtpCode() bool {
 		return true
 	}
 	return false
+}
+
+// 创建用户
+func (u *User) AddUser(user User) error {
+	if err := DB.Omit("id").Create(&user).Error; err != nil {
+		return err
+	}
+	return nil
 }

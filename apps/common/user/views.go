@@ -26,9 +26,10 @@ func register(c *gin.Context) {
 	var user models.User
 	err := c.ShouldBindJSON(&user)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"code": -1,
-			"msg":  "表单填写错误，请检查后重新提交, err" + err.Error(),
+			"msg":  "表单填写错误，请检查后重新提交",
+			"err":  err.Error(),
 		})
 		return
 	}
@@ -42,14 +43,14 @@ func register(c *gin.Context) {
 	googleAuth = models.NewGoogleAuth()
 	user.Secret = googleAuth.GetSecret()
 	googleAuth.GetQrCode(user.UserName, user.Secret)
-	if err := models.DB.Omit("id").Create(&user).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+	if err := user.AddUser(user); err != nil {
+		c.JSON(http.StatusOK, gin.H{
 			"code": -1,
 			"msg":  "创建用户失败，请检查后重新提交",
+			"err":  err.Error(),
 		})
 		return
 	}
-
 	c.JSON(http.StatusOK, gin.H{
 		"code": 1,
 		"msg":  "创建用户成功",
