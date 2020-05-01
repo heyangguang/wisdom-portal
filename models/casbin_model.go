@@ -39,6 +39,62 @@ type AddPermUser struct {
 	RoleId string `json:"role_id"`
 }
 
+// 用户组添加权限模板结构体
+type AddPermUserGroup struct {
+	RoleId string `json:"role_id"`
+}
+
+// 用户组添加权限模板
+func (a *AddPermUserGroup) AddPermUserGroup(gid string) error {
+	var userGroup UserGroup
+	var role Role
+	logger.Debug("AddPermUserGroup")
+	if err := DB.Where("id = ?", gid).First(&userGroup).Error; err != nil {
+		logger.Error("AddPermUserGroup    " + err.Error())
+		return err
+	}
+	if isOk := DB.Where("v0 = ?", userGroup.GroupName).First(&CasbinRule{}).RecordNotFound(); !isOk {
+		return errors.New("the user group already has permission templates")
+	}
+	logger.Debug("用户组名" + userGroup.GroupName)
+	if err := DB.Preload("RoleObjActs").Where("id = ?", a.RoleId).First(&role).Error; err != nil {
+		logger.Error("AddPermUserGroup    " + err.Error())
+		return err
+	}
+	logger.Debug("权限模板名" + role.RoleName)
+	e := LoadPolicyPerm()
+	for _, value := range role.RoleObjActs {
+		isOk := e.AddPolicy(userGroup.GroupName, value.ObjName, value.ActName)
+		if !isOk {
+			logger.Error("AddPermUserGroup    " + "the current usergroup already has this permission")
+			return errors.New("the current usergroup already has this permission")
+		}
+	}
+	// 权限表关联用户组下的用户
+	// 1. 查询用户组下有哪些用户
+	if err := DB.Preload("Users").Where("id = ?", gid).First(&userGroup).Error; err != nil {
+		logger.Error("AddPermUserGroup    " + err.Error())
+		return err
+	}
+	// 2. 遍历用户组下的用户，批量添加对应关系
+	for _, value := range userGroup.Users {
+		if isOk := e.AddGroupingPolicy(value.UserName, userGroup.GroupName); !isOk {
+			logger.Error("AddPermUserGroup    " + "users who already have this user group under current permissions")
+			for _, roleObj := range role.RoleObjActs {
+				DB.Where("p_type = ? and v0 = ? and v1 = ? and v2 = ?", "p", userGroup.GroupName, roleObj.ObjName, roleObj.ActName).Delete(&CasbinRule{})
+			}
+			return errors.New("users who already have this user group under current permissions")
+		}
+	}
+	// 3. 更新时间戳
+	data := make(map[string]interface{})
+	data["created_at"] = time.Now()
+	data["updated_at"] = time.Now()
+	DB.Model(CasbinRule{}).Where("p_type = ? and v0 = ?", "p", userGroup.GroupName).Updates(data)
+	DB.Model(CasbinRule{}).Where("p_type = ? and v1 = ?", "g", userGroup.GroupName).Updates(data)
+	return nil
+}
+
 // 用户添加权限模板
 func (a *AddPermUser) AddPermUser(uid string) error {
 	var user User
@@ -66,7 +122,7 @@ func (a *AddPermUser) AddPermUser(uid string) error {
 	data := make(map[string]interface{})
 	data["created_at"] = time.Now()
 	data["updated_at"] = time.Now()
-	DB.Model(CasbinRule{}).Where("v0 = ?", user.UserName).Updates(data)
+	DB.Model(CasbinRule{}).Where("p_type = ? and v0 = ?", "p", user.UserName).Updates(data)
 	return nil
 }
 

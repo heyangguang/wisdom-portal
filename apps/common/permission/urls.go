@@ -7,4 +7,5 @@ func Routers(routeGroup *gin.RouterGroup) {
 	routeGroup.POST("/perm", addPerm)
 	// 用户权限
 	routeGroup.POST("/perm/user/:uid", addPermUser)
+	routeGroup.POST("/perm/userGroup/:gid", addPermUserGroup)
 }
