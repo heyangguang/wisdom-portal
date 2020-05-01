@@ -13,19 +13,24 @@ import (
 	v1 "wisdom-portal/wisdom-portal/routers/api/v1"
 )
 
-// @title Swagger Example API
-// @version v1.6.5
-// @description This is a sample server Petstore server.
-// @termsOfService http://swagger.io/terms/
+// @title WisdomPortal backend API
+// @version v1.0
+// @description This is a wisdomPortal backend interface system server.
 
 // @contact.name API Support
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
+// @contact.url http://mail.csic711.com/
+// @contact.email heyangev@cn.ibm.com
 
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
 // @host 127.0.0.1:8080
+
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
+// @BasePath /
+
 func main() {
 	// 初始化日志模块
 	logPath := wisdom_portal.BaseDir() + "/logs/wisdom-portal.log"
