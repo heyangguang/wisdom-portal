@@ -6,14 +6,9 @@ import (
 	"time"
 	"wisdom-portal/models"
 	wisdomPortal "wisdom-portal/wisdom-portal"
+	"wisdom-portal/wisdom-portal/result"
 )
 
-// @Summary 测试接口
-// @Description get data
-// @Accept  json
-// @Produce json
-// @Success 200 {object} models.User "{"code":200,"data":{},"msg":"ok"}"
-// @Router /api/v1/user [get]
 // 测试
 func test(c *gin.Context) {
 	var user1 models.User
@@ -22,13 +17,22 @@ func test(c *gin.Context) {
 }
 
 // @Summary 注册用户
+// @Description 用于用户的注册
+// @Tags 用户注册
+// @accept json
+// @Produce  json
+// @Param data body models.SwaggerUser true "用户注册数据"
+// @Success 200 {object} gin.H "{"code": 10000, "msg": "成功", "data": models.GoogleAuth}"
+// @Failure 415 {object} gin.H "{"code": 50004, "msg": "数据创建错误", "err": ""}"
+// @Failure 400 {object} gin.H "{"code": 10001, "msg": "参数无效", "err": ""}"
+// @Router /api/v1/register [POST]
 func register(c *gin.Context) {
 	var user models.User
 	err := c.ShouldBindJSON(&user)
 	if err != nil {
-		c.JSON(http.StatusOK, gin.H{
-			"code": -1,
-			"msg":  "表单填写错误，请检查后重新提交",
+		c.JSON(http.StatusBadRequest, gin.H{
+			"code": result.ParamInvalid,
+			"msg":  result.ResultText(result.ParamInvalid),
 			"err":  err.Error(),
 		})
 		return
@@ -44,16 +48,16 @@ func register(c *gin.Context) {
 	user.Secret = googleAuth.GetSecret()
 	googleAuth.GetQrCode(user.UserName, user.Secret)
 	if err := user.AddUser(user); err != nil {
-		c.JSON(http.StatusOK, gin.H{
-			"code": -1,
-			"msg":  "创建用户失败，请检查后重新提交",
+		c.JSON(http.StatusUnsupportedMediaType, gin.H{
+			"code": result.DataCreateWrong,
+			"msg":  result.ResultText(result.DataCreateWrong),
 			"err":  err.Error(),
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"code": 1,
-		"msg":  "创建用户成功",
+		"code": result.SuccessCode,
+		"msg":  result.ResultText(result.SuccessCode),
 		"data": googleAuth,
 	})
 	return

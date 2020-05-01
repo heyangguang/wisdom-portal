@@ -1,26 +1,47 @@
+basePath: /
 definitions:
-  models.User:
+  gin.H:
+    additionalProperties: true
+    type: object
+  models.AddPermUser:
     properties:
-      created_at:
+      role_id:
         type: string
+    type: object
+  models.AddPermUserGroup:
+    properties:
+      role_id:
+        type: string
+    type: object
+  models.SwaggerObjActId:
+    properties:
+      id:
+        type: string
+    type: object
+  models.SwaggerRole:
+    properties:
+      remark:
+        type: string
+      role_name:
+        type: string
+      roleObjActs:
+        items:
+          $ref: '#/definitions/models.SwaggerObjActId'
+        type: array
+    required:
+    - roleObjActs
+    - role_name
+    type: object
+  models.SwaggerUser:
+    properties:
       email:
         type: string
-      id:
-        type: integer
       name:
         type: string
       pass_word:
         type: string
       phone:
         type: string
-      status:
-        type: boolean
-      updated_at:
-        type: string
-      user_groups:
-        items:
-          $ref: '#/definitions/models.UserGroup'
-        type: array
       user_name:
         type: string
     required:
@@ -28,48 +49,314 @@ definitions:
     - pass_word
     - user_name
     type: object
-  models.UserGroup:
+  models.SwaggerUserGroup:
     properties:
-      created_at:
+      group_name:
         type: string
-      groupName:
-        type: string
-      id:
-        type: integer
       remark:
-        type: string
-      updated_at:
         type: string
       users:
         items:
-          $ref: '#/definitions/models.User'
+          $ref: '#/definitions/models.SwaggerUserId'
         type: array
+    required:
+    - group_name
+    - users
+    type: object
+  models.SwaggerUserId:
+    properties:
+      id:
+        type: string
+    type: object
+  models.UserLogin:
+    properties:
+      otp_code:
+        type: string
+      pass_word:
+        type: string
+      user_name:
+        type: string
+    required:
+    - otp_code
+    - pass_word
+    - user_name
     type: object
 host: 127.0.0.1:8080
 info:
   contact:
-    email: support@swagger.io
+    email: heyangev@cn.ibm.com
     name: API Support
-    url: http://www.swagger.io/support
-  description: This is a sample server Petstore server.
+    url: http://mail.csic711.com/
+  description: This is a wisdomPortal backend interface system server.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  termsOfService: http://swagger.io/terms/
-  title: Swagger Example API
-  version: v1.6.5
+  title: WisdomPortal backend API
+  version: v1.0
 paths:
-  /api/v1/user:
+  /api/v1/create-qr-code:
     get:
       consumes:
       - application/json
-      description: get data
+      description: 用于用户绑定多因子
+      parameters:
+      - description: 数据
+        in: query
+        name: data
+        required: true
+        type: string
+      - description: 秘钥
+        in: query
+        name: secret
+        required: true
+        type: string
       produces:
       - application/json
       responses:
         "200":
-          description: '{"code":200,"data":{},"msg":"ok"}'
+          description: '{"code": 10000, "msg": "成功", "data": ""}'
           schema:
-            $ref: '#/definitions/models.User'
-      summary: 测试接口
+            $ref: '#/definitions/gin.H'
+        "400":
+          description: '{"code": 10001, "msg": "参数无效"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "500":
+          description: '{"code": 60001, "msg": "内部系统接口调用异常", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      summary: 生成多因子认证二维码
+      tags:
+      - 多因子
+  /api/v1/login:
+    post:
+      consumes:
+      - application/json
+      description: 用于用户登录
+      parameters:
+      - description: 数据
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 10000, "msg": "成功", "data": "{"token": ""}"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "400":
+          description: '{"code": 10001, "msg": "参数无效", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "401":
+          description: '{"code": 20002, "msg": "账号不存在或密码动态码错误"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      summary: 用户登录
+      tags:
+      - 用户登录
+  /api/v1/perm:
+    post:
+      consumes:
+      - application/json
+      description: 用于创建权限模板
+      parameters:
+      - description: 数据
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.SwaggerRole'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 10000, "msg": "成功", "data": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "400":
+          description: '{"code": 10001, "msg": "参数无效"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "415":
+          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      security:
+      - ApiKeyAuth: []
+      summary: 添加权限模板
+      tags:
+      - 权限
+  /api/v1/perm/user/{uid}:
+    post:
+      consumes:
+      - application/json
+      description: 用于用户关联权限
+      parameters:
+      - description: 权限模板id
+        in: body
+        name: role_id
+        required: true
+        schema:
+          $ref: '#/definitions/models.AddPermUser'
+      - description: 用户id
+        in: path
+        name: uid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 10000, "msg": "成功", "data": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "400":
+          description: '{"code": 10004, "msg": "参数缺失"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "415":
+          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      security:
+      - ApiKeyAuth: []
+      summary: 用户关联权限模板
+      tags:
+      - 权限
+  /api/v1/perm/userGroup/{gid}:
+    post:
+      consumes:
+      - application/json
+      description: 用于用户组关联权限
+      parameters:
+      - description: 权限模板id
+        in: body
+        name: role_id
+        required: true
+        schema:
+          $ref: '#/definitions/models.AddPermUserGroup'
+      - description: 用户组id
+        in: path
+        name: gid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 10000, "msg": "成功", "data": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "400":
+          description: '{"code": 10004, "msg": "参数缺失"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "415":
+          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      security:
+      - ApiKeyAuth: []
+      summary: 用户组关联权限模板
+      tags:
+      - 权限
+  /api/v1/register:
+    post:
+      consumes:
+      - application/json
+      description: 用于用户的注册
+      parameters:
+      - description: 用户注册数据
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.SwaggerUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 10000, "msg": "成功", "data": models.GoogleAuth}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "400":
+          description: '{"code": 10001, "msg": "参数无效", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "415":
+          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      summary: 注册用户
+      tags:
+      - 用户注册
+  /api/v1/userGroup:
+    post:
+      consumes:
+      - application/json
+      description: 用于用户组的创建
+      parameters:
+      - description: 用户组数据
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.SwaggerUserGroup'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 10000, "msg": "成功"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "400":
+          description: '{"code": 10001, "msg": "参数无效", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "415":
+          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      security:
+      - ApiKeyAuth: []
+      summary: 添加用户组
+      tags:
+      - 用户组
+  /api/v1/view-qr-code:
+    get:
+      consumes:
+      - application/json
+      description: 用于用户绑定多因子
+      parameters:
+      - description: 图片名
+        in: query
+        name: imagename
+        required: true
+        type: string
+      responses:
+        "200": {}
+        "400":
+          description: '{"code": 10001, "msg": "参数无效"}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "404":
+          description: '{"code": 50001, "msg": "数据未找到", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+        "500":
+          description: '{"code": 60001, "msg": "内部系统接口调用异常", "err": ""}'
+          schema:
+            $ref: '#/definitions/gin.H'
+      summary: 显示多因子认证二维码
+      tags:
+      - 多因子
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
