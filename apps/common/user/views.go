@@ -9,32 +9,42 @@ import (
 	"wisdom-portal/wisdom-portal/result"
 )
 
-// 测试
-func test(c *gin.Context) {
-	var user1 models.User
-	models.DB.Preload("UserGroups").First(&user1, "id = ?", 1)
-	c.JSON(http.StatusOK, gin.H{"data": user1})
+// @Security ApiKeyAuth
+// @Summary 获取当前用户信息
+// @Description 获取当前用户信息
+// @Tags 登录管理
+// @accept json
+// @Produce json
+// @Success 200 {object} result.PubCurrentUserResult "{"code": 10000}"
+// @Failure 400 {object} result.FailResult "{"code": 20004}"
+// @Router /api/v1/pub/current/user [GET]
+func getCurrentUser(c *gin.Context) {
+	if username, isExist := c.Get("username"); isExist {
+		var pubCurrentUser models.PubCurrentUser
+		if pubCurrentUserObj, isDbExist := pubCurrentUser.GetPubCurrentUser(username); isDbExist {
+			c.JSON(http.StatusOK, result.NewPubCurrentUserResult(result.SuccessCode, pubCurrentUserObj))
+			return
+		}
+	}
+	c.JSON(http.StatusBadRequest, result.NewFailResult(result.UserNotExist, ""))
+	return
 }
 
 // @Summary 注册用户
 // @Description 用于用户的注册
 // @Tags 用户注册
 // @accept json
-// @Produce  json
+// @Produce json
 // @Param data body models.SwaggerUser true "用户注册数据"
-// @Success 200 {object} gin.H "{"code": 10000, "msg": "成功", "data": models.GoogleAuth}"
-// @Failure 415 {object} gin.H "{"code": 50004, "msg": "数据创建错误", "err": ""}"
-// @Failure 400 {object} gin.H "{"code": 10001, "msg": "参数无效", "err": ""}"
+// @Success 200 {object} result.RegisterUserResult "{"code": 10000}"
+// @Failure 415 {object} result.FailResult "{"code": 50004}"
+// @Failure 400 {object} result.FailResult "{"code": 10001}"
 // @Router /api/v1/register [POST]
 func register(c *gin.Context) {
 	var user models.User
 	err := c.ShouldBindJSON(&user)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": result.ParamInvalid,
-			"msg":  result.ResultText(result.ParamInvalid),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	// 防止恶意数据请求
@@ -48,17 +58,9 @@ func register(c *gin.Context) {
 	user.Secret = googleAuth.GetSecret()
 	googleAuth.GetQrCode(user.UserName, user.Secret)
 	if err := user.AddUser(user); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, gin.H{
-			"code": result.DataCreateWrong,
-			"msg":  result.ResultText(result.DataCreateWrong),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"code": result.SuccessCode,
-		"msg":  result.ResultText(result.SuccessCode),
-		"data": googleAuth,
-	})
+	c.JSON(http.StatusOK, result.NewRegisterUserResult(result.SuccessCode, *googleAuth))
 	return
 }
