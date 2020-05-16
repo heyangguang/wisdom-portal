@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 	"wisdom-portal/apps/common/jwt"
 	"wisdom-portal/apps/common/otp"
 	"wisdom-portal/apps/common/permission"
@@ -9,6 +10,7 @@ import (
 	"wisdom-portal/apps/common/usergroup"
 	"wisdom-portal/models"
 	"wisdom-portal/wisdom-portal"
+	"wisdom-portal/wisdom-portal/clear_static"
 	"wisdom-portal/wisdom-portal/logger"
 	v1 "wisdom-portal/wisdom-portal/routers/api/v1"
 )
@@ -44,6 +46,13 @@ func main() {
 
 	// 加载多个APP的路由配置
 	v1.Include(permission.Routers, user.Routers, jwt.Routers, otp.Routers, usergroup.Routers)
+
+	// 加载清理static异步模块
+	fileChan := make(chan string, 50)
+	go clear_static.GetAllFile(wisdom_portal.BaseDir()+"/static/", fileChan, time.Second*60*10)
+	for i := 0; i <= 5; i++ {
+		go clear_static.CheckFileDiffTime(fileChan)
+	}
 
 	// 初始化路由
 	r := v1.InitV1()

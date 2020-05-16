@@ -28,6 +28,7 @@ func createQrCode(c *gin.Context) {
 	logger.Debug("二维码生成" + qrCodeData)
 	logger.Debug("二维码生成" + secret)
 	if qrCodeData != "" && secret != "" {
+		// TODO: 这里的Secret应该去数据库里验证是否存在，否则存在无限通过接口生成二维码文件的漏洞
 		err := qrcode.WriteFile(qrCodeData, qrcode.Medium, 256, imgPath+"qr_"+secret+".png")
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, result.NewFailResult(result.InterfaceInnerInvokeError, err.Error()))
