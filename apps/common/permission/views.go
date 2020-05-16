@@ -20,18 +20,14 @@ func test(c *gin.Context) {
 // @accept json
 // @Produce  json
 // @Param data body models.SwaggerRole true "数据"
-// @Success 200 {object} gin.H "{"code": 10000, "msg": "成功", "data": ""}"
-// @Failure 415 {object} gin.H "{"code": 50004, "msg": "数据创建错误", "err": ""}"
-// @Failure 400 {object} gin.H "{"code": 10001, "msg": "参数无效"}"
+// @Success 200 {object} result.SuccessResult "{"code": 10000}"
+// @Failure 415 {object} result.FailResult "{"code": 50004}"
+// @Failure 400 {object} result.FailResult "{"code": 10001}"
 // @Router /api/v1/perm [POST]
 func addPerm(c *gin.Context) {
 	var role models.Role
 	if err := c.ShouldBindJSON(&role); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": result.ParamInvalid,
-			"msg":  result.ResultText(result.ParamInvalid),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 
@@ -41,14 +37,10 @@ func addPerm(c *gin.Context) {
 
 	err := role.AddPerm(role)
 	if err == nil {
-		c.JSON(http.StatusOK, gin.H{"code": result.SuccessCode, "msg": result.ResultText(result.SuccessCode)})
+		c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
 		return
 	}
-	c.JSON(http.StatusUnsupportedMediaType, gin.H{
-		"code": result.DataCreateWrong,
-		"msg":  result.ResultText(result.DataCreateWrong),
-		"err":  err.Error(),
-	})
+	c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
 	return
 }
 
@@ -60,39 +52,28 @@ func addPerm(c *gin.Context) {
 // @Produce  json
 // @Param role_id body models.AddPermUser true "权限模板id"
 // @Param uid path string true "用户id"
-// @Success 200 {object} gin.H "{"code": 10000, "msg": "成功", "data": ""}"
-// @Failure 415 {object} gin.H "{"code": 50004, "msg": "数据创建错误", "err": ""}"
-// @Failure 400 {object} gin.H "{"code": 10001, "msg": "参数无效", "err": ""}"
-// @Failure 400 {object} gin.H "{"code": 10004, "msg": "参数缺失"}"
+// @Success 200 {object} result.SuccessResult "{"code": 10000}"
+// @Failure 415 {object} result.FailResult "{"code": 50004}"
+// @Failure 400 {object} result.FailResult "{"code": 10001}"
+// @Failure 400 {object} result.FailResult "{"code": 10004}"
 // @Router /api/v1/perm/user/{uid} [POST]
 func addPermUser(c *gin.Context) {
 	var addPermUser models.AddPermUser
 	uid := c.Param("uid")
 	if uid == "" {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": result.ParamNotComplete,
-			"msg":  result.ResultText(result.ParamNotComplete),
-		})
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamNotComplete, ""))
 		return
 	}
 	if err := c.ShouldBindJSON(&addPermUser); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": result.ParamInvalid,
-			"msg":  result.ResultText(result.ParamInvalid),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 
 	if err := addPermUser.AddPermUser(uid); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, gin.H{
-			"code": result.DataCreateWrong,
-			"msg":  result.ResultText(result.DataCreateWrong),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"code": result.SuccessCode, "msg": result.ResultText(result.SuccessCode)})
+	c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
 	return
 }
 
@@ -104,37 +85,26 @@ func addPermUser(c *gin.Context) {
 // @Produce  json
 // @Param role_id body models.AddPermUserGroup true "权限模板id"
 // @Param gid path string true "用户组id"
-// @Success 200 {object} gin.H "{"code": 10000, "msg": "成功", "data": ""}"
-// @Failure 415 {object} gin.H "{"code": 50004, "msg": "数据创建错误", "err": ""}"
-// @Failure 400 {object} gin.H "{"code": 10001, "msg": "参数无效", "err": ""}"
-// @Failure 400 {object} gin.H "{"code": 10004, "msg": "参数缺失"}"
+// @Success 200 {object} result.SuccessResult "{"code": 10000}"
+// @Failure 415 {object} result.FailResult "{"code": 50004}"
+// @Failure 400 {object} result.FailResult "{"code": 10001}"
+// @Failure 400 {object} result.FailResult "{"code": 10004}"
 // @Router /api/v1/perm/userGroup/{gid} [POST]
 func addPermUserGroup(c *gin.Context) {
 	var addPermUserGroup models.AddPermUserGroup
 	gid := c.Param("gid")
 	if gid == "" {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": result.ParamNotComplete,
-			"msg":  result.ResultText(result.ParamNotComplete),
-		})
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamNotComplete, ""))
 	}
 	if err := c.ShouldBindJSON(&addPermUserGroup); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": result.ParamInvalid,
-			"msg":  result.ResultText(result.ParamInvalid),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 
 	if err := addPermUserGroup.AddPermUserGroup(gid); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, gin.H{
-			"code": result.DataCreateWrong,
-			"msg":  result.ResultText(result.DataCreateWrong),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"code": result.SuccessCode, "msg": result.ResultText(result.SuccessCode)})
+	c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
 	return
 }

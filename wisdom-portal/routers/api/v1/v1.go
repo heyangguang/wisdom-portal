@@ -41,6 +41,7 @@ func InitV1() *gin.Engine {
 			middlewares.JoinRouter("POST", "/api/v1/register"),
 			middlewares.JoinRouter("GET", "/api/v1/view-qr-code"),
 			middlewares.JoinRouter("GET", "/api/v1/create-qr-code"),
+			middlewares.JoinRouter("GET", "/api/v1/pub/current/user"),
 		),
 	))
 	for _, opt := range options {

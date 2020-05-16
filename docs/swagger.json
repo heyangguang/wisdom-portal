@@ -14,7 +14,7 @@
         },
         "version": "v1.0"
     },
-    "host": "127.0.0.1:8080",
+    "host": "192.168.31.2:8080",
     "basePath": "/",
     "paths": {
         "/api/v1/create-qr-code": {
@@ -48,21 +48,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": 10000, \"msg\": \"成功\", \"data\": \"\"}",
+                        "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.CreateQrCodeResult"
                         }
                     },
                     "400": {
-                        "description": "{\"code\": 10001, \"msg\": \"参数无效\"}",
+                        "description": "{\"code\": 10001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "500": {
-                        "description": "{\"code\": 60001, \"msg\": \"内部系统接口调用异常\", \"err\": \"\"}",
+                        "description": "{\"code\": 60001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -78,7 +78,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "用户登录"
+                    "登录管理"
                 ],
                 "summary": "用户登录",
                 "parameters": [
@@ -94,21 +94,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": 10000, \"msg\": \"成功\", \"data\": \"{\"token\": \"\"}\"}",
+                        "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.LoginResult"
                         }
                     },
                     "400": {
-                        "description": "{\"code\": 10001, \"msg\": \"参数无效\", \"err\": \"\"}",
+                        "description": "{\"code\": 10001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "401": {
-                        "description": "{\"code\": 20002, \"msg\": \"账号不存在或密码动态码错误\"}",
+                        "description": "{\"code\": 20002}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -145,21 +145,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": 10000, \"msg\": \"成功\", \"data\": \"\"}",
+                        "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.SuccessResult"
                         }
                     },
                     "400": {
-                        "description": "{\"code\": 10001, \"msg\": \"参数无效\"}",
+                        "description": "{\"code\": 10001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "415": {
-                        "description": "{\"code\": 50004, \"msg\": \"数据创建错误\", \"err\": \"\"}",
+                        "description": "{\"code\": 50004}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -203,21 +203,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": 10000, \"msg\": \"成功\", \"data\": \"\"}",
+                        "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.SuccessResult"
                         }
                     },
                     "400": {
-                        "description": "{\"code\": 10004, \"msg\": \"参数缺失\"}",
+                        "description": "{\"code\": 10004}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "415": {
-                        "description": "{\"code\": 50004, \"msg\": \"数据创建错误\", \"err\": \"\"}",
+                        "description": "{\"code\": 50004}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -261,21 +261,55 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": 10000, \"msg\": \"成功\", \"data\": \"\"}",
+                        "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.SuccessResult"
                         }
                     },
                     "400": {
-                        "description": "{\"code\": 10004, \"msg\": \"参数缺失\"}",
+                        "description": "{\"code\": 10004}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "415": {
-                        "description": "{\"code\": 50004, \"msg\": \"数据创建错误\", \"err\": \"\"}",
+                        "description": "{\"code\": 50004}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/pub/current/user": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "获取当前用户信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "登录管理"
+                ],
+                "summary": "获取当前用户信息",
+                "responses": {
+                    "200": {
+                        "description": "{\"code\": 10000}",
+                        "schema": {
+                            "$ref": "#/definitions/result.PubCurrentUserResult"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"code\": 20004}",
+                        "schema": {
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -307,21 +341,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": 10000, \"msg\": \"成功\", \"data\": models.GoogleAuth}",
+                        "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.RegisterUserResult"
                         }
                     },
                     "400": {
-                        "description": "{\"code\": 10001, \"msg\": \"参数无效\", \"err\": \"\"}",
+                        "description": "{\"code\": 10001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "415": {
-                        "description": "{\"code\": 50004, \"msg\": \"数据创建错误\", \"err\": \"\"}",
+                        "description": "{\"code\": 50004}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -358,21 +392,21 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\": 10000, \"msg\": \"成功\"}",
+                        "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.SuccessResult"
                         }
                     },
                     "400": {
-                        "description": "{\"code\": 10001, \"msg\": \"参数无效\", \"err\": \"\"}",
+                        "description": "{\"code\": 10001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "415": {
-                        "description": "{\"code\": 50004, \"msg\": \"数据创建错误\", \"err\": \"\"}",
+                        "description": "{\"code\": 50004}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -400,21 +434,21 @@
                 "responses": {
                     "200": {},
                     "400": {
-                        "description": "{\"code\": 10001, \"msg\": \"参数无效\"}",
+                        "description": "{\"code\": 10001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "404": {
-                        "description": "{\"code\": 50001, \"msg\": \"数据未找到\", \"err\": \"\"}",
+                        "description": "{\"code\": 50001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     },
                     "500": {
-                        "description": "{\"code\": 60001, \"msg\": \"内部系统接口调用异常\", \"err\": \"\"}",
+                        "description": "{\"code\": 60001}",
                         "schema": {
-                            "$ref": "#/definitions/gin.H"
+                            "$ref": "#/definitions/result.FailResult"
                         }
                     }
                 }
@@ -422,10 +456,6 @@
         }
     },
     "definitions": {
-        "gin.H": {
-            "type": "object",
-            "additionalProperties": true
-        },
         "models.AddPermUser": {
             "type": "object",
             "properties": {
@@ -438,6 +468,48 @@
             "type": "object",
             "properties": {
                 "role_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GoogleAuth": {
+            "type": "object",
+            "properties": {
+                "qr_code": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PubCurrentUser": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.RoleLine"
+                    }
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RoleLine": {
+            "type": "object",
+            "properties": {
+                "act_name": {
+                    "type": "string"
+                },
+                "obj_name": {
                     "type": "string"
                 }
             }
@@ -540,6 +612,98 @@
                     "type": "string"
                 },
                 "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.CreateQrCodeResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.FailResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "err": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.LoginResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/result.LoginTokenResult"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.LoginTokenResult": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.PubCurrentUserResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/models.PubCurrentUser"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.RegisterUserResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/models.GoogleAuth"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.SuccessResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "msg": {
                     "type": "string"
                 }
             }

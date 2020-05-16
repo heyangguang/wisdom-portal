@@ -14,7 +14,7 @@ import (
 
 type GoogleAuth struct {
 	QrCode string `json:"qr_code"`
-	Sercet string `json:"sercet"`
+	Secret string `json:"secret"`
 }
 
 func NewGoogleAuth() *GoogleAuth {
@@ -69,8 +69,8 @@ func (g *GoogleAuth) oneTimePassword(key []byte, data []byte) uint32 {
 func (g *GoogleAuth) GetSecret() string {
 	var buf bytes.Buffer
 	_ = binary.Write(&buf, binary.BigEndian, g.un())
-	g.Sercet = strings.ToUpper(g.base32encode(g.hmacSha1(buf.Bytes(), nil)))
-	return g.Sercet
+	g.Secret = strings.ToUpper(g.base32encode(g.hmacSha1(buf.Bytes(), nil)))
+	return g.Secret
 }
 
 // 获取动态码

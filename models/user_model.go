@@ -1,7 +1,9 @@
 package models
 
 import (
+	"fmt"
 	wisdomPortal "wisdom-portal/wisdom-portal"
+	"wisdom-portal/wisdom-portal/logger"
 )
 
 type User struct {
@@ -20,6 +22,36 @@ type UserLogin struct {
 	UserName string `json:"user_name" binding:"required"`
 	PassWord string `json:"pass_word" binding:"required"`
 	OtpCode  string `json:"otp_code" binding:"required"`
+}
+
+type PubCurrentUser struct {
+	Name     string     `json:"name"`
+	UserName string     `json:"user_name"`
+	Id       string     `json:"user_id"`
+	Roles    []RoleLine `json:"roles"`
+}
+
+func (pubCurrentUser PubCurrentUser) TableName() string {
+	return "user"
+}
+
+// 获取获取当前用户信息
+func (pubCurrentUser PubCurrentUser) GetPubCurrentUser(userName interface{}) (result PubCurrentUser, isExist bool) {
+	if DB.Select("name, user_name, id").Where("user_name = ?", userName).Take(&pubCurrentUser).RecordNotFound() {
+		return PubCurrentUser{}, false
+	}
+	e := LoadPolicyPerm()
+	// 获取用户和用户组的全部权限
+	userRoles := e.GetImplicitPermissionsForUser(userName.(string))
+	for _, value := range userRoles {
+		line := RoleLine{
+			ObJName: value[1],
+			ActName: value[2],
+		}
+		pubCurrentUser.Roles = append(pubCurrentUser.Roles, line)
+	}
+	logger.Debug(fmt.Sprint("GetPubCurrentUser: ", pubCurrentUser))
+	return pubCurrentUser, true
 }
 
 // 检测用户名密码

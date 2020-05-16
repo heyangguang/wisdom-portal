@@ -16,18 +16,14 @@ import (
 // @accept json
 // @Produce  json
 // @Param data body models.SwaggerUserGroup true "用户组数据"
-// @Success 200 {object} gin.H "{"code": 10000, "msg": "成功"}"
-// @Failure 415 {object} gin.H "{"code": 50004, "msg": "数据创建错误", "err": ""}"
-// @Failure 400 {object} gin.H "{"code": 10001, "msg": "参数无效", "err": ""}"
+// @Success 200 {object} result.SuccessResult "{"code": 10000}"
+// @Failure 415 {object} result.FailResult "{"code": 50004}"
+// @Failure 400 {object} result.FailResult "{"code": 10001}"
 // @Router /api/v1/userGroup [POST]
 func addGroup(c *gin.Context) {
 	var userGroup models.UserGroup
 	if err := c.ShouldBindJSON(&userGroup); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": result.ParamInvalid,
-			"msg":  result.ResultText(result.ParamInvalid),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	fmt.Println(userGroup.Users)
@@ -35,16 +31,9 @@ func addGroup(c *gin.Context) {
 	userGroup.CreatedAt = time.Now()
 	userGroup.UpdatedAt = time.Now()
 	if err := userGroup.AddGroup(); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, gin.H{
-			"code": result.DataCreateWrong,
-			"msg":  result.ResultText(result.DataCreateWrong),
-			"err":  err.Error(),
-		})
+		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"code": result.SuccessCode,
-		"msg":  result.ResultText(result.SuccessCode),
-	})
+	c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
 	return
 }

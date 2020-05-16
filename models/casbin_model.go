@@ -9,6 +9,7 @@ import (
 	"wisdom-portal/wisdom-portal/logger"
 )
 
+// 权限模板
 type Role struct {
 	BaseModel
 	RoleName    string   `gorm:"not null;comment:'姓名'" json:"role_name" binding:"required"`
@@ -16,6 +17,7 @@ type Role struct {
 	RoleObjActs []ObjAct `gorm:"many2many:role_obj_acts" json:"roleObjActs"`
 }
 
+// 权限对象
 type ObjAct struct {
 	BaseModel
 	ObjName string `gorm:"not null;comment:'对象'" json:"obj_name"`
@@ -23,6 +25,7 @@ type ObjAct struct {
 	Tag     string `gorm:"not null;comment:'权限分类'" json:"tag"`
 }
 
+// casbin权限模型
 type CasbinRule struct {
 	BaseModel
 	PType string `gorm:"not null;comment:'权限类型'" json:"p_type"`
@@ -32,6 +35,12 @@ type CasbinRule struct {
 	V3    string `json:"v3"`
 	V4    string `json:"v4"`
 	V5    string `json:"v5"`
+}
+
+// 权限详细条目
+type RoleLine struct {
+	ObJName string `json:"obj_name"`
+	ActName string `json:"act_name"`
 }
 
 // 用户添加权限模板结构体

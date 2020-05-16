@@ -1,8 +1,5 @@
 basePath: /
 definitions:
-  gin.H:
-    additionalProperties: true
-    type: object
   models.AddPermUser:
     properties:
       role_id:
@@ -11,6 +8,33 @@ definitions:
   models.AddPermUserGroup:
     properties:
       role_id:
+        type: string
+    type: object
+  models.GoogleAuth:
+    properties:
+      qr_code:
+        type: string
+      secret:
+        type: string
+    type: object
+  models.PubCurrentUser:
+    properties:
+      name:
+        type: string
+      roles:
+        items:
+          $ref: '#/definitions/models.RoleLine'
+        type: array
+      user_id:
+        type: string
+      user_name:
+        type: string
+    type: object
+  models.RoleLine:
+    properties:
+      act_name:
+        type: string
+      obj_name:
         type: string
     type: object
   models.SwaggerObjActId:
@@ -81,7 +105,67 @@ definitions:
     - pass_word
     - user_name
     type: object
-host: 127.0.0.1:8080
+  result.CreateQrCodeResult:
+    properties:
+      code:
+        type: integer
+      data:
+        type: string
+      msg:
+        type: string
+    type: object
+  result.FailResult:
+    properties:
+      code:
+        type: integer
+      err:
+        type: string
+      msg:
+        type: string
+    type: object
+  result.LoginResult:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/result.LoginTokenResult'
+        type: object
+      msg:
+        type: string
+    type: object
+  result.LoginTokenResult:
+    properties:
+      token:
+        type: string
+    type: object
+  result.PubCurrentUserResult:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/models.PubCurrentUser'
+        type: object
+      msg:
+        type: string
+    type: object
+  result.RegisterUserResult:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/models.GoogleAuth'
+        type: object
+      msg:
+        type: string
+    type: object
+  result.SuccessResult:
+    properties:
+      code:
+        type: integer
+      msg:
+        type: string
+    type: object
+host: 192.168.31.2:8080
 info:
   contact:
     email: heyangev@cn.ibm.com
@@ -114,17 +198,17 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": 10000, "msg": "成功", "data": ""}'
+          description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.CreateQrCodeResult'
         "400":
-          description: '{"code": 10001, "msg": "参数无效"}'
+          description: '{"code": 10001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "500":
-          description: '{"code": 60001, "msg": "内部系统接口调用异常", "err": ""}'
+          description: '{"code": 60001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       summary: 生成多因子认证二维码
       tags:
       - 多因子
@@ -144,20 +228,20 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": 10000, "msg": "成功", "data": "{"token": ""}"}'
+          description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.LoginResult'
         "400":
-          description: '{"code": 10001, "msg": "参数无效", "err": ""}'
+          description: '{"code": 10001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "401":
-          description: '{"code": 20002, "msg": "账号不存在或密码动态码错误"}'
+          description: '{"code": 20002}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       summary: 用户登录
       tags:
-      - 用户登录
+      - 登录管理
   /api/v1/perm:
     post:
       consumes:
@@ -174,17 +258,17 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": 10000, "msg": "成功", "data": ""}'
+          description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.SuccessResult'
         "400":
-          description: '{"code": 10001, "msg": "参数无效"}'
+          description: '{"code": 10001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "415":
-          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          description: '{"code": 50004}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       security:
       - ApiKeyAuth: []
       summary: 添加权限模板
@@ -211,17 +295,17 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": 10000, "msg": "成功", "data": ""}'
+          description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.SuccessResult'
         "400":
-          description: '{"code": 10004, "msg": "参数缺失"}'
+          description: '{"code": 10004}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "415":
-          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          description: '{"code": 50004}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       security:
       - ApiKeyAuth: []
       summary: 用户关联权限模板
@@ -248,22 +332,43 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": 10000, "msg": "成功", "data": ""}'
+          description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.SuccessResult'
         "400":
-          description: '{"code": 10004, "msg": "参数缺失"}'
+          description: '{"code": 10004}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "415":
-          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          description: '{"code": 50004}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       security:
       - ApiKeyAuth: []
       summary: 用户组关联权限模板
       tags:
       - 权限
+  /api/v1/pub/current/user:
+    get:
+      consumes:
+      - application/json
+      description: 获取当前用户信息
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code": 10000}'
+          schema:
+            $ref: '#/definitions/result.PubCurrentUserResult'
+        "400":
+          description: '{"code": 20004}'
+          schema:
+            $ref: '#/definitions/result.FailResult'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取当前用户信息
+      tags:
+      - 登录管理
   /api/v1/register:
     post:
       consumes:
@@ -280,17 +385,17 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": 10000, "msg": "成功", "data": models.GoogleAuth}'
+          description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.RegisterUserResult'
         "400":
-          description: '{"code": 10001, "msg": "参数无效", "err": ""}'
+          description: '{"code": 10001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "415":
-          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          description: '{"code": 50004}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       summary: 注册用户
       tags:
       - 用户注册
@@ -310,17 +415,17 @@ paths:
       - application/json
       responses:
         "200":
-          description: '{"code": 10000, "msg": "成功"}'
+          description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.SuccessResult'
         "400":
-          description: '{"code": 10001, "msg": "参数无效", "err": ""}'
+          description: '{"code": 10001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "415":
-          description: '{"code": 50004, "msg": "数据创建错误", "err": ""}'
+          description: '{"code": 50004}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       security:
       - ApiKeyAuth: []
       summary: 添加用户组
@@ -340,17 +445,17 @@ paths:
       responses:
         "200": {}
         "400":
-          description: '{"code": 10001, "msg": "参数无效"}'
+          description: '{"code": 10001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "404":
-          description: '{"code": 50001, "msg": "数据未找到", "err": ""}'
+          description: '{"code": 50001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
         "500":
-          description: '{"code": 60001, "msg": "内部系统接口调用异常", "err": ""}'
+          description: '{"code": 60001}'
           schema:
-            $ref: '#/definitions/gin.H'
+            $ref: '#/definitions/result.FailResult'
       summary: 显示多因子认证二维码
       tags:
       - 多因子
