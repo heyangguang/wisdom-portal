@@ -12,7 +12,7 @@ import (
 // 权限模板
 type Role struct {
 	BaseModel
-	RoleName    string   `gorm:"not null;comment:'姓名'" json:"role_name" binding:"required"`
+	RoleName    string   `gorm:"not null;comment:'权限名'" json:"role_name" binding:"required"`
 	Remark      string   `gorm:"type:text;comment:'权限说明'" json:"remark"`
 	RoleObjActs []ObjAct `gorm:"many2many:role_obj_acts" json:"roleObjActs"`
 }
@@ -51,6 +51,24 @@ type AddPermUser struct {
 // 用户组添加权限模板结构体
 type AddPermUserGroup struct {
 	RoleId string `json:"role_id"`
+}
+
+// 直接对权限实体表赋权
+// 主要用于注册用户的时候需要给默认权限
+func AddDefaultPerm(userName, objName, actName string) error {
+	// 添加权限对象
+	e := LoadPolicyPerm()
+	isOk := e.AddPolicy(userName, objName, actName)
+	if !isOk {
+		logger.Error("AddDefaultPerm    " + "the current user already has this permission")
+		return errors.New("the current user already has this permission")
+	}
+	// 更新时间戳
+	data := make(map[string]interface{})
+	data["created_at"] = time.Now()
+	data["updated_at"] = time.Now()
+	DB.Model(CasbinRule{}).Where("p_type = ? and v0 = ?", "p", userName).Updates(data)
+	return nil
 }
 
 // 用户组添加权限模板

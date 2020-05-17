@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"wisdom-portal/models"
+	"wisdom-portal/wisdom-portal/result"
 )
 
 // 权限检查中间件
@@ -36,10 +37,7 @@ func PermAuthCheckRole(skipper ...SkipperFunc) gin.HandlerFunc {
 				}
 			}
 		}
-		c.JSON(http.StatusForbidden, gin.H{
-			"status": -1,
-			"msg":    "很抱歉您没有此权限",
-		})
+		c.JSON(http.StatusForbidden, result.NewSuccessResult(result.PermissionNoAccess))
 		c.Abort()
 		return
 	}

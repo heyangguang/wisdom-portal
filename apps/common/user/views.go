@@ -38,6 +38,7 @@ func getCurrentUser(c *gin.Context) {
 // @Param data body models.SwaggerUser true "用户注册数据"
 // @Success 200 {object} result.RegisterUserResult "{"code": 10000}"
 // @Failure 415 {object} result.FailResult "{"code": 50004}"
+// @Failure 415 {object} result.FailResult "{"code": 50003}"
 // @Failure 400 {object} result.FailResult "{"code": 10001}"
 // @Router /api/v1/register [POST]
 func register(c *gin.Context) {
@@ -59,6 +60,10 @@ func register(c *gin.Context) {
 	googleAuth.GetQrCode(user.UserName, user.Secret)
 	if err := user.AddUser(user); err != nil {
 		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
+		return
+	}
+	if err := models.AddDefaultPerm(user.UserName, "/api/v1/pub/current/user", "*"); err != nil {
+		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataAlreadyExisted, err.Error()))
 		return
 	}
 	c.JSON(http.StatusOK, result.NewRegisterUserResult(result.SuccessCode, *googleAuth))

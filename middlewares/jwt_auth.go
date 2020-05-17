@@ -6,6 +6,7 @@ import (
 	"strings"
 	"wisdom-portal/models"
 	"wisdom-portal/wisdom-portal/logger"
+	"wisdom-portal/wisdom-portal/result"
 )
 
 // JWTAuthMiddleware 基于JWT的认证中间件
@@ -21,20 +22,14 @@ func JWTAuthCheckToken(skipper ...SkipperFunc) func(c *gin.Context) {
 		// 这里Token放在Header的Authorization中，并使用Bearer开头
 		authHeader := c.Request.Header.Get("Authorization")
 		if authHeader == "" {
-			c.JSON(http.StatusOK, gin.H{
-				"code": -1,
-				"msg":  "token验证失败，头部请求为空",
-			})
+			c.JSON(http.StatusUnauthorized, result.NewSuccessResult(result.TokenParamInvalid))
 			c.Abort()
 			return
 		}
 		// 按空格分割
 		parts := strings.SplitN(authHeader, " ", 2)
 		if !(len(parts) == 2 && parts[0] == "Bearer") {
-			c.JSON(http.StatusOK, gin.H{
-				"code": -1,
-				"msg":  "token验证失败，格式错误",
-			})
+			c.JSON(http.StatusUnauthorized, result.NewSuccessResult(result.TokenError))
 			c.Abort()
 			return
 		}
@@ -42,10 +37,7 @@ func JWTAuthCheckToken(skipper ...SkipperFunc) func(c *gin.Context) {
 		// parts[1]是获取到的tokenString，解析
 		mc, err := models.ParseToken(parts[1])
 		if err != nil {
-			c.JSON(http.StatusOK, gin.H{
-				"code": -1,
-				"msg":  "token验证失败，无效的token",
-			})
+			c.JSON(http.StatusUnauthorized, result.NewSuccessResult(result.TokenNotExist))
 			c.Abort()
 			return
 		}

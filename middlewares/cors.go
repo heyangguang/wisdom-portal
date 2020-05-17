@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
+	"wisdom-portal/wisdom-portal/result"
 )
 
 func Cors() gin.HandlerFunc {
@@ -40,7 +41,7 @@ func Cors() gin.HandlerFunc {
 
 		//放行所有OPTIONS方法
 		if method == "OPTIONS" {
-			c.JSON(http.StatusOK, "Options Request!")
+			c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
 		}
 		// 处理请求
 		c.Next() //  处理请求
