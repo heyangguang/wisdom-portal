@@ -33,6 +33,11 @@ const (
 
 	// 权限错误
 	PermissionNoAccess = 70001
+
+	// Token错误
+	TokenNotExist     = 80001
+	TokenParamInvalid = 80002
+	TokenError        = 80003
 )
 
 var resultText = map[int]string{
@@ -52,6 +57,9 @@ var resultText = map[int]string{
 	DataCreateWrong:           "数据创建错误",
 	InterfaceInnerInvokeError: "内部系统接口调用异常",
 	PermissionNoAccess:        "无权限访问",
+	TokenNotExist:             "token不存在",
+	TokenParamInvalid:         "头部请求为空",
+	TokenError:                "token格式错误",
 }
 
 // ResultText returns a text for the Private status code. It returns the empty

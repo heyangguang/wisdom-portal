@@ -28,10 +28,10 @@ func GetAllFile(pathDir string, fileChan chan string, timeSleep time.Duration) {
 				return
 			}
 			if file.Name() == "README.md" {
-				return
+			} else {
+				fileChan <- strAbsPath
+				logger.Debug("fileAbsPath put into the channel success: " + strAbsPath)
 			}
-			fileChan <- strAbsPath
-			logger.Debug("fileAbsPath put into the channel success: " + strAbsPath)
 		}
 		time.Sleep(timeSleep)
 	}
