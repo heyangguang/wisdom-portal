@@ -27,6 +27,9 @@ func GetAllFile(pathDir string, fileChan chan string, timeSleep time.Duration) {
 				logger.Error("file abs path fail!, err: " + err.Error())
 				return
 			}
+			if file.Name() == "README.md" {
+				return
+			}
 			fileChan <- strAbsPath
 			logger.Debug("fileAbsPath put into the channel success: " + strAbsPath)
 		}

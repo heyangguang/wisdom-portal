@@ -2797,3 +2797,6 @@
 {"level":"DEBUG","time":"2020-05-17T03:56:15.995+0800","caller":"clear_static/clear_static.go:31","msg":"fileAbsPath put into the channel success: /Users/heyang/GoCode/src/wisdom-portal/static/3.png"}
 {"level":"INFO","time":"2020-05-17T03:56:15.995+0800","caller":"clear_static/clear_static.go:49","msg":"take out fileAbsPath from the channel success: /Users/heyang/GoCode/src/wisdom-portal/static/3.png"}
 {"level":"INFO","time":"2020-05-17T03:56:15.996+0800","caller":"clear_static/clear_static.go:50","msg":"delete file success: /Users/heyang/GoCode/src/wisdom-portal/static/3.png"}
+{"level":"DEBUG","time":"2020-05-17T16:38:16.391+0800","caller":"clear_static/clear_static.go:31","msg":"fileAbsPath put into the channel success: /Users/heyang/GoCode/src/wisdom-portal/static/README.md"}
+{"level":"INFO","time":"2020-05-17T16:38:16.391+0800","caller":"clear_static/clear_static.go:49","msg":"take out fileAbsPath from the channel success: /Users/heyang/GoCode/src/wisdom-portal/static/README.md"}
+{"level":"INFO","time":"2020-05-17T16:38:16.391+0800","caller":"clear_static/clear_static.go:50","msg":"delete file success: /Users/heyang/GoCode/src/wisdom-portal/static/README.md"}
