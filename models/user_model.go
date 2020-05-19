@@ -28,7 +28,7 @@ type PubCurrentUser struct {
 	Name     string     `json:"name"`
 	UserName string     `json:"user_name"`
 	Id       string     `json:"user_id"`
-	Roles    []RoleLine `json:"roles"`
+	Rules    []RuleLine `json:"rules"`
 }
 
 func (pubCurrentUser PubCurrentUser) TableName() string {
@@ -44,11 +44,11 @@ func (pubCurrentUser PubCurrentUser) GetPubCurrentUser(userName interface{}) (re
 	// 获取用户和用户组的全部权限
 	userRoles := e.GetImplicitPermissionsForUser(userName.(string))
 	for _, value := range userRoles {
-		line := RoleLine{
+		line := RuleLine{
 			ObJName: value[1],
 			ActName: value[2],
 		}
-		pubCurrentUser.Roles = append(pubCurrentUser.Roles, line)
+		pubCurrentUser.Rules = append(pubCurrentUser.Rules, line)
 	}
 	logger.Debug(fmt.Sprint("GetPubCurrentUser: ", pubCurrentUser))
 	return pubCurrentUser, true

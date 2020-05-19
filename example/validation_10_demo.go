@@ -77,6 +77,8 @@ func CustomValidationErrors(fl validator.FieldLevel) bool {
 	return true
 }
 
+// curl -X GET "localhost:9999/testMultiLangBinding?local=zh&age=11&name=&address=wuhan"
+
 func main() {
 	en := en2.New()
 	uni = ut.New(en)

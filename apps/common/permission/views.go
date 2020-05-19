@@ -19,23 +19,23 @@ func test(c *gin.Context) {
 // @Tags 权限
 // @accept json
 // @Produce  json
-// @Param data body models.SwaggerRole true "数据"
+// @Param data body models.SwaggerRule true "数据"
 // @Success 200 {object} result.SuccessResult "{"code": 10000}"
 // @Failure 415 {object} result.FailResult "{"code": 50004}"
 // @Failure 400 {object} result.FailResult "{"code": 10001}"
 // @Router /api/v1/perm [POST]
 func addPerm(c *gin.Context) {
-	var role models.Role
-	if err := c.ShouldBindJSON(&role); err != nil {
+	var rule models.Rule
+	if err := c.ShouldBindJSON(&rule); err != nil {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 
 	// 防止恶意数据请求
-	role.CreatedAt = time.Now()
-	role.UpdatedAt = time.Now()
+	rule.CreatedAt = time.Now()
+	rule.UpdatedAt = time.Now()
 
-	err := role.AddPerm(role)
+	err := rule.AddPerm(rule)
 	if err == nil {
 		c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
 		return
@@ -50,7 +50,7 @@ func addPerm(c *gin.Context) {
 // @Tags 权限
 // @accept json
 // @Produce  json
-// @Param role_id body models.AddPermUser true "权限模板id"
+// @Param rule_id body models.AddPermUser true "权限模板id"
 // @Param uid path string true "用户id"
 // @Success 200 {object} result.SuccessResult "{"code": 10000}"
 // @Failure 415 {object} result.FailResult "{"code": 50004}"
@@ -83,7 +83,7 @@ func addPermUser(c *gin.Context) {
 // @Tags 权限
 // @accept json
 // @Produce  json
-// @Param role_id body models.AddPermUserGroup true "权限模板id"
+// @Param rule_id body models.AddPermUserGroup true "权限模板id"
 // @Param gid path string true "用户组id"
 // @Success 200 {object} result.SuccessResult "{"code": 10000}"
 // @Failure 415 {object} result.FailResult "{"code": 50004}"

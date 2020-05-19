@@ -10,11 +10,11 @@ import (
 )
 
 // 权限模板
-type Role struct {
+type Rule struct {
 	BaseModel
-	RoleName    string   `gorm:"not null;comment:'权限名'" json:"role_name" binding:"required"`
+	RuleName    string   `gorm:"not null;comment:'权限名'" json:"rule_name" binding:"required"`
 	Remark      string   `gorm:"type:text;comment:'权限说明'" json:"remark"`
-	RoleObjActs []ObjAct `gorm:"many2many:role_obj_acts" json:"roleObjActs"`
+	RuleObjActs []ObjAct `gorm:"many2many:rule_obj_acts" json:"ruleObjActs"`
 }
 
 // 权限对象
@@ -38,19 +38,19 @@ type CasbinRule struct {
 }
 
 // 权限详细条目
-type RoleLine struct {
+type RuleLine struct {
 	ObJName string `json:"obj_name"`
 	ActName string `json:"act_name"`
 }
 
 // 用户添加权限模板结构体
 type AddPermUser struct {
-	RoleId string `json:"role_id"`
+	RuleId string `json:"rule_id"`
 }
 
 // 用户组添加权限模板结构体
 type AddPermUserGroup struct {
-	RoleId string `json:"role_id"`
+	RuleId string `json:"rule_id"`
 }
 
 // 直接对权限实体表赋权
@@ -74,7 +74,7 @@ func AddDefaultPerm(userName, objName, actName string) error {
 // 用户组添加权限模板
 func (a *AddPermUserGroup) AddPermUserGroup(gid string) error {
 	var userGroup UserGroup
-	var role Role
+	var rule Rule
 	logger.Debug("AddPermUserGroup")
 	if err := DB.Where("id = ?", gid).First(&userGroup).Error; err != nil {
 		logger.Error("AddPermUserGroup    " + err.Error())
@@ -84,13 +84,13 @@ func (a *AddPermUserGroup) AddPermUserGroup(gid string) error {
 		return errors.New("the user group already has permission templates")
 	}
 	logger.Debug("用户组名" + userGroup.GroupName)
-	if err := DB.Preload("RoleObjActs").Where("id = ?", a.RoleId).First(&role).Error; err != nil {
+	if err := DB.Preload("RuleObjActs").Where("id = ?", a.RuleId).First(&rule).Error; err != nil {
 		logger.Error("AddPermUserGroup    " + err.Error())
 		return err
 	}
-	logger.Debug("权限模板名" + role.RoleName)
+	logger.Debug("权限模板名" + rule.RuleName)
 	e := LoadPolicyPerm()
-	for _, value := range role.RoleObjActs {
+	for _, value := range rule.RuleObjActs {
 		isOk := e.AddPolicy(userGroup.GroupName, value.ObjName, value.ActName)
 		if !isOk {
 			logger.Error("AddPermUserGroup    " + "the current usergroup already has this permission")
@@ -107,8 +107,8 @@ func (a *AddPermUserGroup) AddPermUserGroup(gid string) error {
 	for _, value := range userGroup.Users {
 		if isOk := e.AddGroupingPolicy(value.UserName, userGroup.GroupName); !isOk {
 			logger.Error("AddPermUserGroup    " + "users who already have this user group under current permissions")
-			for _, roleObj := range role.RoleObjActs {
-				DB.Where("p_type = ? and v0 = ? and v1 = ? and v2 = ?", "p", userGroup.GroupName, roleObj.ObjName, roleObj.ActName).Delete(&CasbinRule{})
+			for _, ruleObj := range rule.RuleObjActs {
+				DB.Where("p_type = ? and v0 = ? and v1 = ? and v2 = ?", "p", userGroup.GroupName, ruleObj.ObjName, ruleObj.ActName).Delete(&CasbinRule{})
 			}
 			return errors.New("users who already have this user group under current permissions")
 		}
@@ -125,20 +125,20 @@ func (a *AddPermUserGroup) AddPermUserGroup(gid string) error {
 // 用户添加权限模板
 func (a *AddPermUser) AddPermUser(uid string) error {
 	var user User
-	var role Role
+	var rule Rule
 	logger.Debug("AddPermUser开始")
 	if err := DB.Where("id = ?", uid).First(&user).Error; err != nil {
 		logger.Error("AddPermUser    " + err.Error())
 		return err
 	}
 	logger.Debug("用户名" + user.UserName)
-	if err := DB.Preload("RoleObjActs").Where("id = ?", a.RoleId).First(&role).Error; err != nil {
+	if err := DB.Preload("RuleObjActs").Where("id = ?", a.RuleId).First(&rule).Error; err != nil {
 		logger.Error("AddPermUser    " + err.Error())
 		return err
 	}
-	logger.Debug("权限模板名" + role.RoleName)
+	logger.Debug("权限模板名" + rule.RuleName)
 	e := LoadPolicyPerm()
-	for _, value := range role.RoleObjActs {
+	for _, value := range rule.RuleObjActs {
 		isOk := e.AddPolicy(user.UserName, value.ObjName, value.ActName)
 		if !isOk {
 			logger.Error("AddPermUser    " + "the current user already has this permission")
@@ -154,20 +154,20 @@ func (a *AddPermUser) AddPermUser(uid string) error {
 }
 
 // 添加权限模板
-func (c *Role) AddPerm(role Role) error {
-	var r Role
+func (c *Rule) AddPerm(rule Rule) error {
+	var r Rule
 	// 创建权限模板
-	if err := DB.Omit("id").Set("gorm:save_associations", false).Create(&role).Error; err != nil {
+	if err := DB.Omit("id").Set("gorm:save_associations", false).Create(&rule).Error; err != nil {
 		logger.Error("AddPerm    " + err.Error())
 		return err
 	}
 	// 获取创建的权限模板对象
-	if err := DB.Select("id").Where("role_name = ?", role.RoleName).First(&r).Error; err != nil {
+	if err := DB.Select("id").Where("rule_name = ?", rule.RuleName).First(&r).Error; err != nil {
 		logger.Error("AddPerm    " + err.Error())
 		return err
 	}
 	// 判断权限对象是否存在
-	for _, value := range role.RoleObjActs {
+	for _, value := range rule.RuleObjActs {
 		if isOk := DB.Where("id = ?", value.ID).First(&ObjAct{}).RecordNotFound(); isOk {
 			DB.Delete(&r)
 			logger.Error("AddPerm    选择的权限对象不存在")
@@ -175,7 +175,7 @@ func (c *Role) AddPerm(role Role) error {
 		}
 	}
 	// 添加权限对象
-	if err := DB.Model(&r).Association("RoleObjActs").Append(&role.RoleObjActs).Error; err != nil {
+	if err := DB.Model(&r).Association("RuleObjActs").Append(&rule.RuleObjActs).Error; err != nil {
 		logger.Error("AddPerm    " + err.Error())
 		return err
 	}
@@ -186,7 +186,6 @@ func (c *Role) AddPerm(role Role) error {
 // 重新加载数据到内存里，所以需要在上面AddPerm调用以后刷新
 func LoadPolicyPerm() (e *casbin.Enforcer) {
 	// 这里有一个坑，是MySQL和Golang的 nil != null 导致的，所以在数据库里给个默认值字符串的空，而不是null
-	// TODB: 后面可以重写SqlxAdapter来解决这个问题
 	e = casbin.NewEnforcer(wisdomPortal.BaseDir()+"/wisdom-portal/conf/rbac_model.conf", GormAdapter)
 	err := e.LoadPolicy()
 	if err != nil {
