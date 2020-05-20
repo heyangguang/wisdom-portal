@@ -2,8 +2,11 @@ package jwt
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"net/http"
+	"wisdom-portal/apps/common/user"
 	"wisdom-portal/models"
+	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/result"
 )
 
@@ -20,9 +23,15 @@ import (
 func login(c *gin.Context) {
 	// 用户发送用户名和密码过来
 	var userLogin models.UserLogin
-	err := c.ShouldBind(&userLogin)
-	if err != nil {
+	// 绑定表单
+	if err := c.ShouldBind(&userLogin); err != nil {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+	// 验证结构
+	if err := forms.Validate.Struct(userLogin); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, user.GetValidationError(err.(validator.ValidationErrors))))
 		return
 	}
 	// 校验用户名和密码是否正确

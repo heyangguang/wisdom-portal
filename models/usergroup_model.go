@@ -7,9 +7,10 @@ import (
 
 type UserGroup struct {
 	BaseModel
-	GroupName string    `binding:"required" json:"group_name"`
+	GroupName string    `json:"group_name" validate:"required,ValidationUserGroupNameFormat,max=10,min=3" label:"group_name"`
 	Remark    string    `json:"remark"`
-	Users     []UserObj `gorm:"MANY2MANY:user_usergroup;ASSOCIATION_JOINTABLE_FOREIGNKEY:user_id" binding:"required" json:"users"`
+	RuleId    int       `json:"-"`
+	Users     []UserObj `gorm:"MANY2MANY:user_usergroup;association_jointable_foreignkey:user_id" json:"users" validate:"required" label:"users"`
 }
 
 type UserObj struct {
@@ -54,4 +55,14 @@ func (userGroup *UserGroup) AddGroup() error {
 	}
 
 	return nil
+}
+
+// 判断用户组名是否存在
+// true 找到了  false 未找到
+func CheckUserGroupName(userGroupName string) bool {
+	if isOk := DB.Where("group_name = ?", userGroupName).Take(&UserGroup{}).RecordNotFound(); !isOk {
+		logger.Debug("查询到user_group_name: " + userGroupName)
+		return true
+	}
+	return false
 }

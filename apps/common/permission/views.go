@@ -2,9 +2,11 @@ package permission
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"net/http"
 	"time"
 	"wisdom-portal/models"
+	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/result"
 )
 
@@ -26,8 +28,16 @@ func test(c *gin.Context) {
 // @Router /api/v1/perm [POST]
 func addPerm(c *gin.Context) {
 	var rule models.Rule
-	if err := c.ShouldBindJSON(&rule); err != nil {
+
+	// 绑定表单
+	if err := c.ShouldBind(&rule); err != nil {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+	// 验证结构
+	if err := forms.Validate.Struct(rule); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, forms.BaseFormValidationError(err.(validator.ValidationErrors))))
 		return
 	}
 
@@ -64,8 +74,16 @@ func addPermUser(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamNotComplete, ""))
 		return
 	}
-	if err := c.ShouldBindJSON(&addPermUser); err != nil {
+
+	// 绑定表单
+	if err := c.ShouldBind(&addPermUser); err != nil {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+	// 验证结构
+	if err := forms.Validate.Struct(addPermUser); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, forms.BaseFormValidationError(err.(validator.ValidationErrors))))
 		return
 	}
 
@@ -96,8 +114,16 @@ func addPermUserGroup(c *gin.Context) {
 	if gid == "" {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamNotComplete, ""))
 	}
-	if err := c.ShouldBindJSON(&addPermUserGroup); err != nil {
+
+	// 绑定表单
+	if err := c.ShouldBind(&addPermUserGroup); err != nil {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+	// 验证结构
+	if err := forms.Validate.Struct(addPermUserGroup); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, forms.BaseFormValidationError(err.(validator.ValidationErrors))))
 		return
 	}
 

@@ -1,11 +1,12 @@
 package usergroup
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"net/http"
 	"time"
 	"wisdom-portal/models"
+	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/result"
 )
 
@@ -22,11 +23,25 @@ import (
 // @Router /api/v1/userGroup [POST]
 func addGroup(c *gin.Context) {
 	var userGroup models.UserGroup
-	if err := c.ShouldBindJSON(&userGroup); err != nil {
+	// 绑定表单
+	if err := c.ShouldBind(&userGroup); err != nil {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
-	fmt.Println(userGroup.Users)
+	// 验证结构
+	if err := forms.Validate.Struct(userGroup); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, GetValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	// 判断用户名是否存在
+	// 判断用户组是否跟用户名相同，不允许相同
+	if models.CheckUserName(userGroup.GroupName) || models.CheckUserGroupName(userGroup.GroupName) {
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, "group name is already taken"))
+		return
+	}
+
 	// 防止恶意注入
 	userGroup.CreatedAt = time.Now()
 	userGroup.UpdatedAt = time.Now()

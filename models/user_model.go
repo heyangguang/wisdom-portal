@@ -8,21 +8,23 @@ import (
 
 type User struct {
 	BaseModel
-	Name     string `json:"name" binding:"required"`
-	UserName string `json:"user_name" binding:"required"`
-	PassWord string `json:"pass_word" binding:"required"`
-	Phone    string `json:"phone"`
-	Email    string `json:"email"`
+	Name     string `json:"name" validate:"required" label:"name"`
+	UserName string `json:"user_name" validate:"required,max=10,min=3,ValidationUserNameFormat" label:"user_name"`
+	PassWord string `json:"pass_word" validate:"required,max=20,min=10" label:"pass_word"`
+	Phone    string `json:"phone" validate:"required,ValidationPhoneFormat" label:"phone"`
+	Email    string `json:"email" validate:"required,email" label:"email"`
 	Secret   string `json:"-"`
 	Status   bool   `json:"-"`
+	RuleId   int    `json:"-"`
 }
 
 type UserLogin struct {
-	UserName string `json:"user_name" binding:"required"`
-	PassWord string `json:"pass_word" binding:"required"`
-	OtpCode  string `json:"otp_code" binding:"required"`
+	UserName string `json:"user_name" validate:"required,max=10,min=3,ValidationUserNameFormat"`
+	PassWord string `json:"pass_word" validate:"required,max=20,min=10" label:"pass_word"`
+	OtpCode  string `json:"otp_code" validate:"required,len=6" label:"otp_code"`
 }
 
+// 当前用户信息返回结构体
 type PubCurrentUser struct {
 	Name     string     `json:"name"`
 	UserName string     `json:"user_name"`
@@ -89,4 +91,14 @@ func (u *User) AddUser(user User) error {
 		return err
 	}
 	return nil
+}
+
+// 判断用户名是否存在
+// true 找到了  false 未找到
+func CheckUserName(userName string) bool {
+	if isOk := DB.Where("user_name = ?", userName).Take(&User{}).RecordNotFound(); !isOk {
+		logger.Debug("查询到user_name: " + userName)
+		return true
+	}
+	return false
 }

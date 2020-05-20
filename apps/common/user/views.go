@@ -2,10 +2,12 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"net/http"
 	"time"
 	"wisdom-portal/models"
 	wisdomPortal "wisdom-portal/wisdom-portal"
+	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/result"
 )
 
@@ -43,11 +45,25 @@ func getCurrentUser(c *gin.Context) {
 // @Router /api/v1/register [POST]
 func register(c *gin.Context) {
 	var user models.User
-	err := c.ShouldBindJSON(&user)
-	if err != nil {
+	// 绑定表单
+	if err := c.ShouldBind(&user); err != nil {
 		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
+	// 验证结构
+	if err := forms.Validate.Struct(user); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, GetValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	// 判断用户名是否存在
+	// 判断用户组是否跟用户名相同，不允许相同
+	if models.CheckUserName(user.UserName) || models.CheckUserGroupName(user.UserName) {
+		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, "username is already taken"))
+		return
+	}
+
 	// 防止恶意数据请求
 	user.CreatedAt = time.Now()
 	user.UpdatedAt = time.Now()

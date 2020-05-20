@@ -11,6 +11,7 @@ import (
 	"wisdom-portal/models"
 	"wisdom-portal/wisdom-portal"
 	"wisdom-portal/wisdom-portal/clear_static"
+	forms "wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/logger"
 	v1 "wisdom-portal/wisdom-portal/routers/api/v1"
 )
@@ -43,6 +44,15 @@ func main() {
 
 	// 加载数据库
 	models.DBConnectInit()
+
+	// 加载表单验证模块
+	forms.InitFormValidate()
+
+	// 注册自定义表单方法
+	forms.RegisterCustomValidationFunc(user.CustomValidations, usergroup.CustomValidations)
+
+	// 初始化自定义表单方法
+	forms.InitCustomValidationFunc()
 
 	// 加载多个APP的路由配置
 	v1.Include(permission.Routers, user.Routers, jwt.Routers, otp.Routers, usergroup.Routers)
