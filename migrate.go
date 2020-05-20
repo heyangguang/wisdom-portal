@@ -17,7 +17,7 @@ func main() {
 	db.SingularTable(true)
 
 	//初始化数据库
-	db.AutoMigrate(&migrate.UserMigrate{}, &migrate.UserGroupMigrate{}, &migrate.Rule{}, &migrate.ObjAct{}, &migrate.CasbinRule{})
+	db.Debug().AutoMigrate(&migrate.UserMigrate{}, &migrate.UserGroupMigrate{}, &migrate.RuleMigrate{}, &migrate.ObjActMigrate{}, &migrate.CasbinRuleMigrate{})
 
 	//objActSlice := make([]map[string]string, 0)
 	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/perm", "actName": "GET", "tag": "perm"})

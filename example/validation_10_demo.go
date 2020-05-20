@@ -14,9 +14,9 @@ import (
 )
 
 type Person struct {
-	Age     int    `form:"age" validate:"required,gt=10" label:"age"`
-	Name    string `form:"name" validate:"required,CustomValidationErrors" label:"name"`
-	Address string `form:"address" json:"address" validate:"required" label:"address"`
+	Age     int    `forms:"age" validate:"required,gt=10" label:"age"`
+	Name    string `forms:"name" validate:"required,CustomValidationErrors" label:"name"`
+	Address string `forms:"address" json:"address" validate:"required" label:"address"`
 }
 
 // 公共验证字段错误返回值方法
