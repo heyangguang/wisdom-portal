@@ -8,14 +8,13 @@ import (
 
 type User struct {
 	BaseModel
-	Name       string      `gorm:"unique;not null;comment:'姓名'" json:"name" binding:"required"`
-	UserName   string      `gorm:"unique;not null;comment:'用户名' "json:"user_name" binding:"required"`
-	PassWord   string      `gorm:"not null;comment:'密码'" json:"pass_word" binding:"required"`
-	Phone      string      `gorm:"comment:'手机号'" json:"phone"`
-	Email      string      `gorm:"comment:'电子邮箱'" json:"email"`
-	Status     bool        `gorm:"comment:'用户状态'" json:"status"`
-	Secret     string      `gorm:"comment:'双因子秘钥'" json:"secret"`
-	UserGroups []UserGroup `gorm:"many2many:user_usergroup" json:"user_groups"`
+	Name     string `json:"name" binding:"required"`
+	UserName string `json:"user_name" binding:"required"`
+	PassWord string `json:"pass_word" binding:"required"`
+	Phone    string `json:"phone"`
+	Email    string `json:"email"`
+	Secret   string `json:"-"`
+	Status   bool   `json:"-"`
 }
 
 type UserLogin struct {
@@ -31,14 +30,18 @@ type PubCurrentUser struct {
 	Rules    []RuleLine `json:"rules"`
 }
 
-func (pubCurrentUser PubCurrentUser) TableName() string {
+func (u *User) TableName() string {
+	return "user"
+}
+
+func (p *PubCurrentUser) TableName() string {
 	return "user"
 }
 
 // 获取获取当前用户信息
-func (pubCurrentUser PubCurrentUser) GetPubCurrentUser(userName interface{}) (result PubCurrentUser, isExist bool) {
-	if DB.Select("name, user_name, id").Where("user_name = ?", userName).Take(&pubCurrentUser).RecordNotFound() {
-		return PubCurrentUser{}, false
+func (p *PubCurrentUser) GetPubCurrentUser(userName interface{}) (result *PubCurrentUser, isExist bool) {
+	if DB.Select("name, user_name, id").Where("user_name = ?", userName).Take(&p).RecordNotFound() {
+		return &PubCurrentUser{}, false
 	}
 	e := LoadPolicyPerm()
 	// 获取用户和用户组的全部权限
@@ -48,10 +51,10 @@ func (pubCurrentUser PubCurrentUser) GetPubCurrentUser(userName interface{}) (re
 			ObJName: value[1],
 			ActName: value[2],
 		}
-		pubCurrentUser.Rules = append(pubCurrentUser.Rules, line)
+		p.Rules = append(p.Rules, line)
 	}
-	logger.Debug(fmt.Sprint("GetPubCurrentUser: ", pubCurrentUser))
-	return pubCurrentUser, true
+	logger.Debug(fmt.Sprint("GetPubCurrentUser: ", p))
+	return p, true
 }
 
 // 检测用户名密码
@@ -82,7 +85,7 @@ func (u *UserLogin) CheckUserOtpCode() bool {
 
 // 创建用户
 func (u *User) AddUser(user User) error {
-	if err := DB.Omit("id").Create(&user).Error; err != nil {
+	if err := DB.Create(&user).Error; err != nil {
 		return err
 	}
 	return nil

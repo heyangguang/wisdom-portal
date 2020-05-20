@@ -139,7 +139,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SwaggerRole"
+                            "$ref": "#/definitions/models.Rule"
                         }
                     }
                 ],
@@ -186,7 +186,7 @@
                 "parameters": [
                     {
                         "description": "权限模板id",
-                        "name": "role_id",
+                        "name": "rule_id",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -244,7 +244,7 @@
                 "parameters": [
                     {
                         "description": "权限模板id",
-                        "name": "role_id",
+                        "name": "rule_id",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -335,7 +335,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SwaggerUser"
+                            "$ref": "#/definitions/models.User"
                         }
                     }
                 ],
@@ -353,7 +353,7 @@
                         }
                     },
                     "415": {
-                        "description": "{\"code\": 50004}",
+                        "description": "{\"code\": 50003}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
@@ -386,7 +386,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SwaggerUserGroup"
+                            "$ref": "#/definitions/models.UserGroup"
                         }
                     }
                 ],
@@ -459,7 +459,7 @@
         "models.AddPermUser": {
             "type": "object",
             "properties": {
-                "role_id": {
+                "rule_id": {
                     "type": "string"
                 }
             }
@@ -467,7 +467,7 @@
         "models.AddPermUserGroup": {
             "type": "object",
             "properties": {
-                "role_id": {
+                "rule_id": {
                     "type": "string"
                 }
             }
@@ -483,16 +483,30 @@
                 }
             }
         },
+        "models.ObjAct": {
+            "type": "object",
+            "properties": {
+                "act_name": {
+                    "type": "string"
+                },
+                "obj_name": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
         "models.PubCurrentUser": {
             "type": "object",
             "properties": {
                 "name": {
                     "type": "string"
                 },
-                "roles": {
+                "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.RoleLine"
+                        "$ref": "#/definitions/models.RuleLine"
                     }
                 },
                 "user_id": {
@@ -503,7 +517,27 @@
                 }
             }
         },
-        "models.RoleLine": {
+        "models.Rule": {
+            "type": "object",
+            "required": [
+                "rule_name"
+            ],
+            "properties": {
+                "remark": {
+                    "type": "string"
+                },
+                "ruleObjActs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ObjAct"
+                    }
+                },
+                "rule_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RuleLine": {
             "type": "object",
             "properties": {
                 "act_name": {
@@ -514,36 +548,7 @@
                 }
             }
         },
-        "models.SwaggerObjActId": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.SwaggerRole": {
-            "type": "object",
-            "required": [
-                "roleObjActs",
-                "role_name"
-            ],
-            "properties": {
-                "remark": {
-                    "type": "string"
-                },
-                "roleObjActs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.SwaggerObjActId"
-                    }
-                },
-                "role_name": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.SwaggerUser": {
+        "models.User": {
             "type": "object",
             "required": [
                 "name",
@@ -568,7 +573,7 @@
                 }
             }
         },
-        "models.SwaggerUserGroup": {
+        "models.UserGroup": {
             "type": "object",
             "required": [
                 "group_name",
@@ -584,16 +589,8 @@
                 "users": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.SwaggerUserId"
+                        "$ref": "#/definitions/models.UserObj"
                     }
-                }
-            }
-        },
-        "models.SwaggerUserId": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
                 }
             }
         },
@@ -613,6 +610,14 @@
                 },
                 "user_name": {
                     "type": "string"
+                }
+            }
+        },
+        "models.UserObj": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
                 }
             }
         },

@@ -15,7 +15,7 @@ import (
 // @Tags 用户组
 // @accept json
 // @Produce  json
-// @Param data body models.SwaggerUserGroup true "用户组数据"
+// @Param data body models.UserGroup true "用户组数据"
 // @Success 200 {object} result.SuccessResult "{"code": 10000}"
 // @Failure 415 {object} result.FailResult "{"code": 50004}"
 // @Failure 400 {object} result.FailResult "{"code": 10001}"

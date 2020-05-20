@@ -19,7 +19,7 @@ func test(c *gin.Context) {
 // @Tags 权限
 // @accept json
 // @Produce  json
-// @Param data body models.SwaggerRule true "数据"
+// @Param data body models.Rule true "数据"
 // @Success 200 {object} result.SuccessResult "{"code": 10000}"
 // @Failure 415 {object} result.FailResult "{"code": 50004}"
 // @Failure 400 {object} result.FailResult "{"code": 10001}"

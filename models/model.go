@@ -13,10 +13,16 @@ var (
 	GormAdapter *gormadapter.Adapter
 )
 
-type BaseModel struct {
+type BaseMigrate struct {
 	ID        uint      `gorm:"primary_key;" json:"id"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
+}
+
+type BaseModel struct {
+	ID        string    `json:"-"`
+	CreatedAt time.Time `json:"-"`
+	UpdatedAt time.Time `json:"-"`
 }
 
 func DBConnectInit() {

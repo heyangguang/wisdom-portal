@@ -9,32 +9,29 @@ import (
 	"wisdom-portal/wisdom-portal/logger"
 )
 
+// 权限模型
+type CasbinRule struct {
+	BaseModel
+	PType string `json:"p_type"`
+	Sub   string `json:"sub"`
+	Obj   string `json:"obj"`
+	Act   string `json:"act"`
+}
+
 // 权限模板
 type Rule struct {
 	BaseModel
-	RuleName    string   `gorm:"not null;comment:'权限名'" json:"rule_name" binding:"required"`
-	Remark      string   `gorm:"type:text;comment:'权限说明'" json:"remark"`
+	RuleName    string   `json:"rule_name" binding:"required"`
+	Remark      string   `json:"remark"`
 	RuleObjActs []ObjAct `gorm:"many2many:rule_obj_acts" json:"ruleObjActs"`
 }
 
 // 权限对象
 type ObjAct struct {
 	BaseModel
-	ObjName string `gorm:"not null;comment:'对象'" json:"obj_name"`
-	ActName string `gorm:"not null;comment:'动作'" json:"act_name"`
-	Tag     string `gorm:"not null;comment:'权限分类'" json:"tag"`
-}
-
-// casbin权限模型
-type CasbinRule struct {
-	BaseModel
-	PType string `gorm:"not null;comment:'权限类型'" json:"p_type"`
-	Sub   string `gorm:"column:v0" json:"sub"`
-	Obj   string `gorm:"column:v1" json:"obj"`
-	Act   string `gorm:"column:v2" json:"act"`
-	V3    string `json:"v3"`
-	V4    string `json:"v4"`
-	V5    string `json:"v5"`
+	ObjName string `json:"obj_name"`
+	ActName string `json:"act_name"`
+	Tag     string `json:"tag"`
 }
 
 // 权限详细条目
@@ -154,7 +151,7 @@ func (a *AddPermUser) AddPermUser(uid string) error {
 }
 
 // 添加权限模板
-func (c *Rule) AddPerm(rule Rule) error {
+func (t *Rule) AddPerm(rule Rule) error {
 	var r Rule
 	// 创建权限模板
 	if err := DB.Omit("id").Set("gorm:save_associations", false).Create(&rule).Error; err != nil {

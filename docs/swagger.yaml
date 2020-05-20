@@ -2,12 +2,12 @@ basePath: /
 definitions:
   models.AddPermUser:
     properties:
-      role_id:
+      rule_id:
         type: string
     type: object
   models.AddPermUserGroup:
     properties:
-      role_id:
+      rule_id:
         type: string
     type: object
   models.GoogleAuth:
@@ -17,46 +17,49 @@ definitions:
       secret:
         type: string
     type: object
+  models.ObjAct:
+    properties:
+      act_name:
+        type: string
+      obj_name:
+        type: string
+      tag:
+        type: string
+    type: object
   models.PubCurrentUser:
     properties:
       name:
         type: string
-      roles:
+      rules:
         items:
-          $ref: '#/definitions/models.RoleLine'
+          $ref: '#/definitions/models.RuleLine'
         type: array
       user_id:
         type: string
       user_name:
         type: string
     type: object
-  models.RoleLine:
+  models.Rule:
+    properties:
+      remark:
+        type: string
+      rule_name:
+        type: string
+      ruleObjActs:
+        items:
+          $ref: '#/definitions/models.ObjAct'
+        type: array
+    required:
+    - rule_name
+    type: object
+  models.RuleLine:
     properties:
       act_name:
         type: string
       obj_name:
         type: string
     type: object
-  models.SwaggerObjActId:
-    properties:
-      id:
-        type: string
-    type: object
-  models.SwaggerRole:
-    properties:
-      remark:
-        type: string
-      role_name:
-        type: string
-      roleObjActs:
-        items:
-          $ref: '#/definitions/models.SwaggerObjActId'
-        type: array
-    required:
-    - roleObjActs
-    - role_name
-    type: object
-  models.SwaggerUser:
+  models.User:
     properties:
       email:
         type: string
@@ -73,7 +76,7 @@ definitions:
     - pass_word
     - user_name
     type: object
-  models.SwaggerUserGroup:
+  models.UserGroup:
     properties:
       group_name:
         type: string
@@ -81,16 +84,11 @@ definitions:
         type: string
       users:
         items:
-          $ref: '#/definitions/models.SwaggerUserId'
+          $ref: '#/definitions/models.UserObj'
         type: array
     required:
     - group_name
     - users
-    type: object
-  models.SwaggerUserId:
-    properties:
-      id:
-        type: string
     type: object
   models.UserLogin:
     properties:
@@ -104,6 +102,11 @@ definitions:
     - otp_code
     - pass_word
     - user_name
+    type: object
+  models.UserObj:
+    properties:
+      id:
+        type: integer
     type: object
   result.CreateQrCodeResult:
     properties:
@@ -253,7 +256,7 @@ paths:
         name: data
         required: true
         schema:
-          $ref: '#/definitions/models.SwaggerRole'
+          $ref: '#/definitions/models.Rule'
       produces:
       - application/json
       responses:
@@ -282,7 +285,7 @@ paths:
       parameters:
       - description: 权限模板id
         in: body
-        name: role_id
+        name: rule_id
         required: true
         schema:
           $ref: '#/definitions/models.AddPermUser'
@@ -319,7 +322,7 @@ paths:
       parameters:
       - description: 权限模板id
         in: body
-        name: role_id
+        name: rule_id
         required: true
         schema:
           $ref: '#/definitions/models.AddPermUserGroup'
@@ -380,7 +383,7 @@ paths:
         name: data
         required: true
         schema:
-          $ref: '#/definitions/models.SwaggerUser'
+          $ref: '#/definitions/models.User'
       produces:
       - application/json
       responses:
@@ -393,7 +396,7 @@ paths:
           schema:
             $ref: '#/definitions/result.FailResult'
         "415":
-          description: '{"code": 50004}'
+          description: '{"code": 50003}'
           schema:
             $ref: '#/definitions/result.FailResult'
       summary: 注册用户
@@ -410,7 +413,7 @@ paths:
         name: data
         required: true
         schema:
-          $ref: '#/definitions/models.SwaggerUserGroup'
+          $ref: '#/definitions/models.UserGroup'
       produces:
       - application/json
       responses:

@@ -4,7 +4,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"log"
-	"wisdom-portal/models"
+	"wisdom-portal/models/migrate"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 	db.SingularTable(true)
 
 	//初始化数据库
-	db.AutoMigrate(&models.User{}, &models.UserGroup{}, &models.Role{}, &models.ObjAct{}, &models.CasbinRule{})
+	db.AutoMigrate(&migrate.UserMigrate{}, &migrate.UserGroupMigrate{}, &migrate.Rule{}, &migrate.ObjAct{}, &migrate.CasbinRule{})
 
 	//objActSlice := make([]map[string]string, 0)
 	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/perm", "actName": "GET", "tag": "perm"})

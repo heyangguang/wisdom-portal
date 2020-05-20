@@ -22,7 +22,7 @@ func getCurrentUser(c *gin.Context) {
 	if username, isExist := c.Get("username"); isExist {
 		var pubCurrentUser models.PubCurrentUser
 		if pubCurrentUserObj, isDbExist := pubCurrentUser.GetPubCurrentUser(username); isDbExist {
-			c.JSON(http.StatusOK, result.NewPubCurrentUserResult(result.SuccessCode, pubCurrentUserObj))
+			c.JSON(http.StatusOK, result.NewPubCurrentUserResult(result.SuccessCode, *pubCurrentUserObj))
 			return
 		}
 	}
@@ -35,7 +35,7 @@ func getCurrentUser(c *gin.Context) {
 // @Tags 用户注册
 // @accept json
 // @Produce json
-// @Param data body models.SwaggerUser true "用户注册数据"
+// @Param data body models.User true "用户注册数据"
 // @Success 200 {object} result.RegisterUserResult "{"code": 10000}"
 // @Failure 415 {object} result.FailResult "{"code": 50004}"
 // @Failure 415 {object} result.FailResult "{"code": 50003}"
@@ -51,7 +51,7 @@ func register(c *gin.Context) {
 	// 防止恶意数据请求
 	user.CreatedAt = time.Now()
 	user.UpdatedAt = time.Now()
-	user.Status = false
+	user.Status = true
 	user.PassWord = wisdomPortal.String2md5(user.PassWord)
 	// 双因子认证TOTP
 	var googleAuth *models.GoogleAuth
