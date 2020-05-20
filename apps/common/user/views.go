@@ -18,7 +18,7 @@ import (
 // @accept json
 // @Produce json
 // @Success 200 {object} result.PubCurrentUserResult "{"code": 10000}"
-// @Failure 400 {object} result.FailResult "{"code": 20004}"
+// @Failure 401 {object} result.FailResult "{"code": 20004}"
 // @Router /api/v1/pub/current/user [GET]
 func getCurrentUser(c *gin.Context) {
 	if username, isExist := c.Get("username"); isExist {
@@ -28,7 +28,7 @@ func getCurrentUser(c *gin.Context) {
 			return
 		}
 	}
-	c.JSON(http.StatusBadRequest, result.NewFailResult(result.UserNotExist, ""))
+	c.JSON(http.StatusUnauthorized, result.NewFailResult(result.UserNotExist, ""))
 	return
 }
 
@@ -38,16 +38,17 @@ func getCurrentUser(c *gin.Context) {
 // @accept json
 // @Produce json
 // @Param data body models.User true "用户注册数据"
-// @Success 200 {object} result.RegisterUserResult "{"code": 10000}"
-// @Failure 415 {object} result.FailResult "{"code": 50004}"
-// @Failure 415 {object} result.FailResult "{"code": 50003}"
-// @Failure 400 {object} result.FailResult "{"code": 10001}"
+// @Success 201 {object} result.RegisterUserResult "{"code": 10000}"
+// @Failure 406 {object} result.FailResult "{"code": 10001}"
+// @Failure 400 {object} result.SliceFailResult "{"code": 10001}"
+// @Failure 409 {object} result.FailResult "{"code": 50003}"
+// @Failure 500 {object} result.FailResult "{"code": 50004}"
 // @Router /api/v1/register [POST]
 func register(c *gin.Context) {
 	var user models.User
 	// 绑定表单
 	if err := c.ShouldBind(&user); err != nil {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	// 验证结构
@@ -60,7 +61,7 @@ func register(c *gin.Context) {
 	// 判断用户名是否存在
 	// 判断用户组是否跟用户名相同，不允许相同
 	if models.CheckUserName(user.UserName) || models.CheckUserGroupName(user.UserName) {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, "username is already taken"))
+		c.JSON(http.StatusConflict, result.NewFailResult(result.DataAlreadyExisted, ""))
 		return
 	}
 
@@ -75,13 +76,13 @@ func register(c *gin.Context) {
 	user.Secret = googleAuth.GetSecret()
 	googleAuth.GetQrCode(user.UserName, user.Secret)
 	if err := user.AddUser(user); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
 	if err := models.AddDefaultPerm(user.UserName, "/api/v1/pub/current/user", "*"); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataAlreadyExisted, err.Error()))
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, result.NewRegisterUserResult(result.SuccessCode, *googleAuth))
+	c.JSON(http.StatusCreated, result.NewRegisterUserResult(result.SuccessCode, *googleAuth))
 	return
 }

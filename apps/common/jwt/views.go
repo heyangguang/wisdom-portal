@@ -17,15 +17,17 @@ import (
 // @Produce  json
 // @Param data body models.UserLogin true "数据"
 // @Success 200 {object} result.LoginResult "{"code": 10000}"
-// @Failure 400 {object} result.FailResult "{"code": 10001}"
+// @Failure 406 {object} result.FailResult "{"code": 10001}"
 // @Failure 401 {object} result.FailResult "{"code": 20002}"
+// @Failure 400 {object} result.SliceFailResult "{"code": 10001}"
 // @Router /api/v1/login [POST]
 func login(c *gin.Context) {
 	// 用户发送用户名和密码过来
 	var userLogin models.UserLogin
+
 	// 绑定表单
 	if err := c.ShouldBind(&userLogin); err != nil {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	// 验证结构

@@ -47,7 +47,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "{\"code\": 10000}",
                         "schema": {
                             "$ref": "#/definitions/result.CreateQrCodeResult"
@@ -102,11 +102,17 @@
                     "400": {
                         "description": "{\"code\": 10001}",
                         "schema": {
-                            "$ref": "#/definitions/result.FailResult"
+                            "$ref": "#/definitions/result.SliceFailResult"
                         }
                     },
                     "401": {
                         "description": "{\"code\": 20002}",
+                        "schema": {
+                            "$ref": "#/definitions/result.FailResult"
+                        }
+                    },
+                    "406": {
+                        "description": "{\"code\": 10001}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
@@ -144,19 +150,25 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "{\"code\": 10000}",
                         "schema": {
-                            "$ref": "#/definitions/result.SuccessResult"
+                            "$ref": "#/definitions/result.RegisterUserResult"
                         }
                     },
                     "400": {
                         "description": "{\"code\": 10001}",
                         "schema": {
+                            "$ref": "#/definitions/result.SliceFailResult"
+                        }
+                    },
+                    "406": {
+                        "description": "{\"code\": 10001}",
+                        "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
                     },
-                    "415": {
+                    "500": {
                         "description": "{\"code\": 50004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
@@ -202,19 +214,31 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "{\"code\": 10000}",
                         "schema": {
                             "$ref": "#/definitions/result.SuccessResult"
                         }
                     },
                     "400": {
+                        "description": "{\"code\": 10001}",
+                        "schema": {
+                            "$ref": "#/definitions/result.SliceFailResult"
+                        }
+                    },
+                    "406": {
+                        "description": "{\"code\": 10001}",
+                        "schema": {
+                            "$ref": "#/definitions/result.FailResult"
+                        }
+                    },
+                    "412": {
                         "description": "{\"code\": 10004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
                     },
-                    "415": {
+                    "500": {
                         "description": "{\"code\": 50004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
@@ -260,19 +284,31 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "{\"code\": 10000}",
                         "schema": {
                             "$ref": "#/definitions/result.SuccessResult"
                         }
                     },
                     "400": {
+                        "description": "{\"code\": 10001}",
+                        "schema": {
+                            "$ref": "#/definitions/result.SliceFailResult"
+                        }
+                    },
+                    "406": {
+                        "description": "{\"code\": 10001}",
+                        "schema": {
+                            "$ref": "#/definitions/result.FailResult"
+                        }
+                    },
+                    "412": {
                         "description": "{\"code\": 10004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
                     },
-                    "415": {
+                    "500": {
                         "description": "{\"code\": 50004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
@@ -306,7 +342,7 @@
                             "$ref": "#/definitions/result.PubCurrentUserResult"
                         }
                     },
-                    "400": {
+                    "401": {
                         "description": "{\"code\": 20004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
@@ -340,7 +376,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "{\"code\": 10000}",
                         "schema": {
                             "$ref": "#/definitions/result.RegisterUserResult"
@@ -349,11 +385,23 @@
                     "400": {
                         "description": "{\"code\": 10001}",
                         "schema": {
+                            "$ref": "#/definitions/result.SliceFailResult"
+                        }
+                    },
+                    "406": {
+                        "description": "{\"code\": 10001}",
+                        "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
                     },
-                    "415": {
+                    "409": {
                         "description": "{\"code\": 50003}",
+                        "schema": {
+                            "$ref": "#/definitions/result.FailResult"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"code\": 50004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
@@ -391,7 +439,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "{\"code\": 10000}",
                         "schema": {
                             "$ref": "#/definitions/result.SuccessResult"
@@ -400,10 +448,22 @@
                     "400": {
                         "description": "{\"code\": 10001}",
                         "schema": {
+                            "$ref": "#/definitions/result.SliceFailResult"
+                        }
+                    },
+                    "406": {
+                        "description": "{\"code\": 10001}",
+                        "schema": {
                             "$ref": "#/definitions/result.FailResult"
                         }
                     },
-                    "415": {
+                    "409": {
+                        "description": "{\"code\": 50003}",
+                        "schema": {
+                            "$ref": "#/definitions/result.FailResult"
+                        }
+                    },
+                    "500": {
                         "description": "{\"code\": 50004}",
                         "schema": {
                             "$ref": "#/definitions/result.FailResult"
@@ -458,17 +518,23 @@
     "definitions": {
         "models.AddPermUser": {
             "type": "object",
+            "required": [
+                "rule_id"
+            ],
             "properties": {
                 "rule_id": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },
         "models.AddPermUserGroup": {
             "type": "object",
+            "required": [
+                "rule_id"
+            ],
             "properties": {
                 "rule_id": {
-                    "type": "string"
+                    "type": "integer"
                 }
             }
         },
@@ -486,14 +552,8 @@
         "models.ObjAct": {
             "type": "object",
             "properties": {
-                "act_name": {
-                    "type": "string"
-                },
-                "obj_name": {
-                    "type": "string"
-                },
-                "tag": {
-                    "type": "string"
+                "id": {
+                    "type": "integer"
                 }
             }
         },
@@ -520,20 +580,21 @@
         "models.Rule": {
             "type": "object",
             "required": [
-                "rule_name"
+                "rule_name",
+                "rule_obj_acts"
             ],
             "properties": {
                 "remark": {
                     "type": "string"
                 },
-                "ruleObjActs": {
+                "rule_name": {
+                    "type": "string"
+                },
+                "rule_obj_acts": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.ObjAct"
                     }
-                },
-                "rule_name": {
-                    "type": "string"
                 }
             }
         },
@@ -551,8 +612,10 @@
         "models.User": {
             "type": "object",
             "required": [
+                "email",
                 "name",
                 "pass_word",
+                "phone",
                 "user_name"
             ],
             "properties": {
@@ -696,6 +759,26 @@
                 "data": {
                     "type": "object",
                     "$ref": "#/definitions/models.GoogleAuth"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "result.SliceFailResult": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "err": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
                 },
                 "msg": {
                     "type": "string"

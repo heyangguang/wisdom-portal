@@ -17,15 +17,17 @@ import (
 // @accept json
 // @Produce  json
 // @Param data body models.UserGroup true "用户组数据"
-// @Success 200 {object} result.SuccessResult "{"code": 10000}"
-// @Failure 415 {object} result.FailResult "{"code": 50004}"
-// @Failure 400 {object} result.FailResult "{"code": 10001}"
+// @Success 201 {object} result.SuccessResult "{"code": 10000}"
+// @Failure 406 {object} result.FailResult "{"code": 10001}"
+// @Failure 400 {object} result.SliceFailResult "{"code": 10001}"
+// @Failure 409 {object} result.FailResult "{"code": 50003}"
+// @Failure 500 {object} result.FailResult "{"code": 50004}"
 // @Router /api/v1/userGroup [POST]
 func addGroup(c *gin.Context) {
 	var userGroup models.UserGroup
 	// 绑定表单
 	if err := c.ShouldBind(&userGroup); err != nil {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	// 验证结构
@@ -38,7 +40,7 @@ func addGroup(c *gin.Context) {
 	// 判断用户名是否存在
 	// 判断用户组是否跟用户名相同，不允许相同
 	if models.CheckUserName(userGroup.GroupName) || models.CheckUserGroupName(userGroup.GroupName) {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, "group name is already taken"))
+		c.JSON(http.StatusConflict, result.NewFailResult(result.DataAlreadyExisted, ""))
 		return
 	}
 
@@ -46,9 +48,10 @@ func addGroup(c *gin.Context) {
 	userGroup.CreatedAt = time.Now()
 	userGroup.UpdatedAt = time.Now()
 	if err := userGroup.AddGroup(); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
+
+	c.JSON(http.StatusCreated, result.NewSuccessResult(result.SuccessCode))
 	return
 }

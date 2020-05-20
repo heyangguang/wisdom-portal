@@ -3,12 +3,16 @@ definitions:
   models.AddPermUser:
     properties:
       rule_id:
-        type: string
+        type: integer
+    required:
+    - rule_id
     type: object
   models.AddPermUserGroup:
     properties:
       rule_id:
-        type: string
+        type: integer
+    required:
+    - rule_id
     type: object
   models.GoogleAuth:
     properties:
@@ -19,12 +23,8 @@ definitions:
     type: object
   models.ObjAct:
     properties:
-      act_name:
-        type: string
-      obj_name:
-        type: string
-      tag:
-        type: string
+      id:
+        type: integer
     type: object
   models.PubCurrentUser:
     properties:
@@ -45,12 +45,13 @@ definitions:
         type: string
       rule_name:
         type: string
-      ruleObjActs:
+      rule_obj_acts:
         items:
           $ref: '#/definitions/models.ObjAct'
         type: array
     required:
     - rule_name
+    - rule_obj_acts
     type: object
   models.RuleLine:
     properties:
@@ -72,8 +73,10 @@ definitions:
       user_name:
         type: string
     required:
+    - email
     - name
     - pass_word
+    - phone
     - user_name
     type: object
   models.UserGroup:
@@ -161,6 +164,19 @@ definitions:
       msg:
         type: string
     type: object
+  result.SliceFailResult:
+    properties:
+      code:
+        type: integer
+      err:
+        items:
+          additionalProperties:
+            type: string
+          type: object
+        type: array
+      msg:
+        type: string
+    type: object
   result.SuccessResult:
     properties:
       code:
@@ -200,7 +216,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "201":
           description: '{"code": 10000}'
           schema:
             $ref: '#/definitions/result.CreateQrCodeResult'
@@ -237,9 +253,13 @@ paths:
         "400":
           description: '{"code": 10001}'
           schema:
-            $ref: '#/definitions/result.FailResult'
+            $ref: '#/definitions/result.SliceFailResult'
         "401":
           description: '{"code": 20002}'
+          schema:
+            $ref: '#/definitions/result.FailResult'
+        "406":
+          description: '{"code": 10001}'
           schema:
             $ref: '#/definitions/result.FailResult'
       summary: 用户登录
@@ -260,15 +280,19 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "201":
           description: '{"code": 10000}'
           schema:
-            $ref: '#/definitions/result.SuccessResult'
+            $ref: '#/definitions/result.RegisterUserResult'
         "400":
           description: '{"code": 10001}'
           schema:
+            $ref: '#/definitions/result.SliceFailResult'
+        "406":
+          description: '{"code": 10001}'
+          schema:
             $ref: '#/definitions/result.FailResult'
-        "415":
+        "500":
           description: '{"code": 50004}'
           schema:
             $ref: '#/definitions/result.FailResult'
@@ -297,15 +321,23 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "201":
           description: '{"code": 10000}'
           schema:
             $ref: '#/definitions/result.SuccessResult'
         "400":
+          description: '{"code": 10001}'
+          schema:
+            $ref: '#/definitions/result.SliceFailResult'
+        "406":
+          description: '{"code": 10001}'
+          schema:
+            $ref: '#/definitions/result.FailResult'
+        "412":
           description: '{"code": 10004}'
           schema:
             $ref: '#/definitions/result.FailResult'
-        "415":
+        "500":
           description: '{"code": 50004}'
           schema:
             $ref: '#/definitions/result.FailResult'
@@ -334,15 +366,23 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "201":
           description: '{"code": 10000}'
           schema:
             $ref: '#/definitions/result.SuccessResult'
         "400":
+          description: '{"code": 10001}'
+          schema:
+            $ref: '#/definitions/result.SliceFailResult'
+        "406":
+          description: '{"code": 10001}'
+          schema:
+            $ref: '#/definitions/result.FailResult'
+        "412":
           description: '{"code": 10004}'
           schema:
             $ref: '#/definitions/result.FailResult'
-        "415":
+        "500":
           description: '{"code": 50004}'
           schema:
             $ref: '#/definitions/result.FailResult'
@@ -363,7 +403,7 @@ paths:
           description: '{"code": 10000}'
           schema:
             $ref: '#/definitions/result.PubCurrentUserResult'
-        "400":
+        "401":
           description: '{"code": 20004}'
           schema:
             $ref: '#/definitions/result.FailResult'
@@ -387,16 +427,24 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "201":
           description: '{"code": 10000}'
           schema:
             $ref: '#/definitions/result.RegisterUserResult'
         "400":
           description: '{"code": 10001}'
           schema:
+            $ref: '#/definitions/result.SliceFailResult'
+        "406":
+          description: '{"code": 10001}'
+          schema:
             $ref: '#/definitions/result.FailResult'
-        "415":
+        "409":
           description: '{"code": 50003}'
+          schema:
+            $ref: '#/definitions/result.FailResult'
+        "500":
+          description: '{"code": 50004}'
           schema:
             $ref: '#/definitions/result.FailResult'
       summary: 注册用户
@@ -417,15 +465,23 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "201":
           description: '{"code": 10000}'
           schema:
             $ref: '#/definitions/result.SuccessResult'
         "400":
           description: '{"code": 10001}'
           schema:
+            $ref: '#/definitions/result.SliceFailResult'
+        "406":
+          description: '{"code": 10001}'
+          schema:
             $ref: '#/definitions/result.FailResult'
-        "415":
+        "409":
+          description: '{"code": 50003}'
+          schema:
+            $ref: '#/definitions/result.FailResult'
+        "500":
           description: '{"code": 50004}'
           schema:
             $ref: '#/definitions/result.FailResult'

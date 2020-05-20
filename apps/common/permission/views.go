@@ -22,16 +22,17 @@ func test(c *gin.Context) {
 // @accept json
 // @Produce  json
 // @Param data body models.Rule true "数据"
-// @Success 200 {object} result.SuccessResult "{"code": 10000}"
-// @Failure 415 {object} result.FailResult "{"code": 50004}"
-// @Failure 400 {object} result.FailResult "{"code": 10001}"
+// @Success 201 {object} result.RegisterUserResult "{"code": 10000}"
+// @Failure 406 {object} result.FailResult "{"code": 10001}"
+// @Failure 400 {object} result.SliceFailResult "{"code": 10001}"
+// @Failure 500 {object} result.FailResult "{"code": 50004}"
 // @Router /api/v1/perm [POST]
 func addPerm(c *gin.Context) {
 	var rule models.Rule
 
 	// 绑定表单
 	if err := c.ShouldBind(&rule); err != nil {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	// 验证结构
@@ -47,10 +48,10 @@ func addPerm(c *gin.Context) {
 
 	err := rule.AddPerm(rule)
 	if err == nil {
-		c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
+		c.JSON(http.StatusCreated, result.NewSuccessResult(result.SuccessCode))
 		return
 	}
-	c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
+	c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
 	return
 }
 
@@ -62,22 +63,23 @@ func addPerm(c *gin.Context) {
 // @Produce  json
 // @Param rule_id body models.AddPermUser true "权限模板id"
 // @Param uid path string true "用户id"
-// @Success 200 {object} result.SuccessResult "{"code": 10000}"
-// @Failure 415 {object} result.FailResult "{"code": 50004}"
-// @Failure 400 {object} result.FailResult "{"code": 10001}"
-// @Failure 400 {object} result.FailResult "{"code": 10004}"
+// @Success 201 {object} result.SuccessResult "{"code": 10000}"
+// @Failure 412 {object} result.FailResult "{"code": 10004}"
+// @Failure 406 {object} result.FailResult "{"code": 10001}"
+// @Failure 400 {object} result.SliceFailResult "{"code": 10001}"
+// @Failure 500 {object} result.FailResult "{"code": 50004}"
 // @Router /api/v1/perm/user/{uid} [POST]
 func addPermUser(c *gin.Context) {
 	var addPermUser models.AddPermUser
 	uid := c.Param("uid")
 	if uid == "" {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamNotComplete, ""))
+		c.JSON(http.StatusPreconditionFailed, result.NewFailResult(result.ParamNotComplete, ""))
 		return
 	}
 
 	// 绑定表单
 	if err := c.ShouldBind(&addPermUser); err != nil {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	// 验证结构
@@ -88,10 +90,10 @@ func addPermUser(c *gin.Context) {
 	}
 
 	if err := addPermUser.AddPermUser(uid); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
+	c.JSON(http.StatusCreated, result.NewSuccessResult(result.SuccessCode))
 	return
 }
 
@@ -103,21 +105,22 @@ func addPermUser(c *gin.Context) {
 // @Produce  json
 // @Param rule_id body models.AddPermUserGroup true "权限模板id"
 // @Param gid path string true "用户组id"
-// @Success 200 {object} result.SuccessResult "{"code": 10000}"
-// @Failure 415 {object} result.FailResult "{"code": 50004}"
-// @Failure 400 {object} result.FailResult "{"code": 10001}"
-// @Failure 400 {object} result.FailResult "{"code": 10004}"
+// @Success 201 {object} result.SuccessResult "{"code": 10000}"
+// @Failure 412 {object} result.FailResult "{"code": 10004}"
+// @Failure 406 {object} result.FailResult "{"code": 10001}"
+// @Failure 400 {object} result.SliceFailResult "{"code": 10001}"
+// @Failure 500 {object} result.FailResult "{"code": 50004}"
 // @Router /api/v1/perm/userGroup/{gid} [POST]
 func addPermUserGroup(c *gin.Context) {
 	var addPermUserGroup models.AddPermUserGroup
 	gid := c.Param("gid")
 	if gid == "" {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamNotComplete, ""))
+		c.JSON(http.StatusPreconditionFailed, result.NewFailResult(result.ParamNotComplete, ""))
 	}
 
 	// 绑定表单
 	if err := c.ShouldBind(&addPermUserGroup); err != nil {
-		c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, err.Error()))
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
 		return
 	}
 	// 验证结构
@@ -128,9 +131,9 @@ func addPermUserGroup(c *gin.Context) {
 	}
 
 	if err := addPermUserGroup.AddPermUserGroup(gid); err != nil {
-		c.JSON(http.StatusUnsupportedMediaType, result.NewFailResult(result.DataCreateWrong, err.Error()))
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
-	c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
+	c.JSON(http.StatusCreated, result.NewSuccessResult(result.SuccessCode))
 	return
 }

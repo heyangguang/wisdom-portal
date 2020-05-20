@@ -17,7 +17,7 @@ import (
 // @Produce  json
 // @Param data query string true "数据"
 // @Param secret query string true "秘钥"
-// @Success 200 {object} result.CreateQrCodeResult "{"code": 10000}"
+// @Success 201 {object} result.CreateQrCodeResult "{"code": 10000}"
 // @Failure 500 {object} result.FailResult "{"code": 60001}"
 // @Failure 400 {object} result.FailResult "{"code": 10001}"
 // @Router /api/v1/create-qr-code [GET]
@@ -37,7 +37,7 @@ func createQrCode(c *gin.Context) {
 		}
 		logger.Debug("二维码生成" + c.Request.RequestURI)
 		resultData := "/api/v1/view-qr-code/?imagename=" + "qr_" + secret + ".png"
-		c.JSON(http.StatusOK, result.NewCreateQrCodeResult(result.SuccessCode, resultData))
+		c.JSON(http.StatusCreated, result.NewCreateQrCodeResult(result.SuccessCode, resultData))
 		return
 	}
 	c.JSON(http.StatusBadRequest, result.NewFailResult(result.ParamInvalid, "data or secret filed input error"))
