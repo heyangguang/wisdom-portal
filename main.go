@@ -8,6 +8,7 @@ import (
 	"wisdom-portal/apps/common/permission"
 	"wisdom-portal/apps/common/user"
 	"wisdom-portal/apps/common/usergroup"
+	"wisdom-portal/apps/monitor"
 	"wisdom-portal/models"
 	"wisdom-portal/wisdom-portal"
 	"wisdom-portal/wisdom-portal/clear_static"
@@ -49,13 +50,13 @@ func main() {
 	forms.InitFormValidate()
 
 	// 注册自定义表单方法
-	forms.RegisterCustomValidationFunc(user.CustomValidations, usergroup.CustomValidations)
+	forms.RegisterCustomValidationFunc(user.CustomValidations, usergroup.CustomValidations, monitor.CustomValidations)
 
 	// 初始化自定义表单方法
 	forms.InitCustomValidationFunc()
 
 	// 加载多个APP的路由配置
-	v1.Include(permission.Routers, user.Routers, jwt.Routers, otp.Routers, usergroup.Routers)
+	v1.Include(permission.Routers, user.Routers, jwt.Routers, otp.Routers, usergroup.Routers, monitor.Routers)
 
 	// 加载清理static异步模块
 	fileChan := make(chan string, 50)

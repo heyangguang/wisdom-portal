@@ -5,7 +5,7 @@ import "wisdom-portal/models"
 // 权限模板
 type RuleMigrate struct {
 	models.BaseMigrate
-	RuleName    string          `gorm:"not null;comment:'权限名'" json:"rule_name" binding:"required"`
+	RuleName    string          `gorm:"not null;comment:'权限名'" json:"rule_name"`
 	Remark      string          `gorm:"type:text;comment:'权限说明'" json:"remark"`
 	RuleObjActs []ObjActMigrate `gorm:"many2many:rule_obj_acts;association_jointable_foreignkey:obj_act_id;jointable_foreignkey:rule_id" json:"ruleObjActs"`
 }
