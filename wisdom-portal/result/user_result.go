@@ -1,6 +1,9 @@
 package result
 
-import "wisdom-portal/models"
+import (
+	"wisdom-portal/models"
+	"wisdom-portal/schemas"
+)
 
 type PubCurrentUserResult struct {
 	Code int                   `json:"code"`
@@ -9,9 +12,9 @@ type PubCurrentUserResult struct {
 }
 
 type RegisterUserResult struct {
-	Code int               `json:"code"`
-	Msg  string            `json:"msg"`
-	Data models.GoogleAuth `json:"data"`
+	Code int                `json:"code"`
+	Msg  string             `json:"msg"`
+	Data schemas.GoogleAuth `json:"data"`
 }
 
 func NewPubCurrentUserResult(code int, data models.PubCurrentUser) *PubCurrentUserResult {
@@ -22,7 +25,7 @@ func NewPubCurrentUserResult(code int, data models.PubCurrentUser) *PubCurrentUs
 	}
 }
 
-func NewRegisterUserResult(code int, data models.GoogleAuth) *RegisterUserResult {
+func NewRegisterUserResult(code int, data schemas.GoogleAuth) *RegisterUserResult {
 	return &RegisterUserResult{
 		Code: code,
 		Msg:  ResultText(code),

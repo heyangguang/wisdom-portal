@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"wisdom-portal/schemas"
 	wisdomPortal "wisdom-portal/wisdom-portal"
 	"wisdom-portal/wisdom-portal/logger"
 )
@@ -79,7 +80,7 @@ func (u *UserLogin) CheckUserOtpCode() bool {
 		Where("user_name = ?", u.UserName).First(&user).RecordNotFound() {
 		return false
 	}
-	if isOk, _ := NewGoogleAuth().VerifyCode(user.Secret, u.OtpCode); isOk {
+	if isOk, _ := schemas.NewGoogleAuth().VerifyCode(user.Secret, u.OtpCode); isOk {
 		return true
 	}
 	return false

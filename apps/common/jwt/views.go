@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"wisdom-portal/apps/common/user"
 	"wisdom-portal/models"
+	"wisdom-portal/schemas"
 	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/result"
 )
@@ -39,7 +40,7 @@ func login(c *gin.Context) {
 	// 校验用户名和密码是否正确
 	if userLogin.CheckUserLogin() && userLogin.CheckUserOtpCode() {
 		// 生成Token
-		tokenString := models.GenToken(userLogin.UserName)
+		tokenString := schemas.GenToken(userLogin.UserName)
 		c.JSON(http.StatusOK, result.NewLoginResult(result.SuccessCode, *result.NewLoginTokenResult(tokenString)))
 		return
 	}

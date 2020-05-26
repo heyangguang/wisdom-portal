@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
-	"wisdom-portal/models"
+	"wisdom-portal/schemas"
 	"wisdom-portal/wisdom-portal/logger"
 	"wisdom-portal/wisdom-portal/result"
 )
@@ -35,7 +35,7 @@ func JWTAuthCheckToken(skipper ...SkipperFunc) func(c *gin.Context) {
 		}
 
 		// parts[1]是获取到的tokenString，解析
-		mc, err := models.ParseToken(parts[1])
+		mc, err := schemas.ParseToken(parts[1])
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, result.NewSuccessResult(result.TokenNotExist))
 			c.Abort()

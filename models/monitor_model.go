@@ -2,6 +2,7 @@ package models
 
 import (
 	"time"
+	"wisdom-portal/schemas"
 	"wisdom-portal/wisdom-portal/logger"
 )
 
@@ -16,9 +17,12 @@ type Monitor struct {
 }
 
 type QuerySliceMonitor struct {
-	AppTag string                      `form:"app_tag" validate:"required,ValidationAppTagFormat" label:"app_tag"`
-	Num    int                         `form:"num" validate:"required,ValidationNumFormat" label:"num"`
-	Data   []map[string][]QueryMonitor `form:"-"`
+	AppTag   string                      `form:"app_tag" validate:"required,ValidationAppTagFormat" label:"app_tag"`
+	Num      int                         `form:"num" validate:"required,ValidationNumFormat" label:"num"`
+	Page     int                         `form:"page" validate:"required" label:"page"`
+	PageSize int                         `form:"page_size" validate:"required" label:"page_size"`
+	Data     []map[string][]QueryMonitor `form:"-"`
+	Meta     *schemas.Pagination         `form:"-"`
 }
 
 type QueryMonitor struct {
@@ -52,21 +56,26 @@ func (m *Monitor) CreateMonitor() error {
 }
 
 // 查询服务监控状态
-func (querySlice *QuerySliceMonitor) QueryMonitor() error {
-	if err := querySlice.selectQueryApp(); err != nil {
+func (querySlice *QuerySliceMonitor) QueryMonitor(startNum, endNum int) error {
+	if err := querySlice.selectQueryApp(startNum, endNum); err != nil {
 		return err
 	}
 	return nil
 }
 
 // 选择不同的APP查询
-func (querySlice *QuerySliceMonitor) selectQueryApp() error {
-	var tagGroupBy []TagGroupBy
-	if err := DB.Table(querySlice.castTableName()).Select("name").Group("name").Scan(&tagGroupBy).Error; err != nil {
+func (querySlice *QuerySliceMonitor) selectQueryApp(startNum, endNum int) error {
+	//var tagGroupBy []TagGroupBy
+	//if err := DB.Table(querySlice.castTableName()).Select("name").Group("name").Scan(&tagGroupBy).Error; err != nil {
+	//	logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
+	//	return err
+	//}
+	tagGroupBy, _, err := querySlice.CountNum()
+	if err != nil {
 		logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
 		return err
 	}
-	for _, tagName := range tagGroupBy {
+	for _, tagName := range tagGroupBy[startNum:endNum] {
 		var queryMonitorObj []QueryMonitor
 		if err := DB.Table(querySlice.castTableName()).Where("name = ?", tagName.Name).Order("time desc").Limit(querySlice.Num).Find(&queryMonitorObj).Error; err != nil {
 			logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
@@ -86,4 +95,13 @@ func (querySlice *QuerySliceMonitor) castTableName() string {
 		return "monitor_elasticsearch"
 	}
 	return ""
+}
+
+// 数据总数
+func (querySlice *QuerySliceMonitor) CountNum() (tagGroupBy []TagGroupBy, num int, err error) {
+	if err := DB.Table(querySlice.castTableName()).Select("name").Group("name").Scan(&tagGroupBy).Error; err != nil {
+		logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
+		return nil, 0, err
+	}
+	return tagGroupBy, len(tagGroupBy), nil
 }

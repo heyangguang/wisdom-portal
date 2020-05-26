@@ -5,6 +5,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"net/http"
 	"wisdom-portal/models"
+	"wisdom-portal/schemas"
 	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/result"
 )
@@ -55,10 +56,23 @@ func getMonitor(c *gin.Context) {
 		return
 	}
 
-	if err := queryMonitor.QueryMonitor(); err != nil {
+	// 分页
+	if _, num, err := queryMonitor.CountNum(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	} else {
+		queryMonitor.Meta = schemas.NewPagination(num)
+	}
+
+	// 计算分页
+	startNum, endNum := queryMonitor.Meta.PaginationStint(queryMonitor.Page, queryMonitor.PageSize)
+	//startNum := (queryMonitor.Page - 1) * schemas.PageSize
+	//endNum := queryMonitor.Page * schemas.PageSize
+
+	if err := queryMonitor.QueryMonitor(startNum, endNum); err != nil {
 		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
 		return
 	}
 
-	c.JSON(http.StatusOK, result.NewMonitorQueryResult(result.SuccessCode, queryMonitor))
+	c.JSON(http.StatusOK, result.NewMonitorQueryResult(result.SuccessCode, queryMonitor, queryMonitor.Meta))
 }

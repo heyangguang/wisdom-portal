@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"time"
 	"wisdom-portal/models"
+	"wisdom-portal/schemas"
 	wisdomPortal "wisdom-portal/wisdom-portal"
 	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/result"
@@ -71,8 +72,8 @@ func register(c *gin.Context) {
 	user.Status = true
 	user.PassWord = wisdomPortal.String2md5(user.PassWord)
 	// 双因子认证TOTP
-	var googleAuth *models.GoogleAuth
-	googleAuth = models.NewGoogleAuth()
+	var googleAuth *schemas.GoogleAuth
+	googleAuth = schemas.NewGoogleAuth()
 	user.Secret = googleAuth.GetSecret()
 	googleAuth.GetQrCode(user.UserName, user.Secret)
 	if err := user.AddUser(user); err != nil {
