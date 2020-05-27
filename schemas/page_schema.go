@@ -10,6 +10,12 @@ import (
 //	PageSize = 4
 //)
 
+// 查询
+type BasePagination struct {
+	Page     int `form:"page" validate:"required" label:"page"`
+	PageSize int `form:"page_size" validate:"required" label:"page_size"`
+}
+
 // 分页器
 type Pagination struct {
 	HasPre   bool   `json:"has_pre"`
@@ -44,6 +50,11 @@ func (pagination *Pagination) PaginationStint(page, pageSize int) (startNum, end
 		pagination.HasPre = true
 	}
 
+	if pagination.NumCount == 0 {
+		pagination.HasNext = false
+		pagination.HasPre = false
+	}
+
 	// (page - 1)*PageSize  page * PageSize
 	// 1
 	// 0*4 1 = 0 4
@@ -53,11 +64,13 @@ func (pagination *Pagination) PaginationStint(page, pageSize int) (startNum, end
 	endNum = page * pageSize
 
 	// 取模
-	result := pagination.NumCount % pageSize
+	//result := pagination.NumCount % pageSize
+	//fmt.Println(result)
 	if allPageNum == page {
 		// 计算数字差
-		diffNum := pageSize - result
-		endNum = (page * pageSize) - diffNum
+		//diffNum := pageSize - result
+		//endNum = (page * pageSize) - diffNum
+		endNum = pagination.NumCount
 	}
 	pagination.ShowPage = fmt.Sprintf("%d/%d", page, allPageNum)
 	return

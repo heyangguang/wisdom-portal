@@ -38,10 +38,8 @@ func addMonitor(c *gin.Context) {
 
 // 查询监控数据，返回N个不同tag不同name的监控状态值
 // 目前N = 10 OR 20 OR 40 OR 60
-// TODO 后面还有监控服务质量检测的方法，返回不同tag不同name的N时间内的监控状态百分比
-// TODO N时间 = 10min OR 20min OR 40min OR 60min
-func getMonitor(c *gin.Context) {
-	var queryMonitor models.QuerySliceMonitor
+func getTcpMonitor(c *gin.Context) {
+	var queryMonitor models.TcpQuerySliceMonitor
 
 	// 绑定表单
 	if err := c.ShouldBindQuery(&queryMonitor); err != nil {
@@ -74,5 +72,45 @@ func getMonitor(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, result.NewMonitorQueryResult(result.SuccessCode, queryMonitor, queryMonitor.Meta))
+	c.JSON(http.StatusOK, result.NewTcpMonitorQueryResult(result.SuccessCode, queryMonitor, queryMonitor.Meta))
+}
+
+// 质量检测
+// 监控服务质量检测的方法，返回不同tag不同name的N时间内的监控状态百分比
+// N时间 = 1min OR 5min OR 10min OR 20min OR 40min OR 60min
+func getTcpMonitorQuality(c *gin.Context) {
+	var queryQualityMonitor models.TcpQueryQualitySliceMonitor
+
+	// 绑定表单
+	if err := c.ShouldBindQuery(&queryQualityMonitor); err != nil {
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+
+	// 验证结构
+	if err := forms.Validate.Struct(queryQualityMonitor); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, GetValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	// 分页
+	if _, num, err := queryQualityMonitor.CountNum(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	} else {
+		queryQualityMonitor.Meta = schemas.NewPagination(num)
+	}
+
+	// 计算分页
+	startNum, endNum := queryQualityMonitor.Meta.PaginationStint(queryQualityMonitor.Page, queryQualityMonitor.PageSize)
+	//startNum := (queryMonitor.Page - 1) * schemas.PageSize
+	//endNum := queryMonitor.Page * schemas.PageSize
+
+	if err := queryQualityMonitor.QueryMonitor(startNum, endNum); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, result.NewTcpMonitorQualityQueryResult(result.SuccessCode, queryQualityMonitor, queryQualityMonitor.Meta))
 }
