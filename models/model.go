@@ -20,7 +20,7 @@ type BaseMigrate struct {
 }
 
 type BaseModel struct {
-	ID        string    `json:"-"`
+	ID        uint      `json:"-"`
 	CreatedAt time.Time `json:"-"`
 	UpdatedAt time.Time `json:"-"`
 }
