@@ -10,12 +10,12 @@ import (
 // SkipperFunc 定义中间件跳过函数
 type SkipperFunc func(*gin.Context) bool
 
-// AllowMethodAndPathPrefixSkipper 检查请求方法和路径是否包含指定的前缀，如果不包含则跳过
+// AllowMethodAndPathPrefixSkipper 检查请求方法和路径是否包含指定的前缀，白名单
 func AllowMethodAndPathPrefixSkipper(prefixes ...string) SkipperFunc {
 	return func(c *gin.Context) bool {
 		path := JoinRouter(c.Request.Method, c.Request.URL.Path)
 		pathLen := len(path)
-		logger.Debug("AllowMethodAndPathPrefixSkipper中间件    "+ path)
+		logger.Debug("AllowMethodAndPathPrefixSkipper中间件    " + path)
 
 		for _, p := range prefixes {
 			if pl := len(p); pathLen >= pl && path[:pl] == p {
@@ -23,6 +23,23 @@ func AllowMethodAndPathPrefixSkipper(prefixes ...string) SkipperFunc {
 			}
 		}
 		return false
+	}
+}
+
+// NoAllowMethodAndPathPrefixSkipper 检查请求方法和路径是否包含指定的前缀，黑名单
+func NoAllowMethodAndPathPrefixSkipper(prefixes ...string) SkipperFunc {
+	return func(c *gin.Context) bool {
+		path := JoinRouter(c.Request.Method, c.Request.URL.Path)
+		pathLen := len(path)
+		logger.Debug("NoAllowMethodAndPathPrefixSkipper中间件    " + path)
+
+		for _, p := range prefixes {
+			if pl := len(p); pathLen >= pl && path[:pl] == p {
+				return false
+			}
+		}
+
+		return true
 	}
 }
 
