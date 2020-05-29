@@ -1,8 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os/exec"
+)
+
+func Sn() []byte {
+	var sn []byte
+	var err error
+	if sn, err = exec.Command("CMD", "/C", "WMIC BIOS GET SERIALNUMBER").CombinedOutput(); err != nil {
+		fmt.Println(err)
+	}
+	return sn
+}
 
 func main() {
-	result := 9 % 4
-	fmt.Println(result)
+	sn := Sn()
+	fmt.Println(sn)
 }

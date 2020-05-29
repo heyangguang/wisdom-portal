@@ -20,6 +20,25 @@ type Alert struct {
 	Level       string    `gorm:"comment:'告警级别'" json:"level"`
 }
 
+type QuerySliceAlert struct {
+	schemas.BasePagination
+	Data []QueryAlert        `form:"-"`
+	Meta *schemas.Pagination `form:"-"`
+}
+
+type QueryAlert struct {
+	ID          uint      `json:"id"`
+	CreatedAt   time.Time `json:"created_at"`
+	Status      string    `json:"status"`
+	Instance    string    `json:"instance"`
+	Description string    `json:"description"`
+	Summary     string    `json:"summary"`
+	StartAt     time.Time `json:"start_at"`
+	EndAt       time.Time `json:"end_at"`
+	AlertName   string    `json:"alert_name"`
+	Level       string    `json:"level"`
+}
+
 // 创建数据不执行数据库操作
 func (a *Alert) CreateAlert(am *schemas.AlertManagerWebHook) error {
 	if err := a.formatAlert(am); err != nil {
@@ -39,6 +58,24 @@ func (a *Alert) UpdateAlert() error {
 		return err
 	}
 	return nil
+}
+
+// 查询数据
+func (a *QuerySliceAlert) QueryAlert(startNum, endNum int) error {
+	var queryAlert []QueryAlert
+	if err := DB.Table("alert").Limit(endNum).Offset(startNum).Find(&queryAlert).Error; err != nil {
+		return err
+	}
+	a.Data = queryAlert
+	return nil
+}
+
+// 获取总数
+func (a *QuerySliceAlert) CountNum() (num int, err error) {
+	if err := DB.Table("alert").Model(QueryAlert{}).Count(&num).Error; err != nil {
+		return 0, err
+	}
+	return num, nil
 }
 
 // 查询数据是否存在

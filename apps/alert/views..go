@@ -65,3 +65,42 @@ func updateAlert(c *gin.Context) {
 
 	c.JSON(http.StatusOK, result.NewSuccessResult(result.SuccessCode))
 }
+
+// 查询告警状态
+func queryAlert(c *gin.Context) {
+	var querySliceAlert models.QuerySliceAlert
+
+	// 绑定表单
+	if err := c.ShouldBindQuery(&querySliceAlert); err != nil {
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+
+	// 验证结构
+	if err := forms.Validate.Struct(querySliceAlert); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, forms.BaseFormValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	// 分页
+	if num, err := querySliceAlert.CountNum(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	} else {
+		logger.Debug(fmt.Sprintf("count_num: %d", num))
+		querySliceAlert.Meta = schemas.NewPagination(num)
+	}
+
+	// 计算分页
+	startNum, endNum := querySliceAlert.Meta.PaginationStint(querySliceAlert.Page, querySliceAlert.PageSize)
+	logger.Debug(fmt.Sprintf("startNum: %d", startNum))
+	logger.Debug(fmt.Sprintf("endNum: %d", endNum))
+
+	if err := querySliceAlert.QueryAlert(startNum, endNum); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, result.NewAlertQueryResult(result.SuccessCode, querySliceAlert, querySliceAlert.Meta))
+}
