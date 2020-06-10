@@ -13,7 +13,7 @@ import (
 	"wisdom-portal/models"
 	"wisdom-portal/wisdom-portal"
 	"wisdom-portal/wisdom-portal/clear_static"
-	forms "wisdom-portal/wisdom-portal/forms"
+	"wisdom-portal/wisdom-portal/forms"
 	"wisdom-portal/wisdom-portal/logger"
 	v1 "wisdom-portal/wisdom-portal/routers/api/v1"
 )
