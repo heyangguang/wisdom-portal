@@ -67,12 +67,29 @@ swag init
     - [X] 用户组接口文档
 - [X] 服务监控功能
     - [X] 创建监控服务数据接口(TCP)
+        - [X] Kubernetes
+        - [X] Kafka
+        - [X] MySQL
+        - [X] ElasticSearch
     - [X] 查询监控服务状态接口(TCP)
     - [X] 查询监控服务质量接口(TCP)
+    - [ ] AccessLog服务监控
 - [X] 接入Prometheus告警功能(统一管理告警为后面工单做准备)
     - [X] 创建告警数据接口
     - [X] 查询告警数据接口
     - [x] 更新告警状态接口
+    - [X] 查询告警等级数量接口
+- [ ] 中间表功能
+    - [X] 创建中间表数据接口
+    - [ ] 查询中间表数据接口
+- [ ] Dashboard功能
+    - [ ] SLA数据接口
+    - [ ] Turn around time数据接口
+    - [ ] Error code数据接口
+    - [ ] kubernetes集群状态数据接口
+    - [ ] kafka集群状态数据接口
+    - [ ] elasticSearch集群状态数据接口
+    - [ ] accessLog状态数据接口
 - [X] 监控采集Client端
 - [X] 系统日志模块
 - [X] 统一返回码规范
