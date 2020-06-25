@@ -104,3 +104,14 @@ func queryAlert(c *gin.Context) {
 
 	c.JSON(http.StatusOK, result.NewAlertQueryResult(result.SuccessCode, querySliceAlert, querySliceAlert.Meta))
 }
+
+// 查询告警条数
+func queryCountAlert(c *gin.Context) {
+	var queryCountAlert models.QueryCountAlert
+	if err := queryCountAlert.LevelCount(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	}
+	fmt.Println(queryCountAlert.LevelOne)
+	c.JSON(http.StatusOK, result.NewAlertQueryCountResult(result.SuccessCode, queryCountAlert))
+}

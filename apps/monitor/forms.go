@@ -3,6 +3,7 @@ package monitor
 import (
 	"github.com/go-playground/validator/v10"
 	"strings"
+	"time"
 	"wisdom-portal/wisdom-portal/forms"
 )
 
@@ -10,6 +11,7 @@ func CustomValidations() {
 	_ = forms.Validate.RegisterValidation("ValidationNumFormat", ValidationNumFormat)
 	_ = forms.Validate.RegisterValidation("ValidationAppTagFormat", ValidationAppTagFormat)
 	_ = forms.Validate.RegisterValidation("ValidationIntervalFormat", ValidationIntervalFormat)
+	_ = forms.Validate.RegisterValidation("ValidationTimeFormat", ValidationTimeFormat)
 }
 
 // 验证Num
@@ -22,10 +24,20 @@ func ValidationNumFormat(fl validator.FieldLevel) bool {
 
 // 验证Tag
 func ValidationAppTagFormat(fl validator.FieldLevel) bool {
-	if fl.Field().String() == "MySQL" || fl.Field().String() == "ElasticSearch" {
+	if fl.Field().String() == "MySQL" || fl.Field().String() == "ElasticSearch" ||
+		fl.Field().String() == "Kubernetes" || fl.Field().String() == "Kafka" {
 		return true
 	}
 	return false
+}
+
+// 验证Time字段
+func ValidationTimeFormat(fl validator.FieldLevel) bool {
+	//fmt.Printf(fl.Field().String())
+	if _, err := time.Parse("2006-01-02 15:04:05", fl.Field().String()); err != nil {
+		return false
+	}
+	return true
 }
 
 // 修改验证字段错误返回值方法
@@ -47,18 +59,20 @@ func GetValidationError(err validator.ValidationErrors) []map[string]string {
 				value["interval"] = "Please enter the correct interval"
 			}
 		}
+		if errValue, ok := value["time"]; ok {
+			if strings.Contains(errValue, "ValidationTimeFormat") {
+				value["time"] = "Please enter the correct time"
+			}
+		}
 	}
 	return sliceErrs
 }
 
 // 验证质量检测平均时间
 func ValidationIntervalFormat(fl validator.FieldLevel) bool {
-	if fl.Field().String() == "1" ||
-		fl.Field().String() == "5" ||
-		fl.Field().String() == "10" ||
-		fl.Field().String() == "20" ||
-		fl.Field().String() == "40" ||
-		fl.Field().String() == "60" {
+	if fl.Field().String() == "1" || fl.Field().String() == "5" ||
+		fl.Field().String() == "10" || fl.Field().String() == "20" ||
+		fl.Field().String() == "40" || fl.Field().String() == "60" {
 		return true
 	}
 	return false

@@ -36,6 +36,7 @@ func InitV1() *gin.Engine {
 			middlewares.JoinRouter("GET", "/api/v1/create-qr-code"),
 			middlewares.JoinRouter("POST", "/api/v1/alert"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/tcp"),
+			middlewares.JoinRouter("POST", "/api/v1/monitor/intermediate"),
 		),
 	))
 	// 权限验证
@@ -48,6 +49,7 @@ func InitV1() *gin.Engine {
 			middlewares.JoinRouter("GET", "/api/v1/create-qr-code"),
 			middlewares.JoinRouter("POST", "/api/v1/alert"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/tcp"),
+			middlewares.JoinRouter("POST", "/api/v1/monitor/intermediate"),
 		),
 	))
 	// 客户端验证
@@ -56,6 +58,7 @@ func InitV1() *gin.Engine {
 		middlewares.NoAllowMethodAndPathPrefixSkipper(
 			middlewares.JoinRouter("POST", "/api/v1/alert"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/tcp"),
+			middlewares.JoinRouter("POST", "/api/v1/monitor/intermediate"),
 		),
 	))
 	for _, opt := range options {

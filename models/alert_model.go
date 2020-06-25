@@ -26,6 +26,17 @@ type QuerySliceAlert struct {
 	Meta *schemas.Pagination `form:"-"`
 }
 
+type QueryCountAlert struct {
+	LevelOne   CountStatusAlert `json:"level_one"`
+	LevelTwo   CountStatusAlert `json:"level_two"`
+	LevelThree CountStatusAlert `json:"level_Three"`
+}
+
+type CountStatusAlert struct {
+	Firing   int `json:"firing"`
+	Resolved int `json:"resolved"`
+}
+
 type QueryAlert struct {
 	ID          uint      `json:"id"`
 	CreatedAt   time.Time `json:"created_at"`
@@ -37,6 +48,12 @@ type QueryAlert struct {
 	EndAt       time.Time `json:"end_at"`
 	AlertName   string    `json:"alert_name"`
 	Level       string    `json:"level"`
+}
+
+type LevelCount struct {
+	Level  string
+	Total  int
+	Status string
 }
 
 // 创建数据不执行数据库操作
@@ -134,4 +151,37 @@ func (a *Alert) formatAt(t string) time.Time {
 	h, _ := time.ParseDuration("1h")
 	h8 := at.Add(h * 8)
 	return h8
+}
+
+// 查询不同等级告警总数
+func (a *QueryCountAlert) LevelCount() (err error) {
+	levelCount := make([]LevelCount, 3, 3)
+	if err := DB.Debug().Table("alert").Model(QueryAlert{}).
+		Select("level, status, count(*) as total").
+		Group("level,status").Scan(&levelCount).Error; err != nil {
+		return err
+	}
+	for _, value := range levelCount {
+		switch value.Level {
+		case "1":
+			if value.Status == "firing" {
+				a.LevelOne.Firing = value.Total
+			} else {
+				a.LevelOne.Resolved = value.Total
+			}
+		case "2":
+			if value.Status == "firing" {
+				a.LevelTwo.Firing = value.Total
+			} else {
+				a.LevelTwo.Resolved = value.Total
+			}
+		case "3":
+			if value.Status == "firing" {
+				a.LevelThree.Firing = value.Total
+			} else {
+				a.LevelThree.Resolved = value.Total
+			}
+		}
+	}
+	return nil
 }

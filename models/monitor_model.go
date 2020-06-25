@@ -17,6 +17,15 @@ type Monitor struct {
 	Tag    string    `gorm:"not null;comment:'分类'" json:"tag"`
 }
 
+type MonitorIntermediate struct {
+	BaseModel
+	Status   bool   `json:"status" label:"status"`
+	Tag      string `json:"tag" validate:"required" label:"tag"`
+	Count    int    `json:"count" validate:"required" label:"count"`
+	Time     string `json:"time" validate:"required,ValidationTimeFormat" label:"time"`
+	Describe string `json:"describe" validate:"required" label:"describe"`
+}
+
 // 状态监控
 type TcpQuerySliceMonitor struct {
 	schemas.BasePagination
@@ -73,6 +82,25 @@ func (m *Monitor) CreateMonitor() error {
 			logger.Error("CreateMonitor monitor_elasticsearch 插入数据失败, err:" + err.Error())
 			return err
 		}
+	case "Kafka":
+		if err := DB.Table("monitor_kafka").Create(&m).Error; err != nil {
+			logger.Error("CreateMonitor monitor_kafka 插入数据失败, err:" + err.Error())
+			return err
+		}
+	case "Kubernetes":
+		if err := DB.Table("monitor_kubernetes").Create(&m).Error; err != nil {
+			logger.Error("CreateMonitor monitor_kubernetes 插入数据失败, err:" + err.Error())
+			return err
+		}
+	}
+	return nil
+}
+
+// 插入中间表监控数据
+func (m *MonitorIntermediate) CreateMonitor() error {
+	if err := DB.Table("monitor_intermediate").Create(&m).Error; err != nil {
+		logger.Error("CreateMonitor monitor_intermediate 插入数据失败, err:" + err.Error())
+		return err
 	}
 	return nil
 }

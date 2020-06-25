@@ -10,7 +10,7 @@ import (
 	"wisdom-portal/wisdom-portal/result"
 )
 
-// 插入监控数据方法
+// 插入Client监控数据方法
 func addMonitor(c *gin.Context) {
 	var monitor models.Monitor
 
@@ -28,6 +28,32 @@ func addMonitor(c *gin.Context) {
 	}
 
 	if err := monitor.CreateMonitor(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusCreated, result.NewSuccessResult(result.SuccessCode))
+	return
+}
+
+// 插入中间表监控数据
+func addIntermediateMonitor(c *gin.Context) {
+	var monitorIntermediate models.MonitorIntermediate
+
+	// 绑定表单
+	if err := c.ShouldBind(&monitorIntermediate); err != nil {
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+
+	// 验证结构
+	if err := forms.Validate.Struct(monitorIntermediate); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, GetValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	if err := monitorIntermediate.CreateMonitor(); err != nil {
 		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
 		return
 	}
