@@ -68,7 +68,9 @@ func (t *MonitorKubernetesMigrate) TableName() string {
 // 监控中间表 intermediate
 type MonitorIntermediateMigrate struct {
 	models.BaseMigrate
-	Status   bool      `gorm:"not null;comment:'状态'" json:"status"`
+	Status bool   `gorm:"not null;comment:'状态'" json:"status"`
+	Name   string `gorm:"not null;comment:'名字'" json:"name"`
+	// tag用来区分是上传upload 还是中间表程序core
 	Tag      string    `gorm:"not null;comment:'分类'" json:"tag"`
 	Count    int       `gorm:"not null;comment:'条数'" json:"count"`
 	Time     time.Time `gorm:"not null;comment:'时间'" json:"time"`
