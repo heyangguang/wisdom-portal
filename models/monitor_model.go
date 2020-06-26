@@ -20,10 +20,19 @@ type Monitor struct {
 type MonitorIntermediate struct {
 	BaseModel
 	Status   bool   `json:"status" label:"status"`
+	Name     string `json:"name" validate:"required" label:"name"`
 	Tag      string `json:"tag" validate:"required" label:"tag"`
 	Count    int    `json:"count" validate:"required" label:"count"`
 	Time     string `json:"time" validate:"required,ValidationTimeFormat" label:"time"`
 	Describe string `json:"describe" validate:"required" label:"describe"`
+}
+
+// 中间表监控数据查询
+type QueryIntermediateSliceMonitor struct {
+	schemas.BasePagination
+	Num  int                                `form:"num" validate:"required,ValidationNumFormat" label:"num"`
+	Data []map[string][]MonitorIntermediate `form:"-"`
+	Meta *schemas.Pagination                `form:"-"`
 }
 
 // 状态监控
@@ -121,6 +130,14 @@ func (q *TcpQueryQualitySliceMonitor) QueryMonitor(startNum, endNum int) error {
 	return nil
 }
 
+// 查询中间表监控数据
+func (q *QueryIntermediateSliceMonitor) QueryMonitor(startNum, endNum int) error {
+	if err := q.selectQueryApp(startNum, endNum); err != nil {
+		return err
+	}
+	return nil
+}
+
 // 选择不同的APP查询
 func (q *TcpQuerySliceMonitor) selectQueryApp(startNum, endNum int) error {
 	tagGroupBy, _, err := q.CountNum()
@@ -161,6 +178,36 @@ func (q *TcpQueryQualitySliceMonitor) selectQueryApp(startNum, endNum int) error
 		q.Data = append(q.Data, queryQualityMonitorObj)
 	}
 	return nil
+}
+
+// 中间表选择APP查询 这里的APP就是Name
+func (q *QueryIntermediateSliceMonitor) selectQueryApp(startNum, endNum int) error {
+	tagGroupBy, _, err := q.CountNum()
+	if err != nil {
+		logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
+		return err
+	}
+	for _, tagName := range tagGroupBy[startNum:endNum] {
+		var monitorIntermediate []MonitorIntermediate
+		if err := DB.Table("monitor_intermediate").Where("tag = ? and name = ?", "i", tagName.Name).Order("time desc").Limit(q.Num).Find(&monitorIntermediate).Error; err != nil {
+			logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
+			return err
+		}
+		logger.Debug(fmt.Sprintf("中间表查询数据：%v", monitorIntermediate))
+		q.Data = append(q.Data, map[string][]MonitorIntermediate{tagName.Name: monitorIntermediate})
+	}
+	return nil
+}
+
+// 中间表数据总数
+// i代表中间表
+// u代表客户上传
+func (q *QueryIntermediateSliceMonitor) CountNum() (tagGroupBy []TagGroupBy, num int, err error) {
+	if err := DB.Table("monitor_intermediate").Select("name").Where("tag = ?", "i").Group("name").Scan(&tagGroupBy).Error; err != nil {
+		logger.Error("QueryIntermediateSliceMonitor CountNum 查询数据失败, err:" + err.Error())
+		return nil, 0, err
+	}
+	return tagGroupBy, len(tagGroupBy), nil
 }
 
 // 数据总数

@@ -37,6 +37,7 @@ func addMonitor(c *gin.Context) {
 }
 
 // 插入中间表监控数据
+// 插入客户上传状态监控数据 tag 字段区分
 func addIntermediateMonitor(c *gin.Context) {
 	var monitorIntermediate models.MonitorIntermediate
 
@@ -60,6 +61,43 @@ func addIntermediateMonitor(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, result.NewSuccessResult(result.SuccessCode))
 	return
+}
+
+// 查询中间表监控数据
+// 目前N = 10 OR 20 OR 40 OR 60
+func queryIntermediateMonitor(c *gin.Context) {
+	var queryInMonitor models.QueryIntermediateSliceMonitor
+
+	// 绑定表单
+	if err := c.ShouldBindQuery(&queryInMonitor); err != nil {
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+
+	// 验证结构
+	if err := forms.Validate.Struct(queryInMonitor); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, GetValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	// 分页
+	if _, num, err := queryInMonitor.CountNum(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	} else {
+		queryInMonitor.Meta = schemas.NewPagination(num)
+	}
+
+	// 计算分页
+	startNum, endNum := queryInMonitor.Meta.PaginationStint(queryInMonitor.Page, queryInMonitor.PageSize)
+
+	if err := queryInMonitor.QueryMonitor(startNum, endNum); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, result.NewMonitorQueryInResult(result.SuccessCode, queryInMonitor, queryInMonitor.Meta))
 }
 
 // 查询监控数据，返回N个不同tag不同name的监控状态值
