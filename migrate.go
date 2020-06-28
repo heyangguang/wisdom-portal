@@ -19,7 +19,8 @@ func main() {
 	//初始化数据库
 	db.Debug().AutoMigrate(&migrate.UserMigrate{}, &migrate.UserGroupMigrate{}, &migrate.RuleMigrate{}, &migrate.ObjActMigrate{},
 		&migrate.CasbinRuleMigrate{}, &migrate.MonitorElasticSearchMigrate{}, &migrate.MonitorMySQLMigrate{}, &migrate.AlertMigrate{},
-		&migrate.MonitorIntermediateMigrate{}, &migrate.MonitorKafkaMigrate{}, &migrate.MonitorKubernetesMigrate{})
+		&migrate.MonitorIntermediateMigrate{}, &migrate.MonitorKafkaMigrate{}, &migrate.MonitorKubernetesMigrate{},
+		&migrate.MonitorAccessLogMigrate{})
 
 	//objActSlice := make([]map[string]string, 0)
 	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/perm", "actName": "GET", "tag": "perm"})

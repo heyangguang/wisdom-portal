@@ -17,6 +17,18 @@ type Monitor struct {
 	Tag    string    `gorm:"not null;comment:'分类'" json:"tag"`
 }
 
+type MonitorAccessLog struct {
+	BaseModel
+	Site string `json:"site" validate:"required" label:"site"`
+	Tag  string `json:"tag" validate:"required" label:"tag"`
+	Time string `json:"time" validate:"required,ValidationTimeFormat" label:"time"`
+}
+
+// AccessLog查询
+type QueryAccessLogMonitor struct {
+	Data []MonitorAccessLog `form:"-"`
+}
+
 type MonitorIntermediate struct {
 	BaseModel
 	Status   bool   `json:"status" label:"status"`
@@ -115,6 +127,23 @@ func (m *MonitorIntermediate) CreateMonitor() error {
 	return nil
 }
 
+// 插入AccessLog监控时间执行点数据
+func (m *MonitorAccessLog) CreateMonitor() error {
+	if err := DB.Table("monitor_accesslog").Create(&m).Error; err != nil {
+		logger.Error("CreateMonitor monitor_accesslog 插入数据失败, err:" + err.Error())
+		return err
+	}
+	return nil
+}
+
+// 查询AccessLog执行点时间
+func (q *QueryAccessLogMonitor) QueryMonitor() error {
+	if err := q.selectQuery(); err != nil {
+		return err
+	}
+	return nil
+}
+
 // 查询服务监控状态
 func (q *TcpQuerySliceMonitor) QueryMonitor(startNum, endNum int) error {
 	if err := q.selectQueryApp(startNum, endNum); err != nil {
@@ -133,7 +162,7 @@ func (q *TcpQueryQualitySliceMonitor) QueryMonitor(startNum, endNum int) error {
 
 // 查询中间表监控数据
 func (q *QueryIntermediateSliceMonitor) QueryMonitor(startNum, endNum int) error {
-	if err := q.selectQueryApp(startNum, endNum); err != nil {
+	if err := q.selectQueryTag(startNum, endNum); err != nil {
 		return err
 	}
 	return nil
@@ -182,21 +211,33 @@ func (q *TcpQueryQualitySliceMonitor) selectQueryApp(startNum, endNum int) error
 }
 
 // 中间表选择APP查询 这里的APP就是Name
-func (q *QueryIntermediateSliceMonitor) selectQueryApp(startNum, endNum int) error {
+// Tag区分是中间表 还是 客户上传报告状态
+func (q *QueryIntermediateSliceMonitor) selectQueryTag(startNum, endNum int) error {
 	tagGroupBy, _, err := q.CountNum()
 	if err != nil {
-		logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
+		logger.Error("QueryIntermediateSliceMonitor selectQueryApp 查询数据失败, err:" + err.Error())
 		return err
 	}
 	for _, tagName := range tagGroupBy[startNum:endNum] {
 		var monitorIntermediate []MonitorIntermediate
 		if err := DB.Table("monitor_intermediate").Where("tag = ? and name = ?", q.Tag, tagName.Name).Order("time desc").Limit(q.Num).Find(&monitorIntermediate).Error; err != nil {
-			logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
+			logger.Error("QueryIntermediateSliceMonitor selectQueryApp 查询数据失败, err:" + err.Error())
 			return err
 		}
 		logger.Debug(fmt.Sprintf("中间表查询数据：%v", monitorIntermediate))
 		q.Data = append(q.Data, map[string][]MonitorIntermediate{tagName.Name: monitorIntermediate})
 	}
+	return nil
+}
+
+// AccessLog查询
+func (q *QueryAccessLogMonitor) selectQuery() error {
+	sql := "SELECT time, site, tag FROM monitor_accesslog WHERE (id IN (SELECT MAX(id) FROM monitor_accesslog GROUP BY site)) AND (tag = ?)"
+	if err := DB.Raw(sql, "exe_time").Scan(&q.Data).Error; err != nil {
+		logger.Error("QueryAccessLogMonitor selectQuery 查询数据失败, err:" + err.Error())
+		return err
+	}
+	logger.Debug(fmt.Sprintf("AccessLog查询数据：%v", q.Data))
 	return nil
 }
 

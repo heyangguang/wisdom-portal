@@ -669,3 +669,730 @@
 {"level":"DEBUG","time":"2020-06-28T15:21:23.559+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
 {"level":"DEBUG","time":"2020-06-28T15:21:23.559+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
 {"level":"INFO","time":"2020-06-28T15:21:23.562+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.015054042,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.532+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.532+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.533+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.539+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.541+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.541+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.541+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:22:23.541+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:22:23.543+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.010250447,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.561+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.561+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.561+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.567+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.569+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.569+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.569+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:23:23.569+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:23:23.571+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009994663,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.569+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.569+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.570+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.577+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.580+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.580+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.580+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:24:23.580+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:24:23.582+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.013051012,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.491+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.491+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.491+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.497+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.499+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.499+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.499+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:25:23.499+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:25:23.502+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.010946223,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.494+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.500+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.502+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.502+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.502+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:26:23.502+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:26:23.504+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009385621,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.494+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.500+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.502+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.502+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.502+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:27:23.502+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:27:23.504+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009944964,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.494+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.502+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.504+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.504+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.504+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:28:23.504+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:28:23.506+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.011731857,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.494+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.494+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.501+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.503+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.503+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.503+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:29:23.503+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:29:23.504+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.010415497,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.496+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.502+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.502+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.508+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.510+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.510+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.510+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:30:23.510+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:30:23.512+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.015359858,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.226+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.226+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.227+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.232+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.234+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.234+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.234+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:31:24.234+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:31:24.236+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009430691,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.227+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.227+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.227+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.233+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.235+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.235+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.235+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:32:24.235+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:32:24.237+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009872207,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.227+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.227+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.227+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.233+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.235+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.235+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.236+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:33:24.236+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:33:24.237+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.010437482,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.233+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.233+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.233+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.240+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.241+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.241+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.241+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:34:24.241+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:34:24.243+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009811223,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.234+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.234+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.234+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.241+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.242+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.242+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.242+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:35:24.242+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:35:24.244+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.01052586,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.236+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.236+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.236+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.241+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.243+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.243+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.243+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:36:24.243+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:36:24.244+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008854665,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.236+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.237+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.237+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.243+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.245+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.245+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.245+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:37:24.245+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:37:24.247+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.010888409,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.236+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.236+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.237+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.243+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.244+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.244+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.244+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:38:24.244+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:38:24.246+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009394261,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.512+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.512+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.512+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.518+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.519+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.519+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.519+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:39:23.519+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:39:23.521+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008993356,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.512+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.513+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.513+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.519+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.520+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.520+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.520+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:40:23.520+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:40:23.522+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009836566,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.511+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.511+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.511+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.518+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.519+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.519+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.519+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:41:23.519+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:41:23.521+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009867004,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:41:51.947+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:41:51.952+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:41:51.953+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:41:51.957+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:41:51.966+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T15:41:51.966+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.019118408,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.152+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.152+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.152+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.157+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.159+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.159+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.159+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:41:52.159+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:41:52.160+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008906812,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.611+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.614+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.614+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.620+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.621+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.621+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.622+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:53:08.622+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:53:08.623+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.011911528,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.596+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.598+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.598+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.604+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.606+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.606+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.606+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:54:20.606+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:54:20.607+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.011179841,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.851+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.857+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.857+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.863+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.865+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.865+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.865+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:56:01.865+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:56:01.867+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.0161009,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.282+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.282+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.282+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.287+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.295+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T15:56:02.295+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.013701416,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.485+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.485+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.485+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.491+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.492+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.492+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.492+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:56:02.492+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:56:02.495+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009858853,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.492+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.497+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.498+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.503+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.509+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T15:59:39.509+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.017669808,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.669+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.670+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.670+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.674+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.676+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.676+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.676+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T15:59:39.676+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T15:59:39.677+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.007903609,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.293+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.298+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.299+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.304+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.306+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.306+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.306+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:01:10.306+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:01:10.307+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.014584029,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.106+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.106+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.106+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.111+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.119+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:01:14.119+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.013291922,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.316+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.316+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.316+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.321+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.323+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.323+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.323+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:01:14.323+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:01:14.324+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008632906,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.195+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.196+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.196+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.202+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.209+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:02:34.209+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.013804597,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.374+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.374+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.375+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.380+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.381+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.381+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.381+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:02:34.381+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:02:34.383+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008860401,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.007+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.013+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.013+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.021+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.029+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:04:09.029+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.021918431,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.196+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.196+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.196+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.202+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.203+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.203+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.204+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:04:09.204+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:04:09.205+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009669612,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.573+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.573+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.574+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.579+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.586+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:04:32.586+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.013080689,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.754+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.755+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.755+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.761+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.763+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.763+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.763+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:04:32.763+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:04:32.765+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.010229763,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.514+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.514+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.514+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.519+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.530+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:04:51.530+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.016423946,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.714+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.714+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.714+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.720+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.721+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.721+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.722+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:04:51.722+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:04:51.723+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.00950519,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.127+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.133+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.133+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.140+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.148+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:05:40.149+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.021709737,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.303+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.303+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.303+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.307+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.309+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.309+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.309+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:05:40.309+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:05:40.311+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008074896,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.795+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.796+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.796+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.802+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.811+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:06:04.811+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.015562784,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.976+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.976+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.976+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.981+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.983+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.983+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.983+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:06:04.983+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:06:04.985+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008798751,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.141+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.141+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.141+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.147+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.155+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:06:19.155+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.014112908,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.318+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.319+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.319+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.324+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.326+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.326+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.326+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:06:19.326+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:06:19.327+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008745644,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.641+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.641+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.641+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.647+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.648+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.648+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.648+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:11:28.648+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:11:28.650+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009255749,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.529+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.529+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.529+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.535+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.544+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:11:30.544+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.01467788,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.705+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.706+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.706+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.711+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.712+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.712+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.713+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:11:30.713+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:11:30.714+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008859639,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.757+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.757+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.757+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.763+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.765+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.765+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.765+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:16:53.765+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:16:53.766+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009394187,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.684+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.684+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.684+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.691+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.699+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:16:55.699+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.014943761,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.859+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.859+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.859+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.866+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.868+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.868+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.868+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:16:55.868+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:16:55.870+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.011459216,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.010+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.010+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.010+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.018+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.027+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:18:04.027+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.017179143,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.223+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.223+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.223+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.229+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.231+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.231+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.231+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:18:04.231+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:18:04.232+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009473102,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.958+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.958+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.959+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.963+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.965+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.965+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.965+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:21:08.965+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:21:08.967+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008356857,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.527+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.533+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.533+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.538+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.547+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:25:16.547+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.020179894,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.720+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.720+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.720+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.726+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.727+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.727+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.727+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:25:16.727+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:25:16.729+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.00880457,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.890+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.893+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.893+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.899+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.900+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.900+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.900+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:28:15.901+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:28:15.902+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.012393939,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:30:52.241+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:30:52.241+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:30:52.241+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T16:30:52.257+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":201,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.016772038,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.126+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.127+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.127+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.134+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.142+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.142+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.142+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:31:54.142+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:31:54.144+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.017768426,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.076+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.076+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.076+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.082+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.083+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.083+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.083+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:32:10.083+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:32:10.085+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009174247,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.838+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.838+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.838+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.847+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.849+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.849+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.849+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:32:50.849+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:32:50.851+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.013934171,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:35:14.708+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:35:14.715+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:35:14.715+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T16:35:14.737+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":201,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.029073515,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:36:19.794+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:36:19.800+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:36:19.800+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T16:36:19.808+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":201,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.014406564,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.238+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.240+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.240+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.248+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.251+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.252+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.252+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:43:00.252+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:43:00.253+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.015598629,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.176+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.176+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.177+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.182+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.194+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:43:02.194+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.017547671,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.387+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.387+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.387+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.394+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.396+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.396+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.396+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:43:02.396+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:43:02.398+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.011385153,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"INFO","time":"2020-06-28T16:43:08.455+0800","caller":"gin/context.go:161","msg":"/api/v1/alert/108","status":200,"method":"OPTIONS","path":"/api/v1/alert/108","query":"","ip":"192.168.31.100","errors":"","cost":0.000037454,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:43:08.460+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/108"}
+{"level":"DEBUG","time":"2020-06-28T16:43:08.460+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:43:08.460+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/108"}
+{"level":"DEBUG","time":"2020-06-28T16:43:08.466+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/108"}
+{"level":"INFO","time":"2020-06-28T16:43:08.482+0800","caller":"gin/context.go:161","msg":"/api/v1/alert/108","status":200,"method":"PUT","path":"/api/v1/alert/108","query":"","ip":"192.168.31.100","errors":"","cost":0.022047628,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.660+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.667+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.667+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.673+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.681+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T16:47:03.681+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.020552452,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.876+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.876+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.876+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.882+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.884+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.884+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.884+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T16:47:03.884+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T16:47:03.887+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.011161908,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:52:41.086+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:52:41.088+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:52:41.088+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T16:52:41.097+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":201,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.011213301,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T16:52:46.329+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:52:46.329+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T16:52:46.329+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T16:52:46.338+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":201,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.008826832,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:02:46.753+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-06-28T17:02:46.759+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-06-28T17:02:46.759+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-06-28T17:02:46.766+0800","caller":"schemas/otp_schema.go:98","msg":"672989 347043 <nil>"}
+{"level":"INFO","time":"2020-06-28T17:02:46.766+0800","caller":"gin/context.go:161","msg":"/api/v1/login","status":401,"method":"POST","path":"/api/v1/login","query":"","ip":"192.168.31.100","errors":"","cost":0.012939018,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.020+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.020+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.020+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/login"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.025+0800","caller":"schemas/otp_schema.go:98","msg":"095488 095488 <nil>"}
+{"level":"INFO","time":"2020-06-28T17:03:14.025+0800","caller":"gin/context.go:161","msg":"/api/v1/login","status":200,"method":"POST","path":"/api/v1/login","query":"","ip":"192.168.31.100","errors":"","cost":0.005660333,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.073+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.073+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.073+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.086+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:03:14.095+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T17:03:14.095+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.021926953,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.308+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.308+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.309+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.314+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.316+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.316+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.316+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T17:03:17.316+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T17:03:17.318+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009377325,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"INFO","time":"2020-06-28T17:03:33.049+0800","caller":"gin/context.go:161","msg":"/api/v1/alert/109","status":200,"method":"OPTIONS","path":"/api/v1/alert/109","query":"","ip":"192.168.31.100","errors":"","cost":0.000038467,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:03:33.091+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/109"}
+{"level":"DEBUG","time":"2020-06-28T17:03:33.091+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:03:33.091+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/109"}
+{"level":"DEBUG","time":"2020-06-28T17:03:33.098+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/109"}
+{"level":"INFO","time":"2020-06-28T17:03:33.110+0800","caller":"gin/context.go:161","msg":"/api/v1/alert/109","status":200,"method":"PUT","path":"/api/v1/alert/109","query":"","ip":"192.168.31.100","errors":"","cost":0.01907703,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.656+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.656+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.656+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.662+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.670+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T17:03:46.670+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.014440715,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.847+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.847+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.847+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.852+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.854+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.854+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.854+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T17:03:46.854+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T17:03:46.856+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009778636,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:04:39.437+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:04:39.437+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:04:39.437+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T17:04:39.444+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":201,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.007009975,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.435+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.435+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.435+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.443+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.444+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.444+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.444+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T17:05:04.444+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T17:05:04.446+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.011686782,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.322+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.322+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.322+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.328+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.335+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T17:05:06.335+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.013569648,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.505+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.505+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.505+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.511+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.512+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.512+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.512+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T17:05:06.512+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T17:05:06.514+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.009202644,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"INFO","time":"2020-06-28T17:05:12.779+0800","caller":"gin/context.go:161","msg":"/api/v1/alert/110","status":200,"method":"OPTIONS","path":"/api/v1/alert/110","query":"","ip":"192.168.31.100","errors":"","cost":0.000025072,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.783+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/110"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.783+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.783+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/110"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.790+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    PUT/api/v1/alert/110"}
+{"level":"INFO","time":"2020-06-28T17:05:12.800+0800","caller":"gin/context.go:161","msg":"/api/v1/alert/110","status":200,"method":"PUT","path":"/api/v1/alert/110","query":"","ip":"192.168.31.100","errors":"","cost":0.0173562,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.850+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.850+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.850+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.855+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.857+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.857+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.857+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T17:05:12.857+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T17:05:12.858+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.008225086,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"INFO","time":"2020-06-28T17:15:04.745+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"OPTIONS","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.000164037,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:15:04.790+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:15:04.790+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:15:04.791+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:15:04.801+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/pub/current/user"}
+{"level":"DEBUG","time":"2020-06-28T17:15:04.809+0800","caller":"models/user_model.go:59","msg":"GetPubCurrentUser: &{adev adev 35 [{/api/v1/pub/current/user *} {* *}]}"}
+{"level":"INFO","time":"2020-06-28T17:15:04.810+0800","caller":"gin/context.go:161","msg":"/api/v1/pub/current/user","status":200,"method":"GET","path":"/api/v1/pub/current/user","query":"","ip":"192.168.31.100","errors":"","cost":0.019240081,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"INFO","time":"2020-06-28T17:15:05.041+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"OPTIONS","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.000038823,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.046+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.046+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.046+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.051+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.061+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.061+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.061+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T17:15:05.061+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T17:15:05.062+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.016049856,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:18:17.792+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert/count"}
+{"level":"DEBUG","time":"2020-06-28T17:18:17.792+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:18:17.792+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert/count"}
+{"level":"DEBUG","time":"2020-06-28T17:18:17.800+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert/count"}
+{"level":"INFO","time":"2020-06-28T17:18:17.805+0800","caller":"gin/context.go:161","msg":"/api/v1/alert/count","status":200,"method":"GET","path":"/api/v1/alert/count","query":"","ip":"127.0.0.1","errors":"","cost":0.012970705,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:18:25.716+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:18:25.717+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:18:25.717+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:18:25.727+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:18:25.738+0800","caller":"models/monitor_model.go:240","msg":"AccessLog查询数据：[{{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TJ  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} LF  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TS  2020-06-28T08:25:00+08:00}]"}
+{"level":"INFO","time":"2020-06-28T17:18:25.738+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":200,"method":"GET","path":"/api/v1/monitor/access","query":"","ip":"127.0.0.1","errors":"","cost":0.021904121,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:18:46.889+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:18:46.889+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:18:46.889+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:18:46.896+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:18:46.901+0800","caller":"models/monitor_model.go:240","msg":"AccessLog查询数据：[{{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TJ  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} LF  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TS  2020-06-28T08:25:00+08:00}]"}
+{"level":"INFO","time":"2020-06-28T17:18:46.901+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":200,"method":"GET","path":"/api/v1/monitor/access","query":"","ip":"127.0.0.1","errors":"","cost":0.012322729,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:22:19.395+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:22:19.396+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:22:19.396+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:22:19.411+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:22:19.419+0800","caller":"models/monitor_model.go:240","msg":"AccessLog查询数据：[{{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TJ  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} LF  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TS  2020-06-28T08:25:00+08:00}]"}
+{"level":"INFO","time":"2020-06-28T17:22:19.421+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":200,"method":"GET","path":"/api/v1/monitor/access","query":"","ip":"127.0.0.1","errors":"","cost":0.025405914,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:23:47.136+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:23:47.137+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:23:47.137+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:23:47.148+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:23:47.156+0800","caller":"models/monitor_model.go:240","msg":"AccessLog查询数据：[{{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TJ  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} LF  2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TS  2020-06-28T08:25:00+08:00}]"}
+{"level":"INFO","time":"2020-06-28T17:23:47.157+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":200,"method":"GET","path":"/api/v1/monitor/access","query":"","ip":"127.0.0.1","errors":"","cost":0.020654728,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:23:54.736+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:23:54.736+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:23:54.736+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T17:23:54.736+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":400,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.00063417,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.357+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.363+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.363+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.370+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/alert"}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.372+0800","caller":"alert/views..go:91","msg":"count_num: 18"}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.372+0800","caller":"schemas/page_schema.go:34","msg":"Pagination","pageObj":{"has_pre":false,"has_next":false,"num_count":18,"show_page":""}}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.372+0800","caller":"alert/views..go:97","msg":"startNum: 0"}
+{"level":"DEBUG","time":"2020-06-28T17:25:05.372+0800","caller":"alert/views..go:98","msg":"endNum: 5"}
+{"level":"INFO","time":"2020-06-28T17:25:05.374+0800","caller":"gin/context.go:161","msg":"/api/v1/alert","status":200,"method":"GET","path":"/api/v1/alert","query":"page=1&page_size=5","ip":"192.168.31.100","errors":"","cost":0.017106156,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:25:09.719+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:25:09.720+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:25:09.720+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    POST/api/v1/monitor/access"}
+{"level":"INFO","time":"2020-06-28T17:25:09.734+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":201,"method":"POST","path":"/api/v1/monitor/access","query":"token=AeZmOUaO-oVlRmeGtHK539xXt4nfh6DSCnVArRq-41M","ip":"127.0.0.1","errors":"","cost":0.014537481,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}
+{"level":"DEBUG","time":"2020-06-28T17:25:14.094+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:25:14.094+0800","caller":"middlewares/jwt_auth.go:20","msg":"需要验证登录"}
+{"level":"DEBUG","time":"2020-06-28T17:25:14.094+0800","caller":"middlewares/middlewares.go:18","msg":"AllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:25:14.101+0800","caller":"middlewares/middlewares.go:34","msg":"NoAllowMethodAndPathPrefixSkipper中间件    GET/api/v1/monitor/access"}
+{"level":"DEBUG","time":"2020-06-28T17:25:14.110+0800","caller":"models/monitor_model.go:240","msg":"AccessLog查询数据：[{{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TJ exe_time 2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} LF exe_time 2020-06-28T08:20:00+08:00} {{0 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} TS exe_time 2020-06-28T08:30:00+08:00}]"}
+{"level":"INFO","time":"2020-06-28T17:25:14.110+0800","caller":"gin/context.go:161","msg":"/api/v1/monitor/access","status":200,"method":"GET","path":"/api/v1/monitor/access","query":"","ip":"127.0.0.1","errors":"","cost":0.016658843,"user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"}

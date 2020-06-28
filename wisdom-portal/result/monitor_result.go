@@ -29,6 +29,13 @@ type MonitorQueryInResult struct {
 	Data []map[string][]models.MonitorIntermediate `json:"data"`
 }
 
+// AccessLog
+type MonitorQueryAccessLogResult struct {
+	Code int                       `json:"code"`
+	Msg  string                    `json:"msg"`
+	Data []models.MonitorAccessLog `json:"data"`
+}
+
 // 服务状态
 func NewTcpMonitorQueryResult(code int, data models.TcpQuerySliceMonitor, meta *schemas.Pagination) *TcpMonitorQueryResult {
 	return &TcpMonitorQueryResult{
@@ -55,6 +62,15 @@ func NewMonitorQueryInResult(code int, data models.QueryIntermediateSliceMonitor
 		Code: code,
 		Msg:  ResultText(code),
 		Meta: *meta,
+		Data: data.Data,
+	}
+}
+
+// 中间表
+func NewMonitorQueryAccessLogResult(code int, data models.QueryAccessLogMonitor) *MonitorQueryAccessLogResult {
+	return &MonitorQueryAccessLogResult{
+		Code: code,
+		Msg:  ResultText(code),
 		Data: data.Data,
 	}
 }

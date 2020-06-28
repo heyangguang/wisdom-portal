@@ -80,3 +80,15 @@ type MonitorIntermediateMigrate struct {
 func (t *MonitorIntermediateMigrate) TableName() string {
 	return "monitor_intermediate"
 }
+
+// accessLog不同站点执行点监控
+type MonitorAccessLogMigrate struct {
+	models.BaseMigrate
+	Site string    `gorm:"not null;comment:'区域站点'" json:"site"`
+	Tag  string    `gorm:"not null;comment:'标签exe_time代表执行点时间，预留'" json:"tag"`
+	Time time.Time `gorm:"not null;comment:'执行点时间'" json:"time"`
+}
+
+func (t *MonitorAccessLogMigrate) TableName() string {
+	return "monitor_accesslog"
+}

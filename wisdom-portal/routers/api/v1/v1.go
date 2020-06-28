@@ -37,6 +37,7 @@ func InitV1() *gin.Engine {
 			middlewares.JoinRouter("POST", "/api/v1/alert"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/tcp"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/intermediate"),
+			middlewares.JoinRouter("POST", "/api/v1/monitor/access"),
 		),
 	))
 	// 权限验证
@@ -50,6 +51,7 @@ func InitV1() *gin.Engine {
 			middlewares.JoinRouter("POST", "/api/v1/alert"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/tcp"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/intermediate"),
+			middlewares.JoinRouter("POST", "/api/v1/monitor/access"),
 		),
 	))
 	// 客户端验证
@@ -59,6 +61,7 @@ func InitV1() *gin.Engine {
 			middlewares.JoinRouter("POST", "/api/v1/alert"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/tcp"),
 			middlewares.JoinRouter("POST", "/api/v1/monitor/intermediate"),
+			middlewares.JoinRouter("POST", "/api/v1/monitor/access"),
 		),
 	))
 	for _, opt := range options {

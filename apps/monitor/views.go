@@ -10,6 +10,32 @@ import (
 	"wisdom-portal/wisdom-portal/result"
 )
 
+// 插入AccessLog数据接口
+func addAccessLogMonitor(c *gin.Context) {
+	var monitorAccessLog models.MonitorAccessLog
+
+	// 绑定表单
+	if err := c.ShouldBind(&monitorAccessLog); err != nil {
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+
+	// 验证结构
+	if err := forms.Validate.Struct(monitorAccessLog); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, GetValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	if err := monitorAccessLog.CreateMonitor(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataCreateWrong, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusCreated, result.NewSuccessResult(result.SuccessCode))
+	return
+}
+
 // 插入Client监控数据方法
 func addMonitor(c *gin.Context) {
 	var monitor models.Monitor
@@ -98,6 +124,31 @@ func queryIntermediateMonitor(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, result.NewMonitorQueryInResult(result.SuccessCode, queryInMonitor, queryInMonitor.Meta))
+}
+
+// 查询AccessLog数据
+func queryAccessLogMonitor(c *gin.Context) {
+	var queryAccessMonitor models.QueryAccessLogMonitor
+
+	// 绑定表单
+	if err := c.ShouldBindQuery(&queryAccessMonitor); err != nil {
+		c.JSON(http.StatusNotAcceptable, result.NewFailResult(result.ParamInvalid, err.Error()))
+		return
+	}
+
+	// 验证结构
+	if err := forms.Validate.Struct(queryAccessMonitor); err != nil {
+		c.JSON(http.StatusBadRequest, result.NewSliceFailResult(
+			result.ParamInvalid, GetValidationError(err.(validator.ValidationErrors))))
+		return
+	}
+
+	if err := queryAccessMonitor.QueryMonitor(); err != nil {
+		c.JSON(http.StatusInternalServerError, result.NewFailResult(result.DataNone, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, result.NewMonitorQueryAccessLogResult(result.SuccessCode, queryAccessMonitor))
 }
 
 // 查询监控数据，返回N个不同tag不同name的监控状态值
