@@ -73,8 +73,8 @@ swag init
         - [X] ElasticSearch
     - [X] 查询监控服务状态接口(TCP)
     - [X] 查询监控服务质量接口(TCP)
-    - [ ] 创建AccessLog服务数据接口
-    - [ ] 查询AccessLog服务数据接口
+    - [X] 创建AccessLog服务数据接口(不同站点时间)
+    - [X] 查询AccessLog服务数据接口
     - [X] 创建客户报告上传情况(upload)数据接口
     - [X] 查询客户报告上传情况(upload)数据接口
     - [X] 创建中间表数据接口
