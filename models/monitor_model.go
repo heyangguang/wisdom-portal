@@ -30,6 +30,7 @@ type MonitorIntermediate struct {
 // 中间表监控数据查询
 type QueryIntermediateSliceMonitor struct {
 	schemas.BasePagination
+	Tag  string                             `form:"tag" validate:"required,ValidationTagFormat" label:"tag"`
 	Num  int                                `form:"num" validate:"required,ValidationNumFormat" label:"num"`
 	Data []map[string][]MonitorIntermediate `form:"-"`
 	Meta *schemas.Pagination                `form:"-"`
@@ -189,7 +190,7 @@ func (q *QueryIntermediateSliceMonitor) selectQueryApp(startNum, endNum int) err
 	}
 	for _, tagName := range tagGroupBy[startNum:endNum] {
 		var monitorIntermediate []MonitorIntermediate
-		if err := DB.Table("monitor_intermediate").Where("tag = ? and name = ?", "i", tagName.Name).Order("time desc").Limit(q.Num).Find(&monitorIntermediate).Error; err != nil {
+		if err := DB.Table("monitor_intermediate").Where("tag = ? and name = ?", q.Tag, tagName.Name).Order("time desc").Limit(q.Num).Find(&monitorIntermediate).Error; err != nil {
 			logger.Error("selectQueryApp 查询数据失败, err:" + err.Error())
 			return err
 		}
@@ -203,7 +204,7 @@ func (q *QueryIntermediateSliceMonitor) selectQueryApp(startNum, endNum int) err
 // i代表中间表
 // u代表客户上传
 func (q *QueryIntermediateSliceMonitor) CountNum() (tagGroupBy []TagGroupBy, num int, err error) {
-	if err := DB.Table("monitor_intermediate").Select("name").Where("tag = ?", "i").Group("name").Scan(&tagGroupBy).Error; err != nil {
+	if err := DB.Table("monitor_intermediate").Select("name").Where("tag = ?", q.Tag).Group("name").Scan(&tagGroupBy).Error; err != nil {
 		logger.Error("QueryIntermediateSliceMonitor CountNum 查询数据失败, err:" + err.Error())
 		return nil, 0, err
 	}

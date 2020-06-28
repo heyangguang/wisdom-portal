@@ -12,6 +12,7 @@ func CustomValidations() {
 	_ = forms.Validate.RegisterValidation("ValidationAppTagFormat", ValidationAppTagFormat)
 	_ = forms.Validate.RegisterValidation("ValidationIntervalFormat", ValidationIntervalFormat)
 	_ = forms.Validate.RegisterValidation("ValidationTimeFormat", ValidationTimeFormat)
+	_ = forms.Validate.RegisterValidation("ValidationTagFormat", ValidationTagFormat)
 }
 
 // 验证Num
@@ -22,10 +23,18 @@ func ValidationNumFormat(fl validator.FieldLevel) bool {
 	return false
 }
 
-// 验证Tag
+// 验证AppTag
 func ValidationAppTagFormat(fl validator.FieldLevel) bool {
 	if fl.Field().String() == "MySQL" || fl.Field().String() == "ElasticSearch" ||
 		fl.Field().String() == "Kubernetes" || fl.Field().String() == "Kafka" {
+		return true
+	}
+	return false
+}
+
+// 验证中间表Tag
+func ValidationTagFormat(fl validator.FieldLevel) bool {
+	if fl.Field().String() == "i" || fl.Field().String() == "u" {
 		return true
 	}
 	return false
@@ -38,6 +47,16 @@ func ValidationTimeFormat(fl validator.FieldLevel) bool {
 		return false
 	}
 	return true
+}
+
+// 验证质量检测平均时间
+func ValidationIntervalFormat(fl validator.FieldLevel) bool {
+	if fl.Field().String() == "1" || fl.Field().String() == "5" ||
+		fl.Field().String() == "10" || fl.Field().String() == "20" ||
+		fl.Field().String() == "40" || fl.Field().String() == "60" {
+		return true
+	}
+	return false
 }
 
 // 修改验证字段错误返回值方法
@@ -64,16 +83,11 @@ func GetValidationError(err validator.ValidationErrors) []map[string]string {
 				value["time"] = "Please enter the correct time"
 			}
 		}
+		if errValue, ok := value["tag"]; ok {
+			if strings.Contains(errValue, "ValidationTagFormat") {
+				value["tag"] = "Please enter the correct tag"
+			}
+		}
 	}
 	return sliceErrs
-}
-
-// 验证质量检测平均时间
-func ValidationIntervalFormat(fl validator.FieldLevel) bool {
-	if fl.Field().String() == "1" || fl.Field().String() == "5" ||
-		fl.Field().String() == "10" || fl.Field().String() == "20" ||
-		fl.Field().String() == "40" || fl.Field().String() == "60" {
-		return true
-	}
-	return false
 }
