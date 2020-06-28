@@ -224,6 +224,7 @@ func (q *TcpQueryQualitySliceMonitor) CountNum() (tagGroupBy []TagGroupBy, num i
 	sql := fmt.Sprintf("SELECT name, ip, port FROM `%s` "+
 		"WHERE (created_at >= ?) GROUP BY `name`, `ip`, `port`", CastTableName(q.AppTag))
 	timeNow := time.Now()
+	// Interval分钟
 	m, _ := time.ParseDuration(fmt.Sprintf("-%sm", q.Interval))
 	if err := DB.Raw(sql, timeNow.Add(m)).Scan(&tagGroupBy).Error; err != nil {
 		logger.Error("queryQualitySlice 查询数据失败, err:" + err.Error())
@@ -239,6 +240,10 @@ func CastTableName(appTag string) string {
 		return "monitor_mysql"
 	case "ElasticSearch":
 		return "monitor_elasticsearch"
+	case "Kafka":
+		return "monitor_kafka"
+	case "Kubernetes":
+		return "monitor_kubernetes"
 	}
 	return ""
 }
