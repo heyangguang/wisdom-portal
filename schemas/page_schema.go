@@ -72,6 +72,12 @@ func (pagination *Pagination) PaginationStint(page, pageSize int) (startNum, end
 		//endNum = (page * pageSize) - diffNum
 		endNum = pagination.NumCount
 	}
+
+	if startNum < 0 {
+		startNum = 0
+		endNum = 0
+	}
+
 	pagination.ShowPage = fmt.Sprintf("%d/%d", page, allPageNum)
 	return
 }
