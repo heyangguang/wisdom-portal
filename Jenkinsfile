@@ -34,9 +34,8 @@ podTemplate(label: label, containers: [
                 #!/bin/bash
                 export GO111MODULE=off
                 go env
+                make build
             '''
-            sh "go env"
-            sh "make build"
         }
       } catch (exc) {
         println "构建失败 - ${currentBuild.fullDisplayName}"
