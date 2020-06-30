@@ -47,14 +47,14 @@ podTemplate(label: label, containers: [
       }
     }
     stage('数据表同步migrate') {
+      try {
         echo "Part3.数据表同步-migrate"
-        try {
-          sh "./wisdoms-ctl migrate --db \\\"${db}\\\""
-        } catch (exc) {
-          println "同步失败 - ${currentBuild.fullDisplayName}"
-          throw(exc)
-        }
-}    }
+        sh "./wisdoms-ctl migrate --db \\\"${db}\\\""
+      } catch (exc) {
+        println "数据表同步失败 - ${currentBuild.fullDisplayName}"
+        throw(exc)
+      }
+    }
     stage('构建Docker镜像') {
       withCredentials([usernamePassword(credentialsId: 'heyang-harbor-auth', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USER')]) {
         container('docker') {
