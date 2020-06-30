@@ -20,7 +20,7 @@ func Include(opts ...Option) {
 
 // 初始化
 func InitV1() *gin.Engine {
-	gin.SetMode(gin.DebugMode)
+	//gin.SetMode(gin.DebugMode)
 	engine := gin.New()
 	engine.Use(logger.GinLogger(logger.Logger), logger.GinRecovery(logger.Logger, true))
 	engine.Use(middlewares.Cors())

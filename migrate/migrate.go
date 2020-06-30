@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"log"
@@ -21,6 +22,8 @@ func main() {
 		&migrate.CasbinRuleMigrate{}, &migrate.MonitorElasticSearchMigrate{}, &migrate.MonitorMySQLMigrate{}, &migrate.AlertMigrate{},
 		&migrate.MonitorIntermediateMigrate{}, &migrate.MonitorKafkaMigrate{}, &migrate.MonitorKubernetesMigrate{},
 		&migrate.MonitorAccessLogMigrate{})
+
+	fmt.Println("Migrate Success...")
 
 	//objActSlice := make([]map[string]string, 0)
 	//objActSlice = append(objActSlice, map[string]string {"objName": "/api/v1/perm", "actName": "GET", "tag": "perm"})

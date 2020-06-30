@@ -18,6 +18,8 @@ podTemplate(label: label, containers: [
     def imageHub = "heyang"
     def imageApp = "wisdom-portal"
     def image = "${imageUri}/${imageHub}/${imageApp}"
+    def db = "root:123456@(127.0.0.1:3306)/test"
+    def logLevel = "INFO"
 
     stage('单元测试') {
       echo "Part1.单元测试-test"
@@ -33,20 +35,24 @@ podTemplate(label: label, containers: [
         throw(exc)
       }
     }
+    stage('数据表同步migrate') {
+        echo "Part3.数据表同步-migrate"
+        sh "./wisdoms-ctl migrate --db \\\"${db}\\\""
+    }
     stage('构建Docker镜像') {
       withCredentials([usernamePassword(credentialsId: 'heyang-harbor-auth', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USER')]) {
         container('docker') {
-          echo "Part3.构建Docker镜像"
+          echo "Part4.构建Docker镜像"
           sh """
             docker login ${imageUri} -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-            docker build -t ${image}:${imageTag} .
+            docker build --build-arg DB=${db} LogLevel=${logLevel} -t ${image}:${imageTag} .
             docker push ${image}:${imageTag}
             """
         }
       }
     }
     stage('修改部署文件') {
-      echo "Part4.修改YAML文件参数"
+      echo "Part5.修改YAML文件参数"
       def ciEnv = "dev"
       if (gitBranch == "origin/master") {
         ciEnv = "prod"
@@ -59,12 +65,12 @@ podTemplate(label: label, containers: [
     }
     stage('推送Kubernetes') {
       container('kubectl') {
-       echo "Part5.部署应用到 K8S"
+       echo "Part6.部署应用到 K8S"
        sh "kubectl apply -f manifests/deployment.yaml"
        sh "kubectl apply -f manifests/service.yaml"
        sh "kubectl apply -f manifests/ingress.yaml"
        sh "kubectl rollout status -f manifests/deployment.yaml"
-       echo "6.部署成功"
+       echo "7.部署成功"
       }
     }
   }

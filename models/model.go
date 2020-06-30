@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	gormadapter "github.com/casbin/gorm-adapter"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
@@ -25,7 +26,7 @@ type BaseModel struct {
 	UpdatedAt time.Time `json:"-"`
 }
 
-func DBConnectInit() {
+func DBConnectInit(dbStr string) {
 	//dsn := "root:123456@tcp(127.0.0.1:3306)/test"
 	//db, err := sqlx.Connect("mysql", dsn)
 	//if err != nil {
@@ -35,7 +36,7 @@ func DBConnectInit() {
 	//db.SetMaxOpenConns(200)
 	//db.SetMaxIdleConns(100)
 	//DB = db
-	db, err := gorm.Open("mysql", "root:123456@(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", fmt.Sprintf("%s?charset=utf8mb4&parseTime=True&loc=Local", dbStr))
 	if err != nil {
 		log.Fatalf("connect db failed, err: %v \n", err)
 		return

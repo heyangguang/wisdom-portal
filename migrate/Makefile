@@ -8,7 +8,7 @@ test:
 build:
 	go build \
 	  -race \
-	  -o wisdoms-ctl
+	  -o migrate
 
 .PHONY: help
 ## help: prints this help message

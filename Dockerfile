@@ -5,8 +5,22 @@ FROM busybox:1.28.4-glibc
 
 MAINTAINER heyang <13833232533@163.com>
 
-COPY app /bin/app
+COPY wisdoms-ctl /bin/wisdoms-ctl
 
-RUN chmod +x /bin/app
+RUN chmod +x /bin/wisdoms-ctl
 
-CMD ["/bin/app"]
+ARG DB
+
+ARG LogLevel
+
+ENV db_env_var=$DB
+
+ENV log_level_var=$LogLevel
+
+RUN mkdir -p /opt/wisdom
+
+WORKDIR /opt/wisdom
+
+RUN mkdir logs && mkdir static
+
+CMD /bin/wisdoms-ctl run --db "$db_env_var" --logLevel "$log_level_var"
