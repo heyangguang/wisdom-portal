@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wisdom-mysql
+  namespace: kube-wisdom
+spec:
+  serviceName: wisdom-mysql
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wisdom-mysql
+  template:
+    metadata:
+      labels:
+        app: wisdom-mysql
+    spec:
+      containers:
+        - name: mysqlcontainer
+          image: 172.16.140.21/heyang/mysql:5.7
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-data
+              mountPath: "/var/lib/mysql"
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-data
+        namespace: kube-wisdom
+      spec:
+        storageClassName: kube-wisdom-data
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 500Gi

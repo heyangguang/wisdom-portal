@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: kube-wisdom-data
+provisioner: kubernetes.io/glusterfs
+reclaimPolicy: Retain
+parameters:
+  resturl: "http://172.16.140.21:8080"
+  clusterid: c6b2f3cb7abcdc8ed0427db23af12408
+  restauthenabled: "true"
+  restuser: "admin"
+  secretNamespace: gluster
+  secretName: "heketi-secret"

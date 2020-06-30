@@ -18,8 +18,8 @@ podTemplate(label: label, containers: [
     def imageHub = "heyang"
     def imageApp = "wisdom-portal"
     def image = "${imageUri}/${imageHub}/${imageApp}"
-    def db = "root:123456@(127.0.0.1:3306)/test"
-    def logLevel = "INFO"
+    def db = "root:root@(wisdom-mysql-0.wisdom-mysql.kube-wisdom.svc.cluster.local:3306)/test"
+    def logLevel = "DEBUG"
 
     stage('单元测试') {
       echo "Part1.单元测试-test"
