@@ -30,7 +30,11 @@ podTemplate(label: label, containers: [
             echo "Part2.代码编译打包"
             sh "pwd"
             sh "ls -l"
-            sh "export GO111MODULE=off"
+            sh '''
+                #!/bin/bash
+                export GO111MODULE=off
+                go env
+            '''
             sh "go env"
             sh "make build"
         }
