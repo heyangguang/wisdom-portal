@@ -31,7 +31,6 @@ podTemplate(label: label, containers: [
             sh "pwd"
             sh "ls -l"
             sh '''
-                #!/bin/bash
                 export GO111MODULE=off
                 go env
                 cp -Ra ../wisdomPortal/ /go/src/
@@ -49,7 +48,7 @@ podTemplate(label: label, containers: [
     stage('数据表同步migrate') {
       try {
         echo "Part3.数据表同步-migrate"
-        sh "./wisdoms-ctl migrate --db \"${db}\""
+        sh "./wisdoms-ctl migrate --db ${db}"
       } catch (exc) {
         println "数据表同步失败 - ${currentBuild.fullDisplayName}"
         throw(exc)
@@ -61,7 +60,7 @@ podTemplate(label: label, containers: [
           echo "Part4.构建Docker镜像"
           sh """
             docker login ${imageUri} -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-            docker build --build-arg DB=${db} LogLevel=${logLevel} -t ${image}:${imageTag} .
+            docker build --build-arg DB="${db}" LogLevel="${logLevel}" -t ${image}:${imageTag} .
             docker push ${image}:${imageTag}
             """
         }
