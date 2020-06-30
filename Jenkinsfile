@@ -31,6 +31,7 @@ podTemplate(label: label, containers: [
             sh "pwd"
             sh "ls -l"
             sh "export GO111MODULE=off"
+            sh "go env"
             sh "make build"
         }
       } catch (exc) {
