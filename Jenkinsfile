@@ -19,7 +19,6 @@ podTemplate(label: label, containers: [
     def imageApp = "wisdom-portal"
     def image = "${imageUri}/${imageHub}/${imageApp}"
     def db = "root:root@(wisdom-mysql-0.wisdom-mysql.kube-wisdom.svc.cluster.local:3306)/test"
-    def logLevel = "DEBUG"
 
     stage('单元测试') {
       echo "Part1.单元测试-test"
@@ -60,7 +59,7 @@ podTemplate(label: label, containers: [
           echo "Part4.构建Docker镜像"
           sh """
             docker login ${imageUri} -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-            docker build --build-arg DB=\"${db}\",LogLevel=\"${logLevel}\" -t ${image}:${imageTag} .
+            docker build --build-arg DB=\"${db}\" -t ${image}:${imageTag} .
             docker push ${image}:${imageTag}
             """
         }

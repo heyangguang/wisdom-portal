@@ -11,11 +11,7 @@ RUN chmod +x /bin/wisdoms-ctl
 
 ARG DB
 
-ARG LogLevel
-
 ENV db_env_var=$DB
-
-ENV log_level_var=$LogLevel
 
 RUN mkdir -p /opt/wisdom
 
@@ -23,4 +19,4 @@ WORKDIR /opt/wisdom
 
 RUN mkdir logs && mkdir static
 
-CMD /bin/wisdoms-ctl run --db "$db_env_var" --logLevel "$log_level_var"
+CMD /bin/wisdoms-ctl run --db "$db_env_var"
