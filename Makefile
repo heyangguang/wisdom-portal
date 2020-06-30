@@ -6,9 +6,7 @@ test:
 .PHONY: build
 ## build: build the application
 build:
-	go build \
-	  -race \
-	  -o wisdoms-ctl
+	sh ./build.sh
 
 .PHONY: help
 ## help: prints this help message
