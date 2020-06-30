@@ -36,6 +36,7 @@ podTemplate(label: label, containers: [
                 go env
                 cp -Ra ../wisdomPortal/* /go/src/
                 cp -Ra ../wisdomPortal/vendor/* /go/src/
+                mv /go/src/wisdomPortal/ /go/src/wisdom-portal
                 make build
             '''
         }
