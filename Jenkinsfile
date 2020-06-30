@@ -28,6 +28,8 @@ podTemplate(label: label, containers: [
       try {
         container('golang') {
             echo "Part2.代码编译打包"
+            sh "pwd"
+            sh "ls -l"
             sh "make build"
         }
       } catch (exc) {
