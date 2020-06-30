@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: wisdom-portal
+  namespace: kube-wisdom
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`wisdom-portal.ibm.com`)
+      services:
+        - name: wisdom-portal
+          port: 8080

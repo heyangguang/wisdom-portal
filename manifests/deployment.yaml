@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wisdom-portal-<BRANCH_NAME>
+  namespace: kube-wisdom
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wisdom-portal
+  template:
+    metadata:
+      labels:
+        app: wisdom-portal
+    spec:
+      containers:
+        - image: <IMAGE_URI>/<IMAGE_HUB>/<IMAGE_APP>:<BUILD_TAG>
+          imagePullPolicy: IfNotPresent
+          name: wisdom-portal
+          env:
+            - name: branch
+              value: <BRANCH_NAME>
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: http
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /api/v1/health
+            initialDelaySeconds: 3
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /api/v1/health
+            initialDelaySeconds: 3
+            timeoutSeconds: 2

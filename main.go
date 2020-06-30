@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 	"wisdom-portal/apps/alert"
+	"wisdom-portal/apps/common/health"
 	"wisdom-portal/apps/common/jwt"
 	"wisdom-portal/apps/common/otp"
 	"wisdom-portal/apps/common/permission"
@@ -57,7 +58,8 @@ func main() {
 	forms.InitCustomValidationFunc()
 
 	// 加载多个APP的路由配置
-	v1.Include(permission.Routers, user.Routers, jwt.Routers, otp.Routers, usergroup.Routers, monitor.Routers, alert.Routers)
+	v1.Include(permission.Routers, user.Routers, jwt.Routers,
+		otp.Routers, usergroup.Routers, monitor.Routers, alert.Routers, health.Routers)
 
 	// 加载清理static异步模块
 	fileChan := make(chan string, 50)
