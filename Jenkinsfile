@@ -49,7 +49,7 @@ podTemplate(label: label, containers: [
     stage('数据表同步migrate') {
       try {
         echo "Part3.数据表同步-migrate"
-        sh "./wisdoms-ctl migrate --db \\\"${db}\\\""
+        sh "./wisdoms-ctl migrate --db \"${db}\""
       } catch (exc) {
         println "数据表同步失败 - ${currentBuild.fullDisplayName}"
         throw(exc)
