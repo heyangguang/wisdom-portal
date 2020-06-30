@@ -60,7 +60,7 @@ podTemplate(label: label, containers: [
           echo "Part4.构建Docker镜像"
           sh """
             docker login ${imageUri} -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-            docker build --build-arg DB="${db}" LogLevel="${logLevel}" -t ${image}:${imageTag} .
+            docker build --build-arg DB=\"${db}\" LogLevel=\"${logLevel}\" -t ${image}:${imageTag} .
             docker push ${image}:${imageTag}
             """
         }
