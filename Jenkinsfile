@@ -80,10 +80,13 @@ podTemplate(label: label, containers: [
     stage('推送Kubernetes') {
       container('kubectl') {
        echo "Part6.部署应用到 K8S"
-       sh "kubectl apply -f manifests/deployment.yaml"
-       sh "kubectl apply -f manifests/service.yaml"
-       sh "kubectl apply -f manifests/ingress.yaml"
-       sh "kubectl rollout status -f manifests/deployment.yaml"
+       sh '''
+           kubectl config use-context tj-k8s
+           kubectl apply -f manifests/deployment.yaml
+           kubectl apply -f manifests/service.yaml
+           kubectl apply -f manifests/ingress.yaml
+           kubectl rollout status -f manifests/deployment.yaml
+       '''
        echo "7.部署成功"
       }
     }
